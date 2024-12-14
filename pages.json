@@ -1,0 +1,86 @@
+{
+	// "easycom": {
+	// 	"^u-(.*)": "@/node_modules/uview-ui/components/u-$1/u-$1.vue"
+	// },
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			// uni-ui 规则如下配置
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/product/product",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/compare/compare",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/compare/compareList",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/product/productDetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "详情"
+			}
+		},
+		{
+			"path" : "components/custom-nav-bar/custom-nav-bar",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"list": [{
+				"pagePath": "pages/home/home",
+				"text": "主页",
+				"iconfont": {
+					"fontSize": "20"
+				}
+			},
+			{
+				"pagePath": "pages/product/product",
+				"text": "产品",
+				"iconfont": {
+					"fontSize": "20"
+				}
+			},
+			{
+				"pagePath": "pages/compare/compareList",
+				"text": "对比",
+				"iconfont": {
+					"fontSize": "20"
+				}
+			}
+		]
+	},
+	"uniIdRouter": {}
+}
