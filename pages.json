@@ -45,10 +45,10 @@
 			}
 		},
 		{
-			"path" : "components/custom-nav-bar/custom-nav-bar",
+			"path" : "pages/search/search",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "搜索"
 			}
 		}
 	],

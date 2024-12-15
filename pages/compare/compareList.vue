@@ -1,12 +1,10 @@
 <template>
 	<custom-nav-bar title="对比"></custom-nav-bar>
 	<view class="line" v-for="item in compareList" :key="item.productId">
-		<image class="image"
-			src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png">
-		</image>
-		<view class="text">{{item.brand}} {{item.name}}</view>
+		<productPreview :item="item"></productPreview>
 		<button class="delete" @click="deleteOne(item)">删除</button>
 	</view>
+
 	<view class="bottom">
 		<button class="deleteAll" @click="deleteAll()">清空</button>
 		<button class="compareAll" @click="compareAll()">对比</button>
@@ -53,21 +51,13 @@
 <style lang="scss" scoped>
 	.line {
 		display: flex;
-		height: 200rpx;
 		align-items: center;
-
-		.image {
-			margin-left: 30rpx;
-			height: 200rpx;
-			width: 200rpx;
-		}
-
-		.text {
-			margin-left: 50rpx;
-		}
+		justify-content: center;
 
 		.delete {
-			margin-right: 20rpx;
+			display: flex;
+			align-items: center;
+			height: 80rpx;
 		}
 	}
 

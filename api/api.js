@@ -20,3 +20,10 @@ export function apiGetAll(data = {}) {
 		data
 	})
 }
+
+export function apiSearchData(data = {}) {
+	return request({
+		url: "/search",
+		data
+	})
+}

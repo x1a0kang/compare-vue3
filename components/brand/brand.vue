@@ -3,7 +3,7 @@
 		<swiper class="swiper" indicator-dots indicator-color="#007aff" indicator-active-color="#000" circular>
 			<swiper-item class="grid-content" v-for="list in arrs">
 				<view class="box" v-for="brand in list">
-					<image class="image" src="https://file.psd.cn/20211216A/sausb5wazzq_PSD_cn.png"></image>
+					<image class="image" src="../../static/pikachu.jpg"></image>
 					<br />
 					<view class="text">{{brand.chinese}}</view>
 				</view>
