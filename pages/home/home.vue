@@ -16,7 +16,7 @@
 				</swiper-item>
 				<swiper-item>
 					<image
-						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/808533053/1666314630/3477152822.png"
+						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
 						mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>

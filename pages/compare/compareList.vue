@@ -1,5 +1,5 @@
 <template>
-	<custom-nav-bar title="对比"></custom-nav-bar>
+	<!-- <custom-nav-bar title="对比"></custom-nav-bar> -->
 	<view class="line" v-for="item in compareList" :key="item.productId">
 		<productPreview :item="item"></productPreview>
 		<button class="delete" @click="deleteOne(item)">删除</button>
@@ -63,6 +63,7 @@
 
 	.bottom {
 		display: flex;
+		margin-top: 100rpx;
 
 		.deleteAll {}
 

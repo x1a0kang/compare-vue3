@@ -25,7 +25,7 @@
 					<view class="text">热门搜索</view>
 				</view>
 				<view class="tabs">
-					<view class="tab" v-for="tab in recommendList" :key="tab" @click="clickTab(tab)">{{tab}}</view>
+					<view class="tab" v-for="tab in recommendList" :key="tab.name" @click="clickTab(tab.name)">{{tab.name}}</view>
 				</view>
 			</view>
 		</view>
@@ -61,7 +61,8 @@
 		onReachBottom
 	} from "@dcloudio/uni-app";
 	import {
-		apiSearchData
+		apiSearchData,
+		apiHotCategories
 	} from "@/api/api.js"
 	//查询参数
 	const queryParams = ref({
@@ -74,7 +75,7 @@
 	const historySearch = ref(uni.getStorageSync("historySearch") || []);
 
 	//热门搜索词
-	const recommendList = ref(["美女", "帅哥", "宠物", "卡通"]);
+	const recommendList = ref([]);
 
 	//没有更多
 	const noData = ref(false);
@@ -84,6 +85,11 @@
 	//搜索结果列表
 	const classList = ref([]);
 
+	async function getHotCategories() {
+		let res = await apiHotCategories()
+		console.log("res:", res)
+		recommendList.value = res.data
+	}
 
 	//点击搜索
 	const onSearch = () => {
@@ -160,6 +166,8 @@
 	onUnload(() => {
 		uni.removeStorageSync("storgClassList", classList.value);
 	})
+
+	getHotCategories()
 </script>
 
 <style lang="scss" scoped>

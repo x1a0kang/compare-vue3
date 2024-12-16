@@ -27,3 +27,10 @@ export function apiSearchData(data = {}) {
 		data
 	})
 }
+
+export function apiHotCategories(data = {}) {
+	return request({
+		url: "/getHotCategories",
+		data
+	})
+}
