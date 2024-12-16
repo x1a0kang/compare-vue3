@@ -2,6 +2,12 @@ import {
 	request
 } from "@/utils/request.js"
 
+export function apiGetBrandSplit() {
+	return request({
+		url: "/getBrandSplit"
+	})
+}
+
 export function apiGetBrand() {
 	return request({
 		url: "/getBrand"
@@ -21,9 +27,16 @@ export function apiGetAll(data = {}) {
 	})
 }
 
-export function apiSearchData(data = {}) {
+export function apiSearch(data = {}) {
 	return request({
 		url: "/search",
+		data
+	})
+}
+
+export function apiSearchByFilter(data = {}) {
+	return request({
+		url: "/searchByFilter",
 		data
 	})
 }

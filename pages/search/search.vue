@@ -38,15 +38,12 @@
 
 		<view v-else>
 			<view class="list">
-				<view class="line" v-for="item in classList" :key="item.productId">
-					<productPreview :item="item"></productPreview>
-				</view>
+				<productPreview v-for="item in classList" :key="item.productId" :item="item"></productPreview>
 			</view>
 			<view class="loadingLayout" v-if="noData || classList.length">
 				<uni-load-more :status="noData?'noMore':'loading'" />
 			</view>
 		</view>
-
 
 	</view>
 </template>
@@ -56,12 +53,11 @@
 		ref
 	} from "vue";
 	import {
-		onLoad,
 		onUnload,
 		onReachBottom
 	} from "@dcloudio/uni-app";
 	import {
-		apiSearchData,
+		apiSearch,
 		apiHotCategories
 	} from "@/api/api.js"
 	//查询参数
@@ -132,7 +128,7 @@
 	const searchData = async () => {
 		try {
 			console.log("search param:", queryParams.value);
-			let res = await apiSearchData(queryParams.value);
+			let res = await apiSearch(queryParams.value);
 			classList.value = [...classList.value, ...res.data];
 			uni.setStorageSync("storgClassList", classList.value);
 			if (queryParams.value.pageSize > res.data.length) noData.value = true;

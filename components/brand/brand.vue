@@ -17,17 +17,17 @@
 		ref
 	} from 'vue';
 	import {
-		apiGetBrand
+		apiGetBrandSplit
 	} from "@/api/api.js"
 
 	let arrs = ref([])
 
-	async function getBrand() {
-		let res = await apiGetBrand()
+	async function getBrandSplit() {
+		let res = await apiGetBrandSplit()
 		arrs.value = res.data
 	}
 
-	getBrand()
+	getBrandSplit()
 </script>
 
 <style lang="scss" scoped>
