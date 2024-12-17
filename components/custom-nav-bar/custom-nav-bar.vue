@@ -31,7 +31,12 @@
 </script>
 
 <style lang="scss" scoped>
+	.fill {
+		background-color: white;
+	}
+
 	.navbar {
+		background-color: white;
 		position: fixed;
 		top: 0;
 		left: 0;

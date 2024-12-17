@@ -1,17 +1,21 @@
 <template>
 	<custom-nav-bar title="产品"></custom-nav-bar>
+
 	<view class="layout">
 		<!-- 左边导航栏 -->
 		<view class="tab">
-			<uni-collapse class="collapse" accordion>
-				<uni-collapse-item @click="getData(['brand'], [brand.chinese])" class="box" v-for="brand in brandList"
-					:key="brand.english" :title="brand.chinese">
+			<uni-collapse class="collapse" v-model="accordionVal" accordion>
+				<uni-collapse-item @click="getData([], [], '0')" class="box" title="全部" :show-arrow="false"
+					open></uni-collapse-item>
+				<uni-collapse-item @click="getData(['brand'], [brand.chinese], index+1)" class="box"
+					v-for="(brand,index) in brandList" :key="brand.english" :title="brand.chinese" :show-arrow="false">
 					<view @click.stop="getData(['brand','sensorSize'], [brand.chinese, series])" class="series"
 						v-for="series in brand.series">
 						{{series}}
 					</view>
 				</uni-collapse-item>
 			</uni-collapse>
+
 		</view>
 
 		<!-- 右边内容-->
@@ -42,15 +46,17 @@
 		apiGetAll
 	} from "@/api/api.js"
 
+	let accordionVal = ref("0")
 	const noData = ref(false)
 	const noSearchData = ref(false)
+	const isChosen = ref(false)
 	const brandList = reactive([])
 	const dataList = reactive([])
 	let body = reactive({
 		page: 1,
 		pageSize: 8,
-		key: [],
-		value: []
+		key: ["brand"],
+		value: ["all"]
 	})
 
 	async function getBrand() {
@@ -58,7 +64,11 @@
 		brandList.push(...res.data)
 	}
 
-	async function getData(key, value) {
+	async function getData(key, value, index) {
+		isChosen.value = true
+		if (isRepeatClick(value)) {
+			return
+		}
 		initBody()
 		body.key = key
 		body.value = value
@@ -66,7 +76,6 @@
 	}
 
 	async function getSearchByFilter() {
-		console.log(body)
 		let res = await apiSearchByFilter(body)
 		dataList.push(...res.data)
 		if (res.data.length == 0 && dataList == 0) noSearchData.value = true;
@@ -81,6 +90,15 @@
 		noSearchData.value = false
 	}
 
+	function isRepeatClick(value) {
+		let flag = body.value.every(e => value.includes(e)) && value.every(e => body.value.includes(e))
+		if (flag) {
+			console.log("重复点击")
+			return true
+		}
+		return false
+	}
+
 	//触底加载更多
 	onReachBottom(() => {
 		if (noData.value) return;
@@ -89,7 +107,7 @@
 	})
 
 	getBrand()
-	getData([], [])
+	getData([], [], "0")
 </script>
 
 <style lang="scss" scoped>
@@ -97,6 +115,7 @@
 		display: flex;
 
 		.tab {
+
 			.collapse {
 				align-items: center;
 			}
@@ -116,5 +135,9 @@
 		.content {
 			width: 100%;
 		}
+	}
+
+	.title-bold {
+		font-weight: bold;
 	}
 </style>
