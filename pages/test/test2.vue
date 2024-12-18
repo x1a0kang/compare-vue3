@@ -1,12 +1,14 @@
 <template>
 	<view class="layout">
-		<uni-data-select placeholder="test" v-model="value" :localdata="specList.value"
+		<uni-data-select label="参数" placeholder="test" v-model="value" :localdata="specList.value"
 			@change="change"></uni-data-select>
+		<uni-data-select placeholder="test" v-model="option" :localdata="optionList"></uni-data-select>
 	</view>
 </template>
 
 <script setup>
 	import {
+		reactive,
 		ref
 	} from 'vue'
 	import {
@@ -15,17 +17,24 @@
 	import {
 		apiGetSpecList
 	} from '@/api/api.js'
-	
+
+	apiGetSpecList()
+
 	const {
 		specList
 	} = useSpecListStore()
+	const optionList = reactive([])
 
 	let value = ref("")
-	
-	apiGetSpecList()
+	let option = ref("")
 
 	function change(e) {
-		console.log("change", e)
+		let temp = specList.value.find(item => item.value == e)
+		optionList.length = 0
+		option.value = ""
+		if (temp.optionList != null) {
+			optionList.push(...temp.optionList)
+		}
 	}
 </script>
 
