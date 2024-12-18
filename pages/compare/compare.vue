@@ -8,8 +8,8 @@
 
 		<uni-tr v-for="spec in specList.value">
 			<uni-td align="center" v-for="item in compareList" :key="item.productId">
-				<view class="key">{{spec.chinese}}</view>
-				<view class="value">{{item[spec.english]}}</view>
+				<view class="key">{{spec.text}}</view>
+				<view class="value">{{item[spec.value]}}</view>
 			</uni-td>
 		</uni-tr>
 	</uni-table>

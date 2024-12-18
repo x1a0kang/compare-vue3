@@ -24,7 +24,11 @@
 				<uv-empty mode="search" icon="http://cdn.uviewui.com/uview/empty/search.png"></uv-empty>
 			</view>
 
-			<productPreview v-for="item in dataList" :key="item.productId" :item="item"></productPreview>
+			<view class="product" v-for="item in dataList" :key="item.productId">
+				<productPreview :item="item"></productPreview>
+				<addToCompareButton :item="item"></addToCompareButton>
+			</view>
+
 		</view>
 	</view>
 
@@ -134,6 +138,11 @@
 
 		.content {
 			width: 100%;
+
+			.product {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 

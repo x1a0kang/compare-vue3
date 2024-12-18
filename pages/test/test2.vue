@@ -1,17 +1,34 @@
 <template>
 	<view class="layout">
-		<scroll-view class="scroll" scroll-y="true" style="height:calc(100vh)">
-			<view v-for="i in 100">hhhhhhhhh</view>
-		</scroll-view>
+		<uni-data-select placeholder="test" v-model="value" :localdata="range" @change="change"></uni-data-select>
 
-		<scroll-view class="scroll" scroll-y="true" style="height:calc(100vh)">
-			<view v-for="i in 100">hhhhhhhhh</view>
-		</scroll-view>
 	</view>
 </template>
 
 <script setup>
+	import {
+		reactive,
+		ref
+	} from 'vue';
 
+	let value = ref()
+	const range = reactive([{
+			value: 0,
+			text: "篮球"
+		},
+		{
+			value: 1,
+			text: "足球"
+		},
+		{
+			value: 2,
+			text: "游泳"
+		}
+	])
+
+	function change(e) {
+		console.log("change", e)
+	}
 </script>
 
 <style lang="scss" scoped>

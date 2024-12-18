@@ -4,11 +4,13 @@
 		mode="aspectFill"></image>
 	<view class="name">{{detail.value.name}}</view>
 	<view class="line" v-for="spec in specList.value">
-		<view> {{spec.chinese}} </view>
+		<view> {{spec.text}} </view>
 		<view>
-			{{detail.value[spec.english]}}
+			{{detail.value[spec.value]}}
 		</view>
 	</view>
+
+	<addToCompareButton :item="detail.value"></addToCompareButton>
 </template>
 
 <script setup>

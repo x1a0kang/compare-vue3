@@ -7,7 +7,7 @@
 		</view>
 
 
-		<view v-if="!classList.length || noSearch">
+		<view v-if="!dataList.length || noSearch">
 			<view class="history" v-if="historySearch.length">
 				<view class="topTitle">
 					<view class="text">最近搜索</view>
@@ -38,9 +38,9 @@
 
 		<view v-else>
 			<view class="list">
-				<productPreview v-for="item in classList" :key="item.productId" :item="item"></productPreview>
+				<productPreview v-for="item in dataList" :key="item.productId" :item="item"></productPreview>
 			</view>
-			<view class="loadingLayout" v-if="noData || classList.length">
+			<view class="loadingLayout" v-if="noData || dataList.length">
 				<uni-load-more :status="noData?'noMore':'loading'" />
 			</view>
 		</view>
@@ -79,7 +79,7 @@
 	const noSearch = ref(false);
 
 	//搜索结果列表
-	const classList = ref([]);
+	const dataList = ref([]);
 
 	async function getHotCategories() {
 		let res = await apiHotCategories()
@@ -129,10 +129,10 @@
 		try {
 			console.log("search param:", queryParams.value);
 			let res = await apiSearch(queryParams.value);
-			classList.value = [...classList.value, ...res.data];
-			uni.setStorageSync("storgClassList", classList.value);
+			dataList.value = [...dataList.value, ...res.data];
+			uni.setStorageSync("storgdataList", dataList.value);
 			if (queryParams.value.pageSize > res.data.length) noData.value = true;
-			if (res.data.length == 0 && classList.value.length == 0) noSearch.value = true;
+			if (res.data.length == 0 && dataList.value.length == 0) noSearch.value = true;
 			console.log(res);
 		} finally {
 			uni.hideLoading()
@@ -140,7 +140,7 @@
 	}
 
 	const initParams = (value = '') => {
-		classList.value = [];
+		dataList.value = [];
 		noData.value = false;
 		noSearch.value = false;
 		queryParams.value = {
@@ -160,7 +160,7 @@
 
 	//关闭有页面
 	onUnload(() => {
-		uni.removeStorageSync("storgClassList", classList.value);
+		uni.removeStorageSync("storgdataList", dataList.value);
 	})
 
 	getHotCategories()
