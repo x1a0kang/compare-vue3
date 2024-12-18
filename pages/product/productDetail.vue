@@ -18,6 +18,9 @@
 		useSpecListStore
 	} from '@/store/specList'
 	import {
+		apiGetSpecList
+	} from '@/api/api.js'
+	import {
 		useDetailStore
 	} from '@/store/detail'
 
@@ -27,6 +30,9 @@
 	const {
 		detail
 	} = useDetailStore()
+
+	apiGetSpecList()
+	console.log("specList", specList)
 </script>
 
 <style lang="scss" scoped>

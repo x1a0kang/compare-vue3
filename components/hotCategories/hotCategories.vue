@@ -19,7 +19,6 @@
 
 	async function getHotCategories() {
 		let res = await apiHotCategories()
-		console.log("res:", res)
 		arrs.value = res.data
 	}
 

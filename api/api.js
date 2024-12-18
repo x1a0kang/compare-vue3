@@ -1,6 +1,13 @@
 import {
 	request
 } from "@/utils/request.js"
+import {
+	useSpecListStore
+} from '@/store/specList'
+
+const {
+	specList
+} = useSpecListStore()
 
 export function apiGetBrandSplit() {
 	return request({
@@ -14,11 +21,22 @@ export function apiGetBrand() {
 	})
 }
 
-export function apiGetSpecs() {
-	return request({
-		url: "/getCameraSpec"
-	})
+export async function apiGetSpecList() {
+	if (undefined === specList.value) {
+		let res = await request({
+			url: "/getCameraSpec"
+		})
+		specList.value = res.data
+		console.log("res.data", res.data)
+		console.log("缓存内specList为空，请求接口")
+	}
 }
+
+// export function apiGetSpecList(data = {}) {
+// 	return await request({
+// 		url: "/getCameraSpec"
+// 	})
+// }
 
 export function apiGetAll(data = {}) {
 	return request({

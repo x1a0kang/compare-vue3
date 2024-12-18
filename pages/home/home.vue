@@ -37,23 +37,7 @@
 </template>
 
 <script setup>
-	import {
-		useSpecListStore
-	} from '@/store/specList'
-	import {
-		apiGetSpecs
-	} from "@/api/api.js"
 
-	const {
-		specList
-	} = useSpecListStore()
-
-	async function getSpecs() {
-		let res = await apiGetSpecs()
-		specList.value = res.data
-	}
-
-	getSpecs()
 </script>
 
 <style lang="scss" scoped>

@@ -17,18 +17,23 @@
 
 <script setup>
 	import {
+		useSpecListStore
+	} from '@/store/specList'
+	import {
 		useCompareListStore
 	} from '@/store/compareList'
 	import {
-		useSpecListStore
-	} from '@/store/specList'
+		apiGetSpecList
+	} from '@/api/api.js'
 
-	const {
-		specList
-	} = useSpecListStore()
 	const {
 		compareList
 	} = useCompareListStore()
+	const {
+		specList
+	} = useSpecListStore()
+
+	apiGetSpecList()
 </script>
 
 <style lang="scss" scoped>
