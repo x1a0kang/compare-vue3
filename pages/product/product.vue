@@ -24,7 +24,7 @@
 		<button @click="confirm()">确认</button>
 	</uni-popup>
 
-	<view class="loadingLayout" v-if="!arrs.length && !noData">
+	<view class="loadingLayout" v-show="!arrs.length && !noData">
 		<uni-load-more status="loading"></uni-load-more>
 	</view>
 
@@ -43,7 +43,7 @@
 		</view>
 	</view>
 
-	<view class="loadingLayout" v-if="arrs.length || noData">
+	<view class="loadingLayout" v-show="arrs.length || noData">
 		<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
 	</view>
 </template>
@@ -67,7 +67,8 @@
 		apiSearchByFilter
 	} from "@/api/api.js"
 	import {
-		onReachBottom
+		onReachBottom,
+		onShow
 	} from '@dcloudio/uni-app';
 
 	const arrs = ref([])
@@ -134,9 +135,8 @@
 		searchByFilter()
 	})
 
-	searchByFilter()
-
 	apiGetSpecList()
+	searchByFilter()
 
 	const {
 		specList
@@ -146,6 +146,12 @@
 	let chosenKey = ref("")
 	let chosenValue = ref("")
 
+	const pop = ref()
+
+	function openPop() {
+		pop.value.open()
+	}
+
 	function change(e) {
 		let temp = specList.value.find(item => item.value == e)
 		optionList.length = 0
@@ -153,12 +159,6 @@
 		if (temp != null && temp.optionList != null) {
 			optionList.push(...temp.optionList)
 		}
-	}
-
-	const pop = ref()
-
-	function openPop() {
-		pop.value.open()
 	}
 
 	function confirm() {
@@ -171,18 +171,25 @@
 			return
 		}
 
+		pop.value.close()
+		doSearch()
+	}
+
+	function doSearch() {
 		let tempKey = specList.value.find(item => item.value == chosenKey.value)
 		let tempValue = optionList.find(item => item.value == chosenValue.value)
+		if (tempValue === undefined) {
+			return
+		}
 		conditionList.key.push(chosenKey.value)
 		conditionList.keyText.push(tempKey.text)
 		conditionList.value.push(chosenValue.value)
 		conditionList.valueText.push(tempValue.text)
 
-		pop.value.close()
 		chosenKey.value = ""
 		chosenValue.value = ""
 		optionList.length = 0
-		
+
 		initParams()
 		searchByFilter()
 	}
@@ -192,10 +199,35 @@
 		conditionList.keyText.splice(index, 1)
 		conditionList.value.splice(index, 1)
 		conditionList.valueText.splice(index, 1)
-		
+
 		initParams()
 		searchByFilter()
 	}
+
+	onShow(() => {
+		let filterKey = uni.getStorageSync('filterKey')
+		let filterValue = uni.getStorageSync('filterValue')
+
+		// 如果缓存中的key不为空就是跳转过来的
+		if (filterKey) {
+			console.log("filterKey + filterValue", filterKey, filterValue)
+			// 重置跳转条件
+			uni.setStorageSync('filterKey', '')
+			uni.setStorageSync('filterValue', '')
+			// 在选项list加入value
+			change(filterKey)
+
+			chosenKey.value = filterKey
+			chosenValue.value = filterValue
+			// 清空原条件列表
+			conditionList.key.length = 0
+			conditionList.keyText.length = 0
+			conditionList.value.length = 0
+			conditionList.valueText.length = 0
+
+			doSearch()
+		}
+	})
 </script>
 
 <style lang="scss" scoped>

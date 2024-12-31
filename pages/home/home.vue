@@ -37,7 +37,11 @@
 </template>
 
 <script setup>
-
+	import {
+		apiGetSpecList,
+		apiSearchByFilter
+	} from "@/api/api.js"
+	apiGetSpecList()
 </script>
 
 <style lang="scss" scoped>

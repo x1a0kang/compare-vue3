@@ -2,7 +2,7 @@
 	<view class="content">
 		<swiper class="swiper" indicator-dots indicator-color="#007aff" indicator-active-color="#000" circular>
 			<swiper-item class="grid-content" v-for="list in arrs">
-				<view class="box" v-for="brand in list">
+				<view class="box" @click="jump(brand)" v-for="brand in list">
 					<image class="image" src="../../static/pikachu.jpg"></image>
 					<br />
 					<view class="text">{{brand.chinese}}</view>
@@ -25,6 +25,14 @@
 	async function getBrandSplit() {
 		let res = await apiGetBrandSplit()
 		arrs.value = res.data
+	}
+
+	function jump(brand) {
+		uni.setStorageSync('filterKey', 'brand')
+		uni.setStorageSync('filterValue', brand.chinese)
+		uni.switchTab({
+			url: '/pages/product/product'
+		});
 	}
 
 	getBrandSplit()
