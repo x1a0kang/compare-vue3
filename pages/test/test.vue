@@ -1,145 +1,154 @@
+
+
 <template>
 	<custom-nav-bar title="产品"></custom-nav-bar>
-	<view class="loadingLayout" v-if="!arrs.length && !noData">
-		<uni-load-more status="loading"></uni-load-more>
-	</view>
-	<view class="content">
-		<view class="box" v-for="item in arrs" :key="item.productId">
-			<button class="jump-button" @click="jump(item)">
-				<image class="image"
-					src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
-					mode="aspectFill"></image>
-				<br />
-				<view class="mask">{{item.name}}</view>
-			</button>
-			<button class="add-button" @click="addToCompare(item)">
-				<uni-icons type="plus"></uni-icons>
-			</button>
+
+	<view class="layout">
+		<!-- 左边导航栏 -->
+		<view class="tab">
+			<uni-collapse class="collapse" v-model="accordionVal" accordion>
+				<uni-collapse-item @click="getData([], [], '0')" class="box" title="全部" :show-arrow="false"
+					open></uni-collapse-item>
+				<uni-collapse-item @click="getData(['brand'], [brand.chinese], index+1)" class="box"
+					v-for="(brand,index) in brandList" :key="brand.english" :title="brand.chinese" :show-arrow="false">
+					<view @click.stop="getData(['brand','sensorSize'], [brand.chinese, series])" class="series"
+						v-for="series in brand.series">
+						{{series}}
+					</view>
+				</uni-collapse-item>
+			</uni-collapse>
+
+		</view>
+
+		<!-- 右边内容-->
+		<view class="content">
+			<view class="noSearchData" v-if="noSearchData">
+				<uv-empty mode="search" icon="http://cdn.uviewui.com/uview/empty/search.png"></uv-empty>
+			</view>
+
+			<view class="product" v-for="item in dataList" :key="item.productId">
+				<productPreview :item="item"></productPreview>
+				<addToCompareButton :item="item"></addToCompareButton>
+			</view>
+
 		</view>
 	</view>
 
-	<view class="loadingLayout" v-if="arrs.length || noData">
-		<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
-	</view>
 </template>
 
 <script setup>
 	import {
+		reactive,
 		ref
 	} from 'vue';
 	import {
-		useCompareListStore
-	} from '@/store/compareList'
+		onShow,
+		onLoad,
+		onReachBottom
+	} from "@dcloudio/uni-app";
 	import {
-		useDetailStore
-	} from '@/store/detail'
-	import {
+		apiGetBrand,
+		apiSearchByFilter,
 		apiGetAll
 	} from "@/api/api.js"
-	import {
-		onReachBottom
-	} from '@dcloudio/uni-app';
 
-	const arrs = ref([])
+	let accordionVal = ref("0")
 	const noData = ref(false)
-
-	const {
-		compareList
-	} = useCompareListStore()
-	const {
-		detail
-	} = useDetailStore()
-
-	const body = {
+	const noSearchData = ref(false)
+	const isChosen = ref(false)
+	const brandList = reactive([])
+	const dataList = reactive([])
+	let body = reactive({
 		page: 1,
-		pageSize: 10
-	}
-
-	async function getAll() {
-		let res = await apiGetAll(body)
-		arrs.value = [...arrs.value, ...res.data]
-		if (body.pageSize > res.data.length) {
-			noData.value = true
-		}
-	}
-
-	function jump(item) {
-		detail.value = item
-		uni.navigateTo({
-			url: '/pages/product/productDetail'
-		});
-		console.log("跳转到详情页", item.name)
-	}
-
-	function addToCompare(item) {
-		const index = compareList.findIndex(
-			function(temp) {
-				return temp.productId === item.productId
-			}
-		)
-		if (index != -1) {
-			console.log(item.name, "已存在")
-		} else {
-			compareList.push(item)
-			console.log("加入对比", item.name)
-		}
-	}
-
-	onReachBottom(() => {
-		console.log("触底了")
-		if (noData.value) {
-			return
-		}
-		body.page++
-		getAll()
+		pageSize: 8,
+		key: ["brand"],
+		value: ["all"]
 	})
 
-	getAll()
+	async function getBrand() {
+		let res = await apiGetBrand()
+		brandList.push(...res.data)
+	}
+
+	async function getData(key, value, index) {
+		isChosen.value = true
+		if (isRepeatClick(value)) {
+			return
+		}
+		initBody()
+		body.key = key
+		body.value = value
+		getSearchByFilter()
+	}
+
+	async function getSearchByFilter() {
+		let res = await apiSearchByFilter(body)
+		dataList.push(...res.data)
+		if (res.data.length == 0 && dataList == 0) noSearchData.value = true;
+	}
+
+	function initBody() {
+		body.page = 1
+		body.pageSize = 8
+		body.key.length = 0
+		body.value.length = 0
+		dataList.length = 0
+		noSearchData.value = false
+	}
+
+	function isRepeatClick(value) {
+		let flag = body.value.every(e => value.includes(e)) && value.every(e => body.value.includes(e))
+		if (flag) {
+			console.log("重复点击")
+			return true
+		}
+		return false
+	}
+
+	//触底加载更多
+	onReachBottom(() => {
+		if (noData.value) return;
+		body.page++
+		getSearchByFilter();
+	})
+
+	getBrand()
+	getData([], [], "0")
 </script>
 
 <style lang="scss" scoped>
-	.content {
-		margin-top: 15rpx;
-		padding: 0 15rpx;
-		display: grid;
-		gap: 15rpx;
-		grid-template-columns: repeat(2, 1fr);
+	.layout {
+		display: flex;
 
-		.box {
-			height: 400rpx;
-			border-radius: 10rpx;
-			overflow: hidden;
-			position: relative;
-			background-color: blue;
+		.tab {
 
-			.jump-button {
-				height: 100%;
-				position: relative;
-			}
-
-			.image {
-				width: 100%;
-				height: 300rpx;
-			}
-
-			.mask {
-				width: 100%;
-				height: 50rpx;
-				display: flex;
+			.collapse {
 				align-items: center;
-				justify-content: center;
 			}
 
-			.add-button {
-				width: 50rpx;
-				height: 50rpx;
-				position: absolute;
-				bottom: 23rpx;
-				right: 5rpx;
+			.box {
 				display: flex;
+				flex-direction: column;
 				align-items: center;
-				justify-content: center;
+				padding: 10rpx 0;
+
+				.series {
+					padding: 10rpx 0;
+				}
 			}
 		}
+
+		.content {
+			width: 100%;
+
+			.product {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+
+	.title-bold {
+		font-weight: bold;
 	}
 </style>
