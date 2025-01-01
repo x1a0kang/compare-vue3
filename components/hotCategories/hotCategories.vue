@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="box" @click="jump(item.filter)" v-for="item in arrs" :key="item.name">
+		<view class="box" @click="jump(item)" v-for="item in arrs" :key="item.name">
 			<image class="image" :src="item.coverUrl" mode="aspectFill"></image>
 			<view class="mask">{{item.name}}</view>
 		</view>
@@ -22,9 +22,12 @@
 		arrs.value = res.data
 	}
 
-	function jump(filter) {
-		console.log("filter:", filter)
-		// todo 字段过滤接口
+	function jump(item) {
+		uni.setStorageSync('filterKey', item.key)
+		uni.setStorageSync('filterValue', item.value)
+		uni.switchTab({
+			url: '/pages/product/product'
+		});
 	}
 
 	getHotCategories()
