@@ -51,8 +51,7 @@
 			padding: 15rpx 0;
 
 			swiper {
-				width: 750rpx;
-				height: 400rpx;
+				height: 450rpx;
 
 				swiper-item {
 					width: 100%;

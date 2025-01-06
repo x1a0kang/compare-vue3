@@ -1,7 +1,10 @@
 <template>
-	<image
-		src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
-		mode="aspectFill"></image>
+	<swiper class="swiper" indicator-dots indicator-color='#000' indicator-active-color="#f00" circular>
+		<swiper-item class="swiper-item" v-for="ss in detail.value.imageList">
+			<image :src="ss" mode="aspectFill"></image>
+		</swiper-item>
+	</swiper>
+
 	<view class="name">{{detail.value.name}}</view>
 	<view class="line" v-for="spec in specList.value">
 		<view> {{spec.text}} </view>
@@ -36,6 +39,16 @@
 </script>
 
 <style lang="scss" scoped>
+	.swiper {
+		height: 450rpx;
+	}
+
+	.swiper-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.name {
 		font-size: 40rpx;
 		font-weight: bold;
