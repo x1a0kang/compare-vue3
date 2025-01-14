@@ -6,10 +6,11 @@
 	</swiper>
 
 	<view class="name">{{detail.value.name}}</view>
+	<hr>
 	<view class="line" v-for="spec in specList.value">
-		<view> {{spec.text}} </view>
-		<view>
-			{{detail.value[spec.value]}}
+		<view class="key"> {{spec.text}} ：</view>
+		<view class="value">
+			{{detail.value[spec.value]}}dfaghfaddddddddddddddddddddddddddddddddddddddddddddddd
 		</view>
 	</view>
 
@@ -50,14 +51,24 @@
 	}
 
 	.name {
+		padding: 0 20rpx;
 		font-size: 40rpx;
 		font-weight: bold;
 	}
 
 	.line {
-		margin-top: 20rpx;
+		padding: 0 20rpx;
+		margin: 20rpx 0;
 		display: flex;
-		gap: 20rpx;
-
+		
+		.key{
+			width: 30%;
+			height: 100%;
+		}
+		.value{
+			width: 70%;
+			height: 100%;
+			margin: 0 20rpx;
+		}
 	}
 </style>
