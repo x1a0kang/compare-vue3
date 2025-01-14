@@ -1,8 +1,6 @@
 <template>
 	<view>
-		<button class="add-button" @click="addToCompare(item)">
-			<uni-icons type="plus"></uni-icons>
-		</button>
+		<button class="add-button" @click="addToCompare(item)"></button>
 	</view>
 </template>
 
