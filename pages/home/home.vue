@@ -22,13 +22,13 @@
 			</swiper>
 		</view>
 
-		<uni-section title="品牌" type="circle"></uni-section>
+		<view>品牌</view>
 
 		<view class="brand">
 			<brand></brand>
 		</view>
-
-		<uni-section title="热门分类" type="circle"></uni-section>
+		
+		<view>热门分类</view>
 
 		<hotCategories></hotCategories>
 

@@ -31,13 +31,13 @@
 
 		<view class="content">
 			<view class="box" v-for="item in arrs" :key="item.productId">
-				<button class="jump-button" @click="jump(item)">
+				<view class="jump-button" @click="jump(item)">
 					<image class="image"
 						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
 						mode="aspectFill"></image>
 					<br />
 					<view class="mask">{{item.name}}</view>
-				</button>
+				</view>
 				<button class="add-button" @click="addToCompare(item)">
 					<uni-icons type="plus"></uni-icons>
 				</button>
@@ -292,7 +292,7 @@
 			border-radius: 10rpx;
 			overflow: hidden;
 			position: relative;
-			background-color: blue;
+			border: 1rpx solid gray;
 
 			.jump-button {
 				height: 100%;

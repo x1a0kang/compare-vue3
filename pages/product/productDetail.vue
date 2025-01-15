@@ -1,12 +1,14 @@
 <template>
 	<view class="layout pageBg">
-		<swiper class="swiper" circular>
-			<swiper-item class="swiper-item" v-for="ss in detail.value.imageList">
-				<image :src="ss" mode="aspectFill"></image>
+		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange">
+			<swiper-item class="swiper-item" v-for="url in detail.value.imageList">
+				<image :src="url" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
-		<view class="name">{{detail.value.name}}</view>
+		<view class="count">{{currentIndex+1}} / {{detail.value.imageList.length}}</view>
+
+		<view class="name">{{detail.value.brand}} {{detail.value.name}}</view>
 		<view class="line" v-for="spec in specList.value">
 			<view class="key"> {{spec.text}} ：</view>
 			<view class="value">
@@ -43,6 +45,9 @@
 	import {
 		useDetailStore
 	} from '@/store/detail'
+	import {
+		ref
+	} from 'vue'
 
 	const {
 		specList
@@ -50,6 +55,8 @@
 	const {
 		detail
 	} = useDetailStore()
+
+	const currentIndex = ref(0)
 
 	function add() {
 		addToCompare(detail.value)
@@ -67,10 +74,18 @@
 		})
 	}
 
+	function swiperChange(e) {
+		currentIndex.value = e.detail.current;
+	}
+
 	apiGetSpecList()
 </script>
 
 <style lang="scss" scoped>
+	.layout {
+		position: relative;
+	}
+
 	.swiper {
 		height: 450rpx;
 	}
@@ -81,8 +96,20 @@
 		align-items: center;
 	}
 
+	.count {
+		position: absolute;
+		top: 400rpx;
+		right: 20rpx;
+		width: fit-content;
+		background: rgba(0, 0, 0, 0.1);
+		font-size: 24rpx;
+		border-radius: 40rpx;
+		padding: 8rpx 20rpx;
+		backdrop-filter: blur(10rpx);
+	}
+
 	.name {
-		margin: 0 10rpx;
+		margin: 20rpx 10rpx;
 		padding: 10rpx 10rpx;
 		font-size: 40rpx;
 		font-weight: bold;
