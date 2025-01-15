@@ -1,13 +1,15 @@
 <template>
-	<!-- <custom-nav-bar title="对比"></custom-nav-bar> -->
-	<view class="line" v-for="item in compareList" :key="item.productId">
-		<productPreview :item="item"></productPreview>
-		<button class="delete" @click="deleteOne(item)">删除</button>
-	</view>
-
-	<view class="bottom">
-		<button class="deleteAll" @click="deleteAll()">清空</button>
-		<button class="compareAll" @click="compareAll()">对比</button>
+	<view class="layout pageBg">
+		<custom-nav-bar title="对比"></custom-nav-bar>
+		<view class="line" v-for="item in compareList" :key="item.productId">
+			<productPreview :item="item"></productPreview>
+			<button class="delete" @click="deleteOne(item)">删除</button>
+		</view>
+		
+		<view class="bottom">
+			<button class="deleteAll" @click="deleteAll()">清空</button>
+			<button class="compareAll" @click="compareAll()">对比</button>
+		</view>
 	</view>
 </template>
 
@@ -63,7 +65,8 @@
 
 	.bottom {
 		display: flex;
-		margin-top: 100rpx;
+		position: fixed;
+		bottom: var(--window-bottom);
 
 		.deleteAll {}
 

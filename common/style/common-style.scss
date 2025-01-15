@@ -5,3 +5,10 @@ view,swiper,swiper-item{
 .loadingLayout{
 	padding: 30rpx 0;
 }
+
+.pageBg{
+	background: 
+	linear-gradient(to bottom,transparent,#fff 60vh),
+	linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
+	min-height: 100vh;
+}

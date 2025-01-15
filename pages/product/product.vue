@@ -1,50 +1,52 @@
 <template>
-	<custom-nav-bar title="产品"></custom-nav-bar>
+	<view class="layout pageBg">
+		<custom-nav-bar title="产品"></custom-nav-bar>
 
-	<view class="filter">
-		<view class="conditionList">
-			<view class="condition" v-for="(keyText,index) in conditionList.keyText" :key="index">
-				<view>{{keyText}} : {{conditionList.valueText.at(index)}}</view>
-				<button class="deleteButton" @click="deleteCondition(index)" plain="true" size="mini">
-					<uni-icons class="icon" type="closeempty" size="15"></uni-icons>
+		<view class="filter">
+			<view class="conditionList">
+				<view class="condition" v-for="(keyText,index) in conditionList.keyText" :key="index">
+					<view>{{keyText}} : {{conditionList.valueText.at(index)}}</view>
+					<button class="deleteButton" @click="deleteCondition(index)" plain="true" size="mini">
+						<uni-icons class="icon" type="closeempty" size="15"></uni-icons>
+					</button>
+				</view>
+			</view>
+			<button class="addCondition" @click="openPop()">添加过滤器</button>
+		</view>
+
+
+		<uni-popup ref="pop">
+			<view class="popBox">
+				<uni-data-select class="select" placeholder="请选择条件" v-model="chosenKey" :localdata="specList.value"
+					@change="change"></uni-data-select>
+				<uni-data-select class="select" placeholder="请选择值" v-model="chosenValue"
+					:localdata="optionList"></uni-data-select>
+			</view>
+			<button @click="confirm()">确认</button>
+		</uni-popup>
+
+		<view class="loadingLayout" v-show="!arrs.length && !noData">
+			<uni-load-more status="loading"></uni-load-more>
+		</view>
+
+		<view class="content">
+			<view class="box" v-for="item in arrs" :key="item.productId">
+				<button class="jump-button" @click="jump(item)">
+					<image class="image"
+						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
+						mode="aspectFill"></image>
+					<br />
+					<view class="mask">{{item.name}}</view>
+				</button>
+				<button class="add-button" @click="addToCompare(item)">
+					<uni-icons type="plus"></uni-icons>
 				</button>
 			</view>
 		</view>
-		<button class="addCondition" @click="openPop()">添加过滤器</button>
-	</view>
 
-
-	<uni-popup ref="pop">
-		<view class="popBox">
-			<uni-data-select class="select" placeholder="请选择条件" v-model="chosenKey" :localdata="specList.value"
-				@change="change"></uni-data-select>
-			<uni-data-select class="select" placeholder="请选择值" v-model="chosenValue"
-				:localdata="optionList"></uni-data-select>
+		<view class="loadingLayout" v-show="arrs.length || noData">
+			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
 		</view>
-		<button @click="confirm()">确认</button>
-	</uni-popup>
-
-	<view class="loadingLayout" v-show="!arrs.length && !noData">
-		<uni-load-more status="loading"></uni-load-more>
-	</view>
-
-	<view class="content">
-		<view class="box" v-for="item in arrs" :key="item.productId">
-			<button class="jump-button" @click="jump(item)">
-				<image class="image"
-					src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
-					mode="aspectFill"></image>
-				<br />
-				<view class="mask">{{item.name}}</view>
-			</button>
-			<button class="add-button" @click="addToCompare(item)">
-				<uni-icons type="plus"></uni-icons>
-			</button>
-		</view>
-	</view>
-
-	<view class="loadingLayout" v-show="arrs.length || noData">
-		<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
 	</view>
 </template>
 

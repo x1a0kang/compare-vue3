@@ -1,32 +1,33 @@
 <template>
-	<swiper class="swiper" indicator-dots indicator-color='#000' indicator-active-color="#f00" circular>
-		<swiper-item class="swiper-item" v-for="ss in detail.value.imageList">
-			<image :src="ss" mode="aspectFill"></image>
-		</swiper-item>
-	</swiper>
+	<view class="layout pageBg">
+		<swiper class="swiper" circular>
+			<swiper-item class="swiper-item" v-for="ss in detail.value.imageList">
+				<image :src="ss" mode="aspectFill"></image>
+			</swiper-item>
+		</swiper>
 
-	<view class="name">{{detail.value.name}}</view>
-	<view class="line" v-for="spec in specList.value">
-		<view class="key"> {{spec.text}} ：</view>
-		<view class="value">
-			{{detail.value[spec.value]}}dfasssssssssdfkaldbfgladbglajdbflaebflaibglaiugblaihbglabflahydbflahyeblaiufbliebglajdbflabfluebafljdbflajhdbflajbdlfhabdfhbladhbfl
+		<view class="name">{{detail.value.name}}</view>
+		<view class="line" v-for="spec in specList.value">
+			<view class="key"> {{spec.text}} ：</view>
+			<view class="value">
+				{{detail.value[spec.value]}}
+			</view>
+		</view>
+
+		<view class="bottom-bar">
+			<view class="toFunction" @click="toProduct()">
+				<uni-icons type="shop"></uni-icons>
+				产品列表
+			</view>
+			<view class="toFunction" @click="toCompare()">
+				<uni-icons type="list"></uni-icons>
+				对比列表
+			</view>
+			<button class="addButton" @click="add()">
+				加入对比
+			</button>
 		</view>
 	</view>
-
-	<view class="bottom-bar">
-		<view class="toFunction" @click="toProduct()">
-			<uni-icons type="shop"></uni-icons>
-			产品列表
-		</view>
-		<view class="toFunction" @click="toCompare()">
-			<uni-icons type="list"></uni-icons>
-			对比列表
-		</view>
-		<button class="addButton" @click="add()">
-			加入对比
-		</button>
-	</view>
-
 </template>
 
 <script setup>
@@ -38,7 +39,7 @@
 	} from '@/api/api.js'
 	import {
 		addToCompare
-	} from '@/api/function.js'
+	} from '@/utils/function.js'
 	import {
 		useDetailStore
 	} from '@/store/detail'
@@ -130,8 +131,8 @@
 
 		.addButton {
 			width: 460rpx;
-			background-color: #088FEB;
-			color: white;
+			background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
+			color: black;
 			border-radius: 50rpx;
 			margin-right: 0;
 		}

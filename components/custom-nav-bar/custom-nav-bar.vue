@@ -36,7 +36,9 @@
 	}
 
 	.navbar {
-		background-color: white;
+		background:
+			linear-gradient(to bottom, transparent, #fff 60vh),
+			linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
 		position: fixed;
 		top: 0;
 		left: 0;

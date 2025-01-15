@@ -1,5 +1,5 @@
 <template>
-	<view class="home">
+	<view class="home pageBg">
 		<custom-nav-bar title="主页"></custom-nav-bar>
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay
@@ -42,13 +42,13 @@
 		apiSearchByFilter
 	} from "@/api/api.js"
 	apiGetSpecList()
+	
 </script>
 
 <style lang="scss" scoped>
 	.home {
 		.banner {
 			width: 750rpx;
-			padding: 15rpx 0;
 
 			swiper {
 				height: 450rpx;
