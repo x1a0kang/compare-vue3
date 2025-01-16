@@ -1,18 +1,18 @@
 <template>
 	<view class="layout pageBg">
 		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange">
-			<swiper-item class="swiper-item" v-for="url in detail.value.imageList">
+			<swiper-item class="swiper-item" v-for="url in detail.imageList">
 				<image :src="url" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
-		<view class="count">{{currentIndex+1}} / {{detail.value.imageList.length}}</view>
+		<view class="count">{{currentIndex+1}} / {{imageCount}}</view>
 
-		<view class="name">{{detail.value.brand}} {{detail.value.name}}</view>
+		<view class="name">{{detail.brand}} {{detail.name}}</view>
 		<view class="line" v-for="spec in specList.value">
 			<view class="key"> {{spec.text}} ：</view>
 			<view class="value">
-				{{detail.value[spec.value]}}
+				{{detail[spec.value]}}
 			</view>
 		</view>
 
@@ -37,26 +37,27 @@
 		useSpecListStore
 	} from '@/store/specList'
 	import {
-		apiGetSpecList
+		apiGetSpecList,
+		apiGetOne
 	} from '@/api/api.js'
 	import {
 		addToCompare
 	} from '@/utils/function.js'
 	import {
-		useDetailStore
-	} from '@/store/detail'
-	import {
 		ref
 	} from 'vue'
+	import {
+		onLoad
+	} from "@dcloudio/uni-app"
 
 	const {
 		specList
 	} = useSpecListStore()
-	const {
-		detail
-	} = useDetailStore()
+	const detail = ref({})
 
 	const currentIndex = ref(0)
+	const imageCount = ref(0)
+	const param = {}
 
 	function add() {
 		addToCompare(detail.value)
@@ -79,6 +80,20 @@
 	}
 
 	apiGetSpecList()
+
+	onLoad((e) => {
+		let {
+			id = null
+		} = e
+		param.id = id
+		getOne()
+	})
+
+	async function getOne() {
+		let res = await apiGetOne(param)
+		detail.value = res.data
+		imageCount.value = detail.value.imageList.length
+	}
 </script>
 
 <style lang="scss" scoped>

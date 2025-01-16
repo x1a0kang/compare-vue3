@@ -59,9 +59,6 @@
 		useCompareListStore
 	} from '@/store/compareList'
 	import {
-		useDetailStore
-	} from '@/store/detail'
-	import {
 		useSpecListStore
 	} from '@/store/specList'
 	import {
@@ -79,9 +76,6 @@
 	const {
 		compareList
 	} = useCompareListStore()
-	const {
-		detail
-	} = useDetailStore()
 
 	let conditionList = reactive({
 		page: 1,
@@ -102,9 +96,8 @@
 	}
 
 	function jump(item) {
-		detail.value = item
 		uni.navigateTo({
-			url: '/pages/product/productDetail'
+			url: '/pages/product/productDetail?id=' + item.productId
 		});
 		console.log("跳转到详情页", item.name)
 	}

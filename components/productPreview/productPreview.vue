@@ -12,14 +12,6 @@
 </template>
 
 <script setup>
-	import {
-		useDetailStore
-	} from '@/store/detail'
-
-	const {
-		detail
-	} = useDetailStore()
-
 	defineProps({
 		item: {
 			type: Object,
@@ -28,9 +20,8 @@
 	})
 
 	function jump(item) {
-		detail.value = item
 		uni.navigateTo({
-			url: '/pages/product/productDetail'
+			url: '/pages/product/productDetail?id=' + item.productId
 		});
 		console.log("跳转到详情页", item.name)
 	}

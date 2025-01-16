@@ -1,5 +1,5 @@
 <template>
-	<view class="searchLayout">
+	<view class="searchLayout pageBg">
 		<view class="search">
 			<uni-search-bar @confirm="onSearch" @cancel="onClear" @clear="onClear" focus placeholder="搜索"
 				v-model="queryParams.keyword">

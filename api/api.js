@@ -58,3 +58,10 @@ export function apiHotCategories(data = {}) {
 		data
 	})
 }
+
+export function apiGetOne(data = {}) {
+	return request({
+		url: "/getOne",
+		data
+	})
+}
