@@ -8,11 +8,12 @@
 
 		<view class="count">{{currentIndex+1}} / {{imageCount}}</view>
 
-		<view class="name">{{detail.brand}} {{detail.name}}</view>
-		<view class="line" v-for="spec in specList.value">
-			<view class="key"> {{spec.text}} ：</view>
-			<view class="value">
-				{{detail[spec.value]}}
+		<view class="content">
+			<view class="line" v-for="spec in specList.value">
+				<view class="key"> {{spec.text}} ：</view>
+				<view class="value">
+					{{detail[spec.value]}}
+				</view>
 			</view>
 		</view>
 
@@ -133,31 +134,29 @@
 		backdrop-filter: blur(10rpx);
 	}
 
-	.name {
-		margin: 20rpx 10rpx;
-		padding: 10rpx 10rpx;
-		font-size: 40rpx;
-		font-weight: bold;
-		border-bottom: 1rpx solid #000;
-	}
-
-	.line {
-		padding: 10rpx 10rpx;
-		margin: 20rpx 10rpx;
-		display: flex;
-
-		.key {
-			width: 30%;
-			height: 100%;
-			word-wrap: break-word;
-			text-align: center;
-		}
-
-		.value {
-			width: 70%;
-			height: 100%;
-			margin: 0 20rpx;
-			word-wrap: break-word;
+	.content {
+		margin: 20rpx 20rpx;
+		border-top: 1rpx solid #000;
+		
+		.line {
+			padding: 10rpx 10rpx;
+			margin: 20rpx 0;
+			display: flex;
+		
+			.key {
+				width: 40%;
+				height: 100%;
+				word-wrap: break-word;
+				text-align: center;
+			}
+		
+			.value {
+				width: 60%;
+				height: 100%;
+				margin: 0 20rpx;
+				word-wrap: break-word;
+				text-align: center;
+			}
 		}
 	}
 

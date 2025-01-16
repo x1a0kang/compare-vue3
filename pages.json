@@ -27,7 +27,7 @@
 		{
 			"path": "pages/compare/compare",
 			"style": {
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "详细参数对比"
 			}
 		},
 		{
@@ -38,31 +38,15 @@
 			}
 		},
 		{
-			"path" : "pages/product/productDetail",
-			"style" : 
-			{
-				"navigationBarTitleText" : "详情"
+			"path": "pages/product/productDetail",
+			"style": {
+				"navigationBarTitleText": "详情"
 			}
 		},
 		{
-			"path" : "pages/search/search",
-			"style" : 
-			{
-				"navigationBarTitleText" : "搜索"
-			}
-		},
-		{
-			"path" : "pages/test/test",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
-			}
-		},
-		{
-			"path" : "pages/test/test2",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索"
 			}
 		}
 	],

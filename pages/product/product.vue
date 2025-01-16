@@ -68,7 +68,10 @@
 	import {
 		onReachBottom,
 		onShow
-	} from '@dcloudio/uni-app';
+	} from '@dcloudio/uni-app'
+	import {
+		addToCompare
+	} from '@/utils/function.js'
 
 	const arrs = ref([])
 	const noData = ref(false)
@@ -102,18 +105,8 @@
 		console.log("跳转到详情页", item.name)
 	}
 
-	function addToCompare(item) {
-		const index = compareList.findIndex(
-			function(temp) {
-				return temp.productId === item.productId
-			}
-		)
-		if (index != -1) {
-			console.log(item.name, "已存在")
-		} else {
-			compareList.push(item)
-			console.log("加入对比", item.name)
-		}
+	function add(item) {
+		addToCompare(item)
 	}
 
 	const initParams = (value = '') => {
