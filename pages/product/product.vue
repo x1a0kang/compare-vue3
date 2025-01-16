@@ -38,7 +38,7 @@
 					<br />
 					<view class="mask">{{item.name}}</view>
 				</view>
-				<button class="add-button" @click="addToCompare(item)">
+				<button class="add-button" @click="add(item)">
 					<uni-icons type="plus"></uni-icons>
 				</button>
 			</view>
@@ -54,10 +54,7 @@
 	import {
 		ref,
 		reactive
-	} from 'vue';
-	import {
-		useCompareListStore
-	} from '@/store/compareList'
+	} from 'vue'
 	import {
 		useSpecListStore
 	} from '@/store/specList'
@@ -70,15 +67,13 @@
 		onShow
 	} from '@dcloudio/uni-app'
 	import {
-		addToCompare
-	} from '@/utils/function.js'
+		useCompareListStore
+	} from '@/store/compareList'
+
+	const compareListStore = useCompareListStore()
 
 	const arrs = ref([])
 	const noData = ref(false)
-
-	const {
-		compareList
-	} = useCompareListStore()
 
 	let conditionList = reactive({
 		page: 1,
@@ -106,7 +101,7 @@
 	}
 
 	function add(item) {
-		addToCompare(item)
+		compareListStore.add(item)
 	}
 
 	const initParams = (value = '') => {

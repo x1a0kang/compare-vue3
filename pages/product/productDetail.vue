@@ -43,7 +43,6 @@
 		apiGetOne
 	} from '@/api/api.js'
 	import {
-		addToCompare,
 		goToHome
 	} from '@/utils/function.js'
 	import {
@@ -52,6 +51,11 @@
 	import {
 		onLoad
 	} from "@dcloudio/uni-app"
+	import {
+		useCompareListStore
+	} from '@/store/compareList'
+
+	const compareListStore = useCompareListStore()
 
 	const {
 		specList
@@ -63,7 +67,7 @@
 	const param = {}
 
 	function add() {
-		addToCompare(detail.value)
+		compareListStore.add(detail.value)
 	}
 
 	function toCompare() {
@@ -137,19 +141,19 @@
 	.content {
 		margin: 20rpx 20rpx;
 		border-top: 1rpx solid #000;
-		
+
 		.line {
 			padding: 10rpx 10rpx;
 			margin: 20rpx 0;
 			display: flex;
-		
+
 			.key {
 				width: 40%;
 				height: 100%;
 				word-wrap: break-word;
 				text-align: center;
 			}
-		
+
 			.value {
 				width: 60%;
 				height: 100%;

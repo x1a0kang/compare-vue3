@@ -9,9 +9,7 @@
 		useCompareListStore
 	} from '@/store/compareList'
 
-	const {
-		compareList
-	} = useCompareListStore()
+	const compareListStore = useCompareListStore()
 
 	defineProps({
 		item: {
@@ -21,17 +19,7 @@
 	})
 
 	function addToCompare(item) {
-		const index = compareList.findIndex(
-			function(temp) {
-				return temp.productId === item.productId
-			}
-		)
-		if (index != -1) {
-			console.log(item.name, "已存在")
-		} else {
-			compareList.push(item)
-			console.log("加入对比", item.name)
-		}
+		compareListStore.add(item)
 	}
 </script>
 

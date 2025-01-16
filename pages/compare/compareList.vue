@@ -5,7 +5,7 @@
 			<productPreview :item="item"></productPreview>
 			<button class="delete" @click="deleteOne(item)">删除</button>
 		</view>
-		
+
 		<view class="bottom">
 			<button class="deleteAll" @click="deleteAll()">清空</button>
 			<button class="compareAll" @click="compareAll()">对比</button>
@@ -15,28 +15,24 @@
 
 <script setup>
 	import {
+		storeToRefs
+	} from 'pinia'
+	import {
 		useCompareListStore
 	} from '@/store/compareList'
 
+	const compareListStore = useCompareListStore()
+
 	const {
 		compareList
-	} = useCompareListStore()
+	} = compareListStore
 
 	function deleteOne(item) {
-		console.log("删除", item.name)
-		const index = compareList.findIndex(
-			function(temp) {
-				return temp.productId === item.productId
-			}
-		)
-		if (index != -1) {
-			compareList.splice(index, 1)
-		}
+		compareListStore.remove(item)
 	}
 
 	function deleteAll() {
-		compareList.length = 0
-		console.log("清空本地缓存")
+		compareListStore.removeAll()
 	}
 
 	function compareAll() {
@@ -45,7 +41,9 @@
 				url: "/pages/compare/compare"
 			})
 		} else {
-			console.log("小于一件无法对比")
+			uni.showToast({
+				title: "小于两件产品"
+			})
 		}
 	}
 </script>
