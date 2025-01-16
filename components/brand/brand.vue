@@ -39,9 +39,16 @@
 </script>
 
 <style lang="scss" scoped>
+	.content{
+		padding: 0 0 0 20rpx;
+		// background: red;
+	}
+	.swiper{
+		
+	}
 	.grid-content {
 		display: grid;
-		gap: 15rpx;
+		gap: 10rpx;
 		grid-template-columns: repeat(4, 1fr);
 	}
 

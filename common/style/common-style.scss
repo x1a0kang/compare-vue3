@@ -12,3 +12,7 @@ view,swiper,swiper-item{
 	linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
 	min-height: 100vh;
 }
+
+.safe-area-inset-bottom{
+	height: env(safe-area-inset-bottom);
+}

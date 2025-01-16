@@ -97,7 +97,7 @@
 
 	function jump(item) {
 		uni.navigateTo({
-			url: '/pages/product/productDetail?id=' + item.productId
+			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
 		});
 		console.log("跳转到详情页", item.name)
 	}

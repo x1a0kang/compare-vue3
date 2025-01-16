@@ -59,12 +59,12 @@
 			}
 
 			.search {
-				width: 220rpx;
+				width: 350rpx;
 				height: 50rpx;
 				border-radius: 60rpx;
 				background: rgba(255, 255, 255, 0.4);
 				border: 1px solid #fff;
-				margin-left: 30rpx;
+				margin-left: 50rpx;
 				color: #999;
 				font-size: 28rpx;
 				display: flex;

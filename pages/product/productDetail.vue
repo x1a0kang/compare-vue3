@@ -28,6 +28,7 @@
 			<button class="addButton" @click="add()">
 				加入对比
 			</button>
+			<view class="safe-area-inset-bottom"></view>
 		</view>
 	</view>
 </template>
@@ -41,7 +42,8 @@
 		apiGetOne
 	} from '@/api/api.js'
 	import {
-		addToCompare
+		addToCompare,
+		goToHome
 	} from '@/utils/function.js'
 	import {
 		ref
@@ -83,10 +85,18 @@
 
 	onLoad((e) => {
 		let {
-			id = null
+			id = null, name = null
 		} = e
+		// id不存在时返回首页
+		if (!id) {
+			goToHome()
+			return
+		}
 		param.id = id
 		getOne()
+		uni.setNavigationBarTitle({
+			title: name
+		})
 	})
 
 	async function getOne() {
@@ -140,6 +150,7 @@
 			width: 30%;
 			height: 100%;
 			word-wrap: break-word;
+			text-align: center;
 		}
 
 		.value {
@@ -154,7 +165,7 @@
 		position: fixed;
 		left: 0;
 		right: 0;
-		bottom: 0;
+		bottom: env(safe-area-inset-bottom);
 		display: flex;
 		padding: 5rpx 20rpx;
 		align-items: center;
