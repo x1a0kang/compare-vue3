@@ -1,12 +1,8 @@
 <template>
 	<view class="layout pageBg">
-		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange">
-			<swiper-item class="swiper-item" v-for="url in detail.imageList">
-				<image :src="url" mode="aspectFill"></image>
-			</swiper-item>
-		</swiper>
-
-		<view class="count">{{currentIndex+1}} / {{imageCount}}</view>
+		<view class="box">
+			<mySwiper :imageList="detail.imageList"></mySwiper>
+		</view>
 
 		<view class="content">
 			<view class="line" v-for="spec in specList.value">
@@ -63,7 +59,7 @@
 	const detail = ref({})
 
 	const currentIndex = ref(0)
-	const imageCount = ref(0)
+	
 	const param = {}
 
 	function add() {
@@ -107,7 +103,6 @@
 	async function getOne() {
 		let res = await apiGetOne(param)
 		detail.value = res.data
-		imageCount.value = detail.value.imageList.length
 	}
 </script>
 
@@ -116,26 +111,8 @@
 		position: relative;
 	}
 
-	.swiper {
+	.box {
 		height: 450rpx;
-	}
-
-	.swiper-item {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.count {
-		position: absolute;
-		top: 400rpx;
-		right: 20rpx;
-		width: fit-content;
-		background: rgba(0, 0, 0, 0.1);
-		font-size: 24rpx;
-		border-radius: 40rpx;
-		padding: 8rpx 20rpx;
-		backdrop-filter: blur(10rpx);
 	}
 
 	.content {
@@ -192,13 +169,5 @@
 			border-radius: 50rpx;
 			margin-right: 0;
 		}
-
-		// .toCompareList {
-		// 	width: 310rpx;
-		// 	margin: 0 0;
-		// 	background-color: #0053B8;
-		// 	color: white;
-		// 	border-radius: 0 50rpx 50rpx 0;
-		// }
 	}
 </style>

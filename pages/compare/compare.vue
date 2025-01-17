@@ -1,18 +1,18 @@
 <template>
-	<uni-table>
-		<uni-tr>
-			<uni-th align="center" v-for="item in compareList" :key="item.productId">
-				{{item.name}}
-			</uni-th>
-		</uni-tr>
+	<view class="layout">
+		<view class="column" v-for="item in compareList" :key="item.productId">
+			<view class="head">{{item.brand}} {{item.name}}</view>
 
-		<uni-tr v-for="spec in specList.value">
-			<uni-td align="center" v-for="item in compareList" :key="item.productId">
+			<view class="swiper">
+				<mySwiper :imageList="item.imageList"></mySwiper>
+			</view>
+
+			<view class="spec" v-for="spec in specList.value">
 				<view class="key">{{spec.text}}</view>
 				<view class="value">{{item[spec.value]}}</view>
-			</uni-td>
-		</uni-tr>
-	</uni-table>
+			</view>
+		</view>
+	</view>
 </template>
 
 <script setup>
@@ -37,9 +37,41 @@
 </script>
 
 <style lang="scss" scoped>
-	.key {
-		font-size: 28rpx;
+	.layout {
+		display: flex;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+		margin: 0 10rpx;
+	}
+
+	.head {
+		text-align: center;
+		font-size: 22px;
 		font-weight: bold;
-		margin-bottom: 10rpx;
+		margin-top: 20rpx;
+		// background-color: red;
+	}
+
+	.swiper {
+		height: 240rpx;
+		width: 300rpx;
+	}
+
+	.spec {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 20rpx 0;
+	}
+
+	.key {
+		margin-bottom: 20rpx;
+	}
+
+	.value {
+		font-weight: bold;
 	}
 </style>
