@@ -2,19 +2,33 @@
 	<view class="layout">
 		<view class="column" v-for="item in compareTempList" :key="item.productId">
 			<view class="head">
-				{{item.brand}} {{item.name}}
-				<view class="icon" @click="deleteTemp(item.productId)">
-					<uni-icons type="closeempty"></uni-icons>
+				<view class="title">
+					{{item.brand}} {{item.name}}
+					<view class="icon" @click="deleteTemp(item.productId)">
+						<uni-icons type="closeempty"></uni-icons>
+					</view>
+				</view>
+
+				<view class="swiper">
+					<mySwiper :imageList="item.imageList"></mySwiper>
 				</view>
 			</view>
 
-			<view class="swiper">
-				<mySwiper :imageList="item.imageList"></mySwiper>
-			</view>
+			<view class="spec">
+				<view class="pair" v-for="spec in specList.value">
+					<view class="key">{{spec.text}}</view>
+					<view class="value">{{item[spec.value]}}</view>
+				</view>
 
-			<view class="spec" v-for="spec in specList.value">
-				<view class="key">{{spec.text}}</view>
-				<view class="value">{{item[spec.value]}}</view>
+				<view class="pair" v-for="spec in specList.value">
+					<view class="key">{{spec.text}}</view>
+					<view class="value">{{item[spec.value]}}</view>
+				</view>
+
+				<view class="pair" v-for="spec in specList.value">
+					<view class="key">{{spec.text}}</view>
+					<view class="value">{{item[spec.value]}}</view>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -79,18 +93,26 @@
 <style lang="scss" scoped>
 	.layout {
 		display: flex;
+		overflow-y: auto;
+		padding: 10rpx 0 10rpx 10rpx;
+		background: rgba(0, 0, 0, 0.1);
+		min-height: 100vh;
 	}
 
 	.column {
 		display: flex;
 		flex-direction: column;
 		margin-right: 20rpx;
-		background:
-			linear-gradient(to bottom, transparent, #fff 60vh),
-			linear-gradient(to bottom, #ebe0eb, #dcebe9, #e0ebd5);
+		margin-right: 10rpx;
+		max-height: max-content;
 	}
 
 	.head {
+		background: #fff;
+		border-radius: 20rpx;
+	}
+
+	.title {
 		text-align: center;
 		font-size: 22px;
 		font-weight: bold;
@@ -112,6 +134,12 @@
 	}
 
 	.spec {
+		margin-top: 10rpx;
+		background: #fff;
+		border-radius: 20rpx;
+	}
+
+	.pair {
 		display: flex;
 		flex-direction: column;
 		align-items: center;

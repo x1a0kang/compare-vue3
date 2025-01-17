@@ -58,6 +58,9 @@
 		display: flex;
 		align-items: center;
 		position: relative;
+		background-color: white;
+		margin: 20rpx 20rpx 0 20rpx;
+		border-radius: 20rpx;
 
 		.delete {
 			position: absolute;
