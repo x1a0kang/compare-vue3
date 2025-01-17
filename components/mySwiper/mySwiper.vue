@@ -58,7 +58,7 @@
 		right: 20rpx;
 		width: fit-content;
 		background: rgba(0, 0, 0, 0.1);
-		font-size: 24rpx;
+		font-size: 12px;
 		border-radius: 40rpx;
 		padding: 8rpx 20rpx;
 		backdrop-filter: blur(10rpx);

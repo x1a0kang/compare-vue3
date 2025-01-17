@@ -65,3 +65,10 @@ export function apiGetOne(data = {}) {
 		data
 	})
 }
+
+export function apiGetList(data = {}) {
+	return request({
+		url: "/getListById",
+		data
+	})
+}
