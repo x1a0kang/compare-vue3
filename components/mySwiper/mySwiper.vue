@@ -54,8 +54,8 @@
 
 	.count {
 		position: absolute;
-		bottom: 20rpx;
-		right: 20rpx;
+		bottom: 10rpx;
+		right: 10rpx;
 		width: fit-content;
 		background: rgba(0, 0, 0, 0.1);
 		font-size: 12px;

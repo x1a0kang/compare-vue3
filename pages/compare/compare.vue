@@ -1,33 +1,31 @@
 <template>
 	<view class="layout pageBg">
-		<view class="column" v-for="item in compareTempList" :key="item.productId">
-			<view class="head shadow">
+		<view class="head">
+			<view v-for="item in compareTempList" :key="item.productId">
 				<view class="title">
-					{{item.brand}} {{item.name}}
+					<view>{{item.brand}} {{item.name}}</view>
 					<view class="icon" @click="deleteTemp(item.productId)">
 						<uni-icons type="closeempty" color="#fff"></uni-icons>
 					</view>
 				</view>
+			</view>
+		</view>
 
-				<view class="swiper">
+		<view class="image">
+			<view v-for="item in compareTempList" :key="item.productId">
+				<view class="swiper shadow">
 					<mySwiper :imageList="item.imageList"></mySwiper>
 				</view>
 			</view>
+		</view>
 
-			<view class="spec ">
-				<view class="pair" v-for="spec in specList.value">
-					<view class="key">{{spec.text}}</view>
-					<view class="value">{{item[spec.value]}}</view>
-				</view>
-
-				<view class="pair" v-for="spec in specList.value">
-					<view class="key">{{spec.text}}</view>
-					<view class="value">{{item[spec.value]}}</view>
-				</view>
-
-				<view class="pair" v-for="spec in specList.value">
-					<view class="key">{{spec.text}}</view>
-					<view class="value">{{item[spec.value]}}</view>
+		<view class="content">
+			<view class="row" v-for="spec in specList.value">
+				<view v-for="item in compareTempList" :key="item.productId">
+					<view class="pair">
+						<view class="key">{{spec.text}}</view>
+						<view class="value">{{item[spec.value]}}</view>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -93,59 +91,75 @@
 <style lang="scss" scoped>
 	.layout {
 		display: flex;
+		flex-direction: column;
 		overflow-y: auto;
-		padding: 10rpx 0 10rpx 0rpx;
+		padding: 10rpx 0 10rpx 10rpx;
 		min-height: 100vh;
 	}
 
-	.column {
-		display: flex;
-		flex-direction: column;
-		margin: 0 10rpx;
-		max-height: max-content;
-	}
-
 	.head {
-		border-radius: 20rpx;
-		// padding: 10rpx 0;
+		display: flex;
+		// background-color: red;
 	}
 
 	.title {
-		// text-align: center;
+		height: 100%;
+		width: 48vw;
+		text-align: center;
 		font-size: 22px;
 		font-weight: bold;
 		color: white;
 		border-radius: 20rpx;
 		background: #010101;
-		padding: 10rpx 30rpx;
+		padding: 20rpx 30rpx;
 		position: relative;
+		margin-right: 10rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		.icon {
 			position: absolute;
-			top: 5rpx;
-			right: 5rpx;
+			top: -10rpx;
+			right: 10rpx;
 		}
 	}
 
-	.swiper {
-		height: 240rpx;
-		width: 280rpx;
-		background: #fff;
-		border-radius: 20rpx;
+	.image {
+		display: flex;
 	}
 
-	.spec {
-		margin-top: 10rpx;
+	.swiper {
+		width: 48vw;
+		height: 200rpx;
 		background: #fff;
 		border-radius: 20rpx;
-		padding-top: 20rpx;
+		margin-top: 20rpx;
+		margin-right: 10rpx;
+	}
+
+	.content {
+		margin-top: 40rpx;
+	}
+
+	.row {
+		display: flex;
+		margin-bottom: 40rpx;
+		// background-color: red;
 	}
 
 	.pair {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-bottom: 40rpx;
+		margin-right: 10rpx;
+		width: 48vw;
+		height: 100%;
+		// background-color: blue;
+		text-align: center;
+		padding: 10rpx;
+		background: #fff;
+		border-radius: 20rpx;
 	}
 
 	.key {
