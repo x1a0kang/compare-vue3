@@ -1,8 +1,12 @@
 <template>
 	<view class="layout pageBg">
 		<!-- 图片 -->
-		<view class="box">
+		<view class="image shadow">
 			<mySwiper :imageList="detail.imageList"></mySwiper>
+		</view>
+
+		<view class="title">
+			详细参数：
 		</view>
 
 		<!-- 参数内容区 -->
@@ -114,33 +118,49 @@
 		position: relative;
 	}
 
-	.box {
-		height: 450rpx;
+	.image {
+		height: 350rpx;
+		background: white;
+		margin: 20rpx;
+		border-radius: 20rpx;
+	}
+
+	.title {
+		background:
+			linear-gradient(to left, #ccc, #010101 80vw);
+		color: white;
+		font-size: 24px;
+		padding: 20rpx 0 20rpx 50rpx;
+		border-radius: 20rpx;
+		height: 100%;
+		display: flex;
+		// width: 50vw;
 	}
 
 	.content {
-		margin: 20rpx 20rpx;
-		border-top: 1rpx solid #000;
+		margin: 20rpx;
+		background: white;
+		// padding: 1rpx 0;
+	}
 
-		.line {
-			padding: 10rpx 10rpx;
-			margin: 20rpx 0;
-			display: flex;
+	.line {
+		margin: 30rpx 0;
+		padding: 10rpx 0;
+		display: flex;
 
-			.key {
-				width: 40%;
-				height: 100%;
-				word-wrap: break-word;
-				text-align: center;
-			}
+		.key {
+			width: 40%;
+			height: 100%;
+			word-wrap: break-word;
+			text-align: center;
+		}
 
-			.value {
-				width: 60%;
-				height: 100%;
-				margin: 0 20rpx;
-				word-wrap: break-word;
-				text-align: center;
-			}
+		.value {
+			width: 60%;
+			height: 100%;
+			margin: 0 20rpx;
+			word-wrap: break-word;
+			text-align: center;
 		}
 	}
 

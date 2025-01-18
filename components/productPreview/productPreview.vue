@@ -32,9 +32,10 @@
 		display: flex;
 		height: 200rpx;
 		align-items: center;
+		// background-color: red;
 
 		.image {
-			margin-left: 30rpx;
+			margin-left: 10rpx;
 			height: 200rpx;
 			width: 200rpx;
 		}
