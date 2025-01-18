@@ -1,7 +1,7 @@
 <template>
 	<view class="layout pageBg">
 		<custom-nav-bar title="对比"></custom-nav-bar>
-		<view class="line" v-for="item in compareList" :key="item.productId">
+		<view class="line shadow" v-for="item in compareList" :key="item.productId">
 			<productPreview :item="item"></productPreview>
 			<view class="delete" @click="deleteOne(item)">
 				<uni-icons type="trash"></uni-icons>
@@ -98,8 +98,10 @@
 		.compareAll {
 			width: 150rpx;
 			margin-right: 0;
-			background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
+			background: #010101;
+			// background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
 			border-radius: 10rpx;
+			color: white;
 		}
 	}
 </style>

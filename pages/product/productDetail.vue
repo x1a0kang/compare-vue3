@@ -1,9 +1,11 @@
 <template>
 	<view class="layout pageBg">
+		<!-- 图片 -->
 		<view class="box">
 			<mySwiper :imageList="detail.imageList"></mySwiper>
 		</view>
 
+		<!-- 参数内容区 -->
 		<view class="content">
 			<view class="line" v-for="spec in specList.value">
 				<view class="key"> {{spec.text}} ：</view>
@@ -13,6 +15,7 @@
 			</view>
 		</view>
 
+		<!-- 底部功能栏 -->
 		<view class="bottom-bar">
 			<view class="toFunction" @click="toProduct()">
 				<uni-icons type="shop"></uni-icons>
@@ -59,7 +62,7 @@
 	const detail = ref({})
 
 	const currentIndex = ref(0)
-	
+
 	const param = {}
 
 	function add() {
@@ -164,8 +167,9 @@
 
 		.addButton {
 			width: 460rpx;
-			background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
-			color: black;
+			// background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
+			background: #010101;
+			color: white;
 			border-radius: 50rpx;
 			margin-right: 0;
 		}

@@ -25,12 +25,14 @@
 			<button @click="confirm()">确认</button>
 		</uni-popup>
 
+		<!-- 进入页面加载图标 -->
 		<view class="loadingLayout" v-show="!arrs.length && !noData">
 			<uni-load-more status="loading"></uni-load-more>
 		</view>
 
+		<!-- 产品内容 -->
 		<view class="content">
-			<view class="box" v-for="item in arrs" :key="item.productId">
+			<view class="box shadow" v-for="item in arrs" :key="item.productId">
 				<view class="jump-button" @click="jump(item)">
 					<image class="image"
 						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
@@ -44,6 +46,7 @@
 			</view>
 		</view>
 
+		<!-- 加载更多 -->
 		<view class="loadingLayout" v-show="arrs.length || noData">
 			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
 		</view>
@@ -273,7 +276,7 @@
 			border-radius: 10rpx;
 			overflow: hidden;
 			position: relative;
-			border: 1rpx solid gray;
+			// border: 1rpx solid gray;
 
 			.jump-button {
 				height: 100%;

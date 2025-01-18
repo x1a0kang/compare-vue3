@@ -1,11 +1,11 @@
 <template>
-	<view class="layout">
+	<view class="layout pageBg">
 		<view class="column" v-for="item in compareTempList" :key="item.productId">
-			<view class="head">
+			<view class="head shadow">
 				<view class="title">
 					{{item.brand}} {{item.name}}
 					<view class="icon" @click="deleteTemp(item.productId)">
-						<uni-icons type="closeempty"></uni-icons>
+						<uni-icons type="closeempty" color="#fff"></uni-icons>
 					</view>
 				</view>
 
@@ -14,7 +14,7 @@
 				</view>
 			</view>
 
-			<view class="spec">
+			<view class="spec ">
 				<view class="pair" v-for="spec in specList.value">
 					<view class="key">{{spec.text}}</view>
 					<view class="value">{{item[spec.value]}}</view>
@@ -94,60 +94,62 @@
 	.layout {
 		display: flex;
 		overflow-y: auto;
-		padding: 10rpx 0 10rpx 10rpx;
-		background: rgba(0, 0, 0, 0.1);
+		padding: 10rpx 0 10rpx 0rpx;
 		min-height: 100vh;
 	}
 
 	.column {
 		display: flex;
 		flex-direction: column;
-		margin-right: 20rpx;
-		margin-right: 10rpx;
+		margin: 0 10rpx;
 		max-height: max-content;
 	}
 
 	.head {
-		background: #fff;
 		border-radius: 20rpx;
+		// padding: 10rpx 0;
 	}
 
 	.title {
-		text-align: center;
+		// text-align: center;
 		font-size: 22px;
 		font-weight: bold;
-		margin-top: 30rpx;
+		color: white;
+		border-radius: 20rpx;
+		background: #010101;
+		padding: 10rpx 30rpx;
 		position: relative;
 
 		.icon {
 			position: absolute;
-			top: 0;
-			bottom: 0;
+			top: 5rpx;
 			right: 5rpx;
-			margin: auto 0;
 		}
 	}
 
 	.swiper {
 		height: 240rpx;
 		width: 280rpx;
+		background: #fff;
+		border-radius: 20rpx;
 	}
 
 	.spec {
 		margin-top: 10rpx;
 		background: #fff;
 		border-radius: 20rpx;
+		padding-top: 20rpx;
 	}
 
 	.pair {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin: 20rpx 0;
+		margin-bottom: 40rpx;
 	}
 
 	.key {
-		margin-bottom: 20rpx;
+		margin-bottom: 10rpx;
 	}
 
 	.value {

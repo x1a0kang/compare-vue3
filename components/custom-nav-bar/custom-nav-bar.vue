@@ -36,9 +36,7 @@
 	}
 
 	.navbar {
-		background:
-			linear-gradient(to bottom, transparent, #fff 60vh),
-			linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
+		background: #010101;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -55,14 +53,14 @@
 			.title {
 				font-size: 22px;
 				font-weight: 700;
-				color: black;
+				color: white;
 			}
 
 			.search {
 				width: 350rpx;
 				height: 50rpx;
 				border-radius: 60rpx;
-				background: rgba(255, 255, 255, 0.4);
+				background: rgba(255, 255, 255, 0.9);
 				border: 1px solid #fff;
 				margin-left: 50rpx;
 				color: #999;

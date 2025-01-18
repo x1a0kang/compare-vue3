@@ -7,12 +7,17 @@ view,swiper,swiper-item{
 }
 
 .pageBg{
-	background: 
-	linear-gradient(to bottom,transparent,#fff 60vh),
-	linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
+	// background: 
+	// linear-gradient(to bottom,transparent,#fff 60vh),
+	// linear-gradient(to right, #ebe0eb, #dcebe9, #e0ebd5);
+	background: #fcfcfc;	
 	min-height: 100vh;
 }
 
 .safe-area-inset-bottom{
 	height: env(safe-area-inset-bottom);
+}
+
+.shadow {
+	box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
 }
