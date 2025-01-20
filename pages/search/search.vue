@@ -1,7 +1,7 @@
 <template>
 	<view class="searchLayout pageBg">
 		<!-- 搜索框 -->
-		<view class="search shadow">
+		<view class="search">
 			<uni-search-bar class="uni-search-bar" @confirm="onSearch" @cancel="onClear" @clear="onClear" focus
 				placeholder="搜索" v-model="queryParams.keyword">
 			</uni-search-bar>
@@ -98,7 +98,8 @@
 
 	//点击搜索
 	const onSearch = () => {
-		if (queryParams.value.keyword == "") {
+		// 全是空格也要过滤，否则会在最近搜索里显示一条空白记录
+		if (queryParams.value.keyword == "" || queryParams.value.keyword.match(/^\s+$/)) {
 			console.log("搜索输入为空")
 			return
 		}

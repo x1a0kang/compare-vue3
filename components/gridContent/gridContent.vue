@@ -45,7 +45,7 @@
 
 <style lang="scss" scoped>
 	.content {
-		margin-top: 15rpx;
+		margin-top: 10rpx;
 		padding: 0 15rpx;
 		display: grid;
 		gap: 15rpx;

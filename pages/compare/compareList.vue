@@ -178,7 +178,7 @@
 		.compareAll {
 			width: 300rpx;
 			background: #010101;
-			border-radius: 20rpx;
+			border-radius: 15rpx;
 			color: white;
 			position: absolute;
 			right: 0;

@@ -3,27 +3,29 @@
 		<custom-nav-bar title="产品"></custom-nav-bar>
 
 		<!-- 过滤器 -->
-		<view class="filter">
-			<view class="conditionList">
-				<view class="condition" v-for="(keyText,index) in conditionList.keyText" :key="index">
-					<view>{{keyText}} : {{conditionList.valueText.at(index)}}</view>
-					<button class="deleteButton" @click="deleteCondition(index)" plain="true" size="mini">
-						<uni-icons class="icon" type="closeempty" size="15"></uni-icons>
-					</button>
+		<view class="headBar">
+			<view class="order" @click="openPop()">排序</view>
+			<view class="addCondition" @click="openPop()">筛选</view>
+		</view>
+
+		<view class="conditionList">
+			<view class="condition" v-for="(keyText,index) in conditionList.keyText" :key="index">
+				<view>{{keyText}} : {{conditionList.valueText.at(index)}}</view>
+				<view class="deleteButton" @click="deleteCondition(index)" plain="true" size="mini">
+					<uni-icons class="icon" type="closeempty" size="15" color="#fff"></uni-icons>
 				</view>
 			</view>
-			<button class="addCondition" @click="openPop()">添加过滤器</button>
 		</view>
 
 		<!-- 过滤器弹窗 -->
-		<uni-popup ref="pop">
+		<uni-popup ref="pop" class="pop">
 			<view class="popBox">
 				<uni-data-select class="select" placeholder="请选择条件" v-model="chosenKey" :localdata="specList.value"
 					@change="change"></uni-data-select>
 				<uni-data-select class="select" placeholder="请选择值" v-model="chosenValue"
 					:localdata="optionList"></uni-data-select>
 			</view>
-			<button @click="confirm()">确认</button>
+			<view class="confirm" @click="confirm()">确认</view>
 		</uni-popup>
 
 		<!-- 进入页面加载图标 -->
@@ -124,10 +126,25 @@
 		if (chosenKey.value === "" || chosenValue.value === "") {
 			return
 		}
+
+		let tempKey = specList.value.find(item => item.value == chosenKey.value)
+		let tempValue = optionList.find(item => item.value == chosenValue.value)
+		if (tempValue === undefined) {
+			return
+		}
+
 		let index = conditionList.key.findIndex(item => item == chosenKey.value)
 		if (index > -1) {
-			console.log("条件已存在")
-			return
+			// todo：找到已有的条件，删除后把新的加入
+			conditionList.key.splice(index, 1, chosenKey.value)
+			conditionList.keyText.splice(index, 1, tempKey.text)
+			conditionList.value.splice(index, 1, chosenValue.value)
+			conditionList.valueText.splice(index, 1, tempValue.text)
+		} else {
+			conditionList.key.push(chosenKey.value)
+			conditionList.keyText.push(tempKey.text)
+			conditionList.value.push(chosenValue.value)
+			conditionList.valueText.push(tempValue.text)
 		}
 
 		pop.value.close()
@@ -135,16 +152,6 @@
 	}
 
 	function doSearch() {
-		let tempKey = specList.value.find(item => item.value == chosenKey.value)
-		let tempValue = optionList.find(item => item.value == chosenValue.value)
-		if (tempValue === undefined) {
-			return
-		}
-		conditionList.key.push(chosenKey.value)
-		conditionList.keyText.push(tempKey.text)
-		conditionList.value.push(chosenValue.value)
-		conditionList.valueText.push(tempValue.text)
-
 		chosenKey.value = ""
 		chosenValue.value = ""
 		optionList.length = 0
@@ -192,47 +199,72 @@
 </script>
 
 <style lang="scss" scoped>
-	.filter {
-		.conditionList {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-		}
+	.headBar {
+		display: flex;
+		font-size: 18px;
+		position: relative;
+		margin: 10rpx 15rpx;
+		border-bottom: 1px solid #010101;
+		// background: #010101;
 
-		.condition {
-			display: flex;
-			align-items: center;
-			background: #F4F4F4;
-			font-size: 32rpx;
-			color: #333;
-			padding: 10rpx 28rpx;
-			border-radius: 50rpx;
-			margin-right: 20rpx;
-			margin-top: 20rpx;
-			gap: 10rpx;
-
-			.deleteButton {
-				border: none;
-
-				.icon {
-					width: 100%;
-				}
-			}
+		.order {
+			padding: 15rpx 10rpx;
+			// background: red;
 		}
 
 		.addCondition {
-			margin-top: 20rpx;
+			position: absolute;
+			padding: 15rpx 10rpx;
+			text-align: center;
+			right: 0;
+			border-radius: 15rpx;
+			// background: #010101;
+			// color: white;
 		}
 	}
 
-	.popBox {
-		background-color: rgba(255, 255, 255, 0.9);
-		width: 500rpx;
+	.conditionList {
 		display: flex;
-		gap: 10rpx;
+		flex-wrap: wrap;
+		align-items: center;
+		padding: 0 15rpx;
+		gap: 15rpx;
+		// background: red;
+	}
 
-		.select {
-			background-color: white;
+	.condition {
+		display: flex;
+		align-items: center;
+		background: #010101;
+		font-size: 16px;
+		color: white;
+		padding: 10rpx 20rpx;
+		border-radius: 50rpx;
+
+		.deleteButton {
+			margin-left: 10rpx;
 		}
+	}
+
+	.pop {
+		display: flex;
+		flex-direction: column
+	}
+
+	.popBox {
+		background: #fcfcfc;
+		width: 60vw;
+		display: flex;
+		border-radius: 10rpx;
+
+		.select {}
+
+	}
+
+	.confirm {
+		background: #fcfcfc;
+		border-radius: 5rpx;
+		text-align: center;
+		padding: 10rpx;
 	}
 </style>
