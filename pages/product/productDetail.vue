@@ -5,8 +5,8 @@
 			<mySwiper :imageList="detail.imageList"></mySwiper>
 		</view>
 
-		<view class="title">
-			详细参数：
+		<view class="tab">
+			<view class="text">详细参数</view>
 		</view>
 
 		<!-- 参数内容区 -->
@@ -125,16 +125,23 @@
 		border-radius: 20rpx;
 	}
 
-	.title {
-		background:
-			linear-gradient(to left, #ccc, #010101 80vw);
-		color: white;
-		font-size: 24px;
-		padding: 20rpx 0 20rpx 50rpx;
-		border-radius: 20rpx;
+	.tab {
+		background: #010101;
+		font-size: 22px;
 		height: 100%;
 		display: flex;
+		color: black;
+		padding: 5rpx 0 0 5rpx;
+
 		// width: 50vw;
+		.text {
+			background: white;
+			border-radius: 50rpx;
+			padding: 10rpx 50rpx;
+			// border: 2px solid black;
+			text-decoration: underline;
+			text-underline-offset: 15rpx;
+		}
 	}
 
 	.content {

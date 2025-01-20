@@ -139,12 +139,12 @@
 	}
 
 	.content {
-		margin-top: 40rpx;
+		margin-top: 10rpx;
 	}
 
 	.row {
 		display: flex;
-		margin-bottom: 40rpx;
+		margin-top: 30rpx;
 		// background-color: red;
 	}
 
@@ -157,7 +157,7 @@
 		height: 100%;
 		// background-color: blue;
 		text-align: center;
-		padding: 10rpx;
+		padding: 20rpx 10rpx;
 		background: #fff;
 		border-radius: 20rpx;
 	}
