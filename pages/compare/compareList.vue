@@ -5,7 +5,8 @@
 		<!-- 待对比内容列表 -->
 		<checkbox-group @change="change">
 			<view class="line shadow" v-for="item in compareList" :key="item.productId">
-				<checkbox class="checkbox" :value="item.productId" iconColor="#010101" :checked="item.checked">
+				<checkbox class="checkbox" :value="item.productId" iconColor="#010101" style="transform:scale(0.9)"
+					:checked="item.checked">
 				</checkbox>
 
 				<productPreview :item="item"></productPreview>
@@ -25,9 +26,10 @@
 				<checkbox class="selectAll" value="all" iconColor="#010101" :checked="allSelected.checked">
 					全选
 				</checkbox>
+
 			</checkbox-group>
 
-			<button class="compareAll" @click="compareAll()">对比</button>
+			<button class="compareAll" @click="compareAll()">开始对比</button>
 
 			<view class="deleteAll" @click="deleteAll()">
 				<uni-icons type="trash-filled"></uni-icons>
@@ -169,7 +171,6 @@
 		right: 0;
 		bottom: var(--window-bottom);
 		align-items: center;
-		justify-content: center;
 		background-color: white;
 		padding: 5rpx 0;
 		height: 100rpx;
@@ -177,23 +178,25 @@
 		.compareAll {
 			width: 300rpx;
 			background: #010101;
-			// background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
 			border-radius: 20rpx;
 			color: white;
+			position: absolute;
+			right: 0;
+			left: 0;
 		}
 
 		.selectAll {
 			margin-left: 20rpx;
-			width: 120rpx;
+			width: fit-content;
 		}
 
 		.deleteAll {
+			position: absolute;
 			text-align: center;
-			flex-direction: column;
-			width: 120rpx;
+			width: fit-content;
 			align-items: center;
 			justify-content: center;
-			margin-right: 20rpx;
+			right: 20rpx;
 		}
 	}
 </style>
