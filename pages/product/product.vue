@@ -2,6 +2,7 @@
 	<view class="layout pageBg">
 		<custom-nav-bar title="产品"></custom-nav-bar>
 
+		<!-- 过滤器 -->
 		<view class="filter">
 			<view class="conditionList">
 				<view class="condition" v-for="(keyText,index) in conditionList.keyText" :key="index">
@@ -14,7 +15,7 @@
 			<button class="addCondition" @click="openPop()">添加过滤器</button>
 		</view>
 
-
+		<!-- 过滤器弹窗 -->
 		<uni-popup ref="pop">
 			<view class="popBox">
 				<uni-data-select class="select" placeholder="请选择条件" v-model="chosenKey" :localdata="specList.value"
@@ -31,20 +32,7 @@
 		</view>
 
 		<!-- 产品内容 -->
-		<view class="content">
-			<view class="box shadow" v-for="item in arrs" :key="item.productId">
-				<view class="jump-button" @click="jump(item)">
-					<image class="image"
-						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
-						mode="aspectFill"></image>
-					<br />
-					<view class="mask">{{item.name}}</view>
-				</view>
-				<button class="add-button" @click="add(item)">
-					<uni-icons type="plus"></uni-icons>
-				</button>
-			</view>
-		</view>
+		<gridContent :arrs="arrs"></gridContent>
 
 		<!-- 加载更多 -->
 		<view class="loadingLayout" v-show="arrs.length || noData">
@@ -69,11 +57,6 @@
 		onReachBottom,
 		onShow
 	} from '@dcloudio/uni-app'
-	import {
-		useCompareListStore
-	} from '@/store/compareList'
-
-	const compareListStore = useCompareListStore()
 
 	const arrs = ref([])
 	const noData = ref(false)
@@ -94,17 +77,6 @@
 		if (conditionList.pageSize > res.data.length) {
 			noData.value = true
 		}
-	}
-
-	function jump(item) {
-		uni.navigateTo({
-			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
-		});
-		console.log("跳转到详情页", item.name)
-	}
-
-	function add(item) {
-		compareListStore.add(item)
 	}
 
 	const initParams = (value = '') => {
@@ -261,51 +233,6 @@
 
 		.select {
 			background-color: white;
-		}
-	}
-
-	.content {
-		margin-top: 15rpx;
-		padding: 0 15rpx;
-		display: grid;
-		gap: 15rpx;
-		grid-template-columns: repeat(2, 1fr);
-
-		.box {
-			height: 400rpx;
-			border-radius: 10rpx;
-			overflow: hidden;
-			position: relative;
-			// border: 1rpx solid gray;
-
-			.jump-button {
-				height: 100%;
-				position: relative;
-			}
-
-			.image {
-				width: 100%;
-				height: 300rpx;
-			}
-
-			.mask {
-				width: 100%;
-				height: 50rpx;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.add-button {
-				width: 50rpx;
-				height: 50rpx;
-				position: absolute;
-				bottom: 23rpx;
-				right: 5rpx;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
 		}
 	}
 </style>

@@ -132,6 +132,7 @@
 		display: flex;
 		color: black;
 		padding: 5rpx 0 0 5rpx;
+		// justify-content: center;
 
 		// width: 50vw;
 		.text {

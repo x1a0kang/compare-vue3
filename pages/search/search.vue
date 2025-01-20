@@ -1,12 +1,15 @@
 <template>
 	<view class="searchLayout pageBg">
-		<view class="search">
-			<uni-search-bar @confirm="onSearch" @cancel="onClear" @clear="onClear" focus placeholder="搜索"
-				v-model="queryParams.keyword">
+		<!-- 搜索框 -->
+		<view class="search shadow">
+			<uni-search-bar class="uni-search-bar" @confirm="onSearch" @cancel="onClear" @clear="onClear" focus
+				placeholder="搜索" v-model="queryParams.keyword">
 			</uni-search-bar>
 		</view>
 
+		<!-- 没有搜索结果时 -->
 		<view v-if="!dataList.length || noSearch">
+			<!-- 最近搜索 -->
 			<view class="history" v-if="historySearch.length">
 				<view class="topTitle">
 					<view class="text">最近搜索</view>
@@ -19,6 +22,7 @@
 				</view>
 			</view>
 
+			<!-- 热门搜索 -->
 			<view class="recommend">
 				<view class="topTitle">
 					<view class="text">热门搜索</view>
@@ -31,16 +35,16 @@
 			</view>
 		</view>
 
-
+		<!-- 搜索结果为空时展示图片 -->
 		<view class="noSearch" v-if="noSearch">
 			<uv-empty mode="search" icon="http://cdn.uviewui.com/uview/empty/search.png"></uv-empty>
 		</view>
 
-
+		<!-- 有搜索结果时 -->
 		<view v-else>
-			<view class="list">
-				<productPreview v-for="item in dataList" :key="item.productId" :item="item"></productPreview>
-			</view>
+			<gridContent :arrs="dataList"></gridContent>
+
+			<!-- 触底加载 -->
 			<view class="loadingLayout" v-if="noData || dataList.length">
 				<uni-load-more :status="noData?'noMore':'loading'" />
 			</view>
@@ -111,15 +115,12 @@
 		initParams();
 	}
 
-
-
 	//点击标签进行搜索
 	const clickTab = (value) => {
 		initParams(value);
 
 		onSearch();
 	}
-
 
 	//点击清空搜索记录
 	const removeHistory = () => {
@@ -161,7 +162,8 @@
 
 	//触底加载更多
 	onReachBottom(() => {
-		if (noData.value) return;
+		// 判断dataList.value.length是防止在搜索页面不搜索，直接上划时触发加载
+		if (noData.value || dataList.value.length == 0) return;
 		queryParams.value.page++
 		searchData();
 	})
@@ -176,9 +178,7 @@
 
 <style lang="scss" scoped>
 	.searchLayout {
-		.search {
-			padding: 0 10rpx;
-		}
+		.search {}
 
 		.topTitle {
 			display: flex;
@@ -212,22 +212,5 @@
 				margin-top: 20rpx;
 			}
 		}
-
-		// .list {
-		// 	display: grid;
-		// 	grid-template-columns: repeat(3, 1fr);
-		// 	gap: 5rpx;
-		// 	padding: 20rpx 5rpx;
-
-		// 	.item {
-		// 		height: 440rpx;
-
-		// 		image {
-		// 			width: 100%;
-		// 			height: 100%;
-		// 			display: block;
-		// 		}
-		// 	}
-		// }
 	}
 </style>
