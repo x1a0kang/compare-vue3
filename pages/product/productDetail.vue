@@ -22,11 +22,11 @@
 		<!-- 底部功能栏 -->
 		<view class="bottom-bar">
 			<view class="toFunction" @click="toProduct()">
-				<uni-icons type="shop"></uni-icons>
-				产品列表
+				<Commodity theme="outline" size="20" fill="#000" :strokeWidth="3" />
+				产品库
 			</view>
 			<view class="toFunction" @click="toCompare()">
-				<uni-icons type="list"></uni-icons>
+				<uni-icons custom-prefix="iconfont" type="icon-versus" size="20"></uni-icons>
 				对比列表
 			</view>
 			<button class="addButton" @click="add()">
@@ -57,6 +57,9 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
+	import {
+		Commodity
+	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
 

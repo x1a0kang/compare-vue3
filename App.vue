@@ -15,4 +15,5 @@
 <style lang="scss">
 	@import "common/style/common-style.scss";
 	@import "static/iconfont.css";
+	@import "@icon-park/vue-next/styles/index.css";
 </style>

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@dcloudio/uni-ui": "^1.5.7",
+    "@icon-park/vue-next": "^1.4.2",
     "pinia": "^2.3.0",
     "uview-ui": "^2.0.38"
   },

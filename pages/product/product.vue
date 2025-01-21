@@ -6,7 +6,8 @@
 		<view class="headBar">
 			<view class="order" @click="openPop()">排序</view>
 			<view class="addCondition" @click="openPop()">
-				<uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons>
+				<!-- <uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons> -->
+				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				筛选
 			</view>
 		</view>
@@ -62,6 +63,9 @@
 		onReachBottom,
 		onShow
 	} from '@dcloudio/uni-app'
+	import {
+		Filter
+	} from '@icon-park/vue-next'
 
 	const arrs = ref([])
 	const noData = ref(false)

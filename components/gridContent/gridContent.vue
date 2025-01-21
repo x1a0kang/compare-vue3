@@ -11,8 +11,7 @@
 				<view class="mask">{{item.price}}元</view>
 			</view>
 			<view class="add-button" @click="add(item)">
-				<uni-icons type="plus" color="#fff" size="20"></uni-icons>
-				<!-- <uni-icons custom-prefix="iconfont" type="icon-duibi" size="30" color="#fff"></uni-icons> -->
+				<add-one theme="outline" size="20" fill="#fff" :strokeWidth="4" />
 			</view>
 		</view>
 	</view>
@@ -29,6 +28,9 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
+	import {
+		AddOne,
+	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
 

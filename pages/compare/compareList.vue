@@ -12,7 +12,7 @@
 				<productPreview :item="item"></productPreview>
 
 				<view class="delete" @click="deleteOne(item)">
-					<uni-icons type="trash" size="20"></uni-icons>
+					<Delete theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				</view>
 			</view>
 		</checkbox-group>
@@ -22,17 +22,19 @@
 
 		<!-- 底部功能区 -->
 		<view class="bottom">
-			<checkbox-group @change="changeAll">
-				<checkbox class="selectAll" value="all" iconColor="$theme-color" :checked="allSelected.checked">
-					全选
-				</checkbox>
-
-			</checkbox-group>
+			<view class="selectAll">
+				<checkbox-group @change="changeAll">
+					<checkbox value="all" iconColor="$theme-color" style="transform:scale(0.9)"
+						:checked="allSelected.checked">
+					</checkbox>
+				</checkbox-group>
+				全选
+			</view>
 
 			<button class="compareAll" @click="compareAll()">开始对比</button>
 
 			<view class="deleteAll" @click="deleteAll()">
-				<uni-icons type="trash-filled" size="20"></uni-icons>
+				<clear theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				清空
 			</view>
 		</view>
@@ -49,6 +51,10 @@
 	import {
 		useSelectedCompareListStore
 	} from '@/store/selectedCompareList'
+	import {
+		Delete,
+		Clear
+	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
 	// 对比列表
@@ -190,7 +196,8 @@
 
 		.selectAll {
 			margin-left: 20rpx;
-			width: fit-content;
+			display: flex;
+			align-items: center;
 		}
 
 		.deleteAll {
@@ -201,6 +208,8 @@
 			width: fit-content;
 			align-items: center;
 			right: 20rpx;
+			gap: 8rpx;
+			// background-color: red;
 		}
 	}
 </style>
