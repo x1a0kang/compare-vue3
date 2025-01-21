@@ -72,3 +72,10 @@ export function apiGetList(data = {}) {
 		data
 	})
 }
+
+export function apiGetOrderSpec(data = {}) {
+	return request({
+		url: "/getOrderSpec",
+		data
+	})
+}

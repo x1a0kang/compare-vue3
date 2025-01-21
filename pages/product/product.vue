@@ -4,7 +4,7 @@
 
 		<!-- 过滤器 -->
 		<view class="headBar">
-			<view class="order" @click="openPop()">排序</view>
+
 			<view class="addCondition" @click="openPop()">
 				<!-- <uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons> -->
 				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
@@ -57,7 +57,8 @@
 	} from '@/store/specList'
 	import {
 		apiGetSpecList,
-		apiSearchByFilter
+		apiSearchByFilter,
+		apiGetOrderSpec
 	} from "@/api/api.js"
 	import {
 		onReachBottom,
@@ -70,6 +71,23 @@
 	const arrs = ref([])
 	const noData = ref(false)
 
+	// 所有参数列表
+	const {
+		specList
+	} = useSpecListStore()
+	// 每个参数的可选值列表
+	const optionList = reactive([])
+
+	let orderKey = ref("")
+	let chosenKey = ref("")
+	let chosenValue = ref("")
+
+	const pop = ref()
+
+	// 所有可排序字段
+	const orderSpecList = ref([])
+
+	// 选择的过滤条件
 	let conditionList = reactive({
 		page: 1,
 		pageSize: 10,
@@ -78,6 +96,13 @@
 		value: [],
 		valueText: []
 	})
+
+	async function getOrderSpec() {
+		let res = await apiGetOrderSpec()
+		console.log(res.data)
+		orderSpecList.value = res.data
+		console.log("orderSpecList.value", orderSpecList.value)
+	}
 
 	async function searchByFilter() {
 		console.log("调用接口参数", conditionList)
@@ -88,11 +113,9 @@
 		}
 	}
 
-	const initParams = (value = '') => {
-		arrs.value = [];
-		noData.value = false;
-		conditionList.page = 1
-	}
+	apiGetSpecList()
+	getOrderSpec()
+	// searchByFilter()
 
 	onReachBottom(() => {
 		console.log("触底了")
@@ -103,18 +126,11 @@
 		searchByFilter()
 	})
 
-	apiGetSpecList()
-	// searchByFilter()
-
-	const {
-		specList
-	} = useSpecListStore()
-	const optionList = reactive([])
-
-	let chosenKey = ref("")
-	let chosenValue = ref("")
-
-	const pop = ref()
+	const initParams = (value = '') => {
+		arrs.value = [];
+		noData.value = false;
+		conditionList.page = 1
+	}
 
 	function openPop() {
 		pop.value.open()
@@ -210,21 +226,30 @@
 		display: flex;
 		font-size: 18px;
 		position: relative;
-		margin: 10rpx 15rpx;
+		margin: 10rpx 0;
+		padding: 0 15rpx;
 		border-bottom: 1px solid $theme-color;
 		// background: #010101;
 
 		.order {
-			padding: 15rpx 10rpx;
-			// background: red;
+			width: 50%;
+			background: red;
+			z-index: 10;
+
+			.orderSelect {
+				background-color: red;
+				z-index: 10;
+				// height: 80rpx;
+				// border: 0 solid #fff;
+			}
 		}
 
 		.addCondition {
 			display: flex;
-			position: absolute;
+			// position: absolute;
 			padding: 15rpx 10rpx;
 			text-align: center;
-			right: 0;
+			right: 15rpx;
 			border-radius: 15rpx;
 			align-items: center;
 			gap: 5rpx;
