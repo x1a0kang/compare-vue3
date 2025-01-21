@@ -204,7 +204,7 @@
 		font-size: 18px;
 		position: relative;
 		margin: 10rpx 15rpx;
-		border-bottom: 1px solid #010101;
+		border-bottom: 1px solid $theme-color;
 		// background: #010101;
 
 		.order {
@@ -235,9 +235,9 @@
 	.condition {
 		display: flex;
 		align-items: center;
-		background: #010101;
+		background: $theme-color;
 		font-size: 16px;
-		color: white;
+		color: $theme-font-color;
 		padding: 10rpx 20rpx;
 		border-radius: 50rpx;
 

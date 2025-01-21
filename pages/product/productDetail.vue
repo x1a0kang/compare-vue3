@@ -126,7 +126,7 @@
 	}
 
 	.tab {
-		background: #010101;
+		background: $theme-color;
 		font-size: 22px;
 		height: 100%;
 		display: flex;
@@ -141,6 +141,7 @@
 			padding: 10rpx 50rpx;
 			// border: 2px solid black;
 			text-decoration: underline;
+			text-decoration-color: $theme-color;
 			text-underline-offset: 15rpx;
 		}
 	}
@@ -148,6 +149,7 @@
 	.content {
 		margin: 20rpx;
 		background: white;
+		border-radius: 20rpx;
 		// padding: 1rpx 0;
 	}
 
@@ -196,8 +198,8 @@
 		.addButton {
 			width: 460rpx;
 			// background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
-			background: #010101;
-			color: white;
+			background: $theme-color;
+			color: $theme-font-color;
 			border-radius: 50rpx;
 			margin-right: 0;
 		}

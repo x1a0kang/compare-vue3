@@ -108,9 +108,9 @@
 		text-align: center;
 		font-size: 22px;
 		font-weight: bold;
-		color: white;
+		color: $theme-font-color;
 		border-radius: 20rpx;
-		background: #010101;
+		background: $theme-color;
 		padding: 20rpx 30rpx;
 		position: relative;
 		margin-right: 10rpx;

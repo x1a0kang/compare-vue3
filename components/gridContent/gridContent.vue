@@ -85,7 +85,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				background: #010101;
+				background: $theme-color;
 				border-radius: 10rpx;
 			}
 		}

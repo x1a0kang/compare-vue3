@@ -36,7 +36,7 @@
 	}
 
 	.navbar {
-		background: #010101;
+		background: $theme-color;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -53,7 +53,7 @@
 			.title {
 				font-size: 22px;
 				font-weight: 700;
-				color: white;
+				color: $theme-font-color;
 			}
 
 			.search {

@@ -5,7 +5,7 @@
 		<!-- 待对比内容列表 -->
 		<checkbox-group @change="change">
 			<view class="line shadow" v-for="item in compareList" :key="item.productId">
-				<checkbox class="checkbox" :value="item.productId" iconColor="#010101" style="transform:scale(0.9)"
+				<checkbox class="checkbox" :value="item.productId" iconColor="$theme-color" style="transform:scale(0.9)"
 					:checked="item.checked">
 				</checkbox>
 
@@ -23,7 +23,7 @@
 		<!-- 底部功能区 -->
 		<view class="bottom">
 			<checkbox-group @change="changeAll">
-				<checkbox class="selectAll" value="all" iconColor="#010101" :checked="allSelected.checked">
+				<checkbox class="selectAll" value="all" iconColor="$theme-color" :checked="allSelected.checked">
 					全选
 				</checkbox>
 
@@ -177,9 +177,9 @@
 
 		.compareAll {
 			width: 300rpx;
-			background: #010101;
+			background: $theme-color;
 			border-radius: 15rpx;
-			color: white;
+			color: $theme-font-color;
 			position: absolute;
 			right: 0;
 			left: 0;
