@@ -12,7 +12,7 @@
 				<productPreview :item="item"></productPreview>
 
 				<view class="delete" @click="deleteOne(item)">
-					<uni-icons type="trash"></uni-icons>
+					<uni-icons type="trash" size="20"></uni-icons>
 				</view>
 			</view>
 		</checkbox-group>
@@ -32,7 +32,7 @@
 			<button class="compareAll" @click="compareAll()">开始对比</button>
 
 			<view class="deleteAll" @click="deleteAll()">
-				<uni-icons type="trash-filled"></uni-icons>
+				<uni-icons type="trash-filled" size="20"></uni-icons>
 				清空
 			</view>
 		</view>
@@ -172,10 +172,10 @@
 		bottom: var(--window-bottom);
 		align-items: center;
 		background-color: white;
-		padding: 5rpx 0;
-		height: 100rpx;
+		height: 90rpx;
 
 		.compareAll {
+			display: flex;
 			width: 300rpx;
 			background: $theme-color;
 			border-radius: 15rpx;
@@ -183,6 +183,9 @@
 			position: absolute;
 			right: 0;
 			left: 0;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
 		}
 
 		.selectAll {
@@ -191,11 +194,12 @@
 		}
 
 		.deleteAll {
+			display: flex;
+			height: 100%;
 			position: absolute;
 			text-align: center;
 			width: fit-content;
 			align-items: center;
-			justify-content: center;
 			right: 20rpx;
 		}
 	}

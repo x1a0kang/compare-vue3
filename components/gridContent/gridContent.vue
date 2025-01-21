@@ -11,7 +11,8 @@
 				<view class="mask">{{item.price}}元</view>
 			</view>
 			<view class="add-button" @click="add(item)">
-				<uni-icons type="plus" color="#fff"></uni-icons>
+				<uni-icons type="plus" color="#fff" size="20"></uni-icons>
+				<!-- <uni-icons custom-prefix="iconfont" type="icon-duibi" size="30" color="#fff"></uni-icons> -->
 			</view>
 		</view>
 	</view>

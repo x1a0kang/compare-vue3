@@ -5,7 +5,10 @@
 		<!-- 过滤器 -->
 		<view class="headBar">
 			<view class="order" @click="openPop()">排序</view>
-			<view class="addCondition" @click="openPop()">筛选</view>
+			<view class="addCondition" @click="openPop()">
+				<uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons>
+				筛选
+			</view>
 		</view>
 
 		<view class="conditionList">
@@ -213,12 +216,15 @@
 		}
 
 		.addCondition {
+			display: flex;
 			position: absolute;
 			padding: 15rpx 10rpx;
 			text-align: center;
 			right: 0;
 			border-radius: 15rpx;
-			// background: #010101;
+			align-items: center;
+			gap: 5rpx;
+			// background: red;
 			// color: white;
 		}
 	}
