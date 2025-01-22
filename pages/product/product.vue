@@ -4,15 +4,15 @@
 
 		<!-- 过滤器 -->
 		<view class="headBar">
-			<view class="addCondition" @click="openPop()">
-				<!-- <uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons> -->
+			<picker class="filterPicker" mode="multiSelector" :value="indexFilter" :range="specListForPicker"
+				range-key="text" @columnchange="filterPickerColumnChange" @change="filterPickerChange">
 				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				筛选
-			</view>
+			</picker>
 
-			<picker class="orderPicker" mode="selector" :value="index" :range="orderSpecList" range-key="text"
-				@change="picker">
-				<view>排序：{{orderSpecList[index].text}}</view>
+			<picker class="orderPicker" mode="selector" :value="indexOrder" :range="orderSpecList" range-key="text"
+				@change="orderPickerChange">
+				<view>排序：{{orderSpecList[indexOrder].text}}</view>
 			</picker>
 		</view>
 
@@ -72,6 +72,13 @@
 		Filter
 	} from '@icon-park/vue-next'
 
+	// 筛选器picker的二维数组
+	const specListForPicker = [
+		[],
+		[]
+	]
+
+	// 产品列表
 	const arrs = ref([])
 	const noData = ref(false)
 
@@ -88,7 +95,8 @@
 	const pop = ref()
 
 	// picker的下标
-	let index = 0
+	let indexOrder = 0
+	let indexFilter = 0
 	// 所有可排序字段
 	let orderSpecList = [{
 		text: '默认',
@@ -114,6 +122,18 @@
 		// console.log("orderSpecList", orderSpecList)
 	}
 
+	async function getSpecList() {
+		await apiGetSpecList()
+		// 初始化多列picker的二维数组
+		specList.value.forEach((item) => {
+			// 有optionList的才加入picker
+			if (item.optionList) {
+				specListForPicker[0].push(item)
+			}
+		})
+		specListForPicker[1].push(...specListForPicker[0][0].optionList)
+	}
+
 	async function searchByFilter() {
 		console.log("调用接口参数", conditionList)
 		let res = await apiSearchByFilter(conditionList)
@@ -123,7 +143,7 @@
 		}
 	}
 
-	apiGetSpecList()
+	getSpecList()
 	getOrderSpec()
 	// searchByFilter()
 
@@ -142,65 +162,50 @@
 		conditionList.page = 1
 	}
 
-	function picker(e) {
-		index = e.detail.value
-		let orderSpec = orderSpecList[index]
+	function filterPickerChange(e) {
+		const indexList = e.detail.value
+		let key = specListForPicker[0][indexList[0]]
+		let value = key.optionList[indexList[1]]
+
+		let index = conditionList.key.findIndex(item => item == key.value)
+		if (index > -1) {
+			// todo：找到已有的条件，删除后把新的加入
+			conditionList.key.splice(index, 1, key.value)
+			conditionList.keyText.splice(index, 1, key.text)
+			conditionList.value.splice(index, 1, value.value)
+			conditionList.valueText.splice(index, 1, value.text)
+		} else {
+			conditionList.key.push(key.value)
+			conditionList.keyText.push(key.text)
+			conditionList.value.push(value.value)
+			conditionList.valueText.push(value.text)
+		}
+
+		initParams()
+		searchByFilter()
+	}
+
+	function filterPickerColumnChange(e) {
+		let {
+			column,
+			value
+		} = e.detail
+		if (column == 0) {
+			specListForPicker[1].length = 0
+			specListForPicker[1].push(...specListForPicker[0][value].optionList)
+		}
+		indexFilter = 0
+		console.log("detail", column, value)
+	}
+
+	function orderPickerChange(e) {
+		indexOrder = e.detail.value
+		let orderSpec = orderSpecList[indexOrder]
 		conditionList.orderKey = orderSpec.value
 		conditionList.order = orderSpec.order
 		initParams()
 		searchByFilter()
 		// console.log("picker", e)
-	}
-
-	function openPop() {
-		pop.value.open()
-	}
-
-	function change(e) {
-		let temp = specList.value.find(item => item.value == e)
-		optionList.length = 0
-		chosenValue.value = ""
-		if (temp != null && temp.optionList != null) {
-			optionList.push(...temp.optionList)
-		}
-	}
-
-	function confirm() {
-		if (chosenKey.value === "" || chosenValue.value === "") {
-			return
-		}
-
-		let tempKey = specList.value.find(item => item.value == chosenKey.value)
-		let tempValue = optionList.find(item => item.value == chosenValue.value)
-		if (tempValue === undefined) {
-			return
-		}
-
-		let index = conditionList.key.findIndex(item => item == chosenKey.value)
-		if (index > -1) {
-			// todo：找到已有的条件，删除后把新的加入
-			conditionList.key.splice(index, 1, chosenKey.value)
-			conditionList.keyText.splice(index, 1, tempKey.text)
-			conditionList.value.splice(index, 1, chosenValue.value)
-			conditionList.valueText.splice(index, 1, tempValue.text)
-		} else {
-			conditionList.key.push(chosenKey.value)
-			conditionList.keyText.push(tempKey.text)
-			conditionList.value.push(chosenValue.value)
-			conditionList.valueText.push(tempValue.text)
-		}
-
-		pop.value.close()
-		doSearch()
-	}
-
-	function doSearch() {
-		chosenKey.value = ""
-		chosenValue.value = ""
-		optionList.length = 0
-
-		initParams()
-		searchByFilter()
 	}
 
 	function deleteCondition(index) {
@@ -252,7 +257,7 @@
 		align-items: center;
 		// background: #010101;
 
-		.addCondition {
+		.filterPicker {
 			display: flex;
 			width: 50%;
 			padding: 15rpx 10rpx;
@@ -263,7 +268,6 @@
 		}
 
 		.orderPicker {
-			margin-left: 15rpx;
 			color: black;
 			// background: red;
 		}
