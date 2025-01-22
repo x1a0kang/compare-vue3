@@ -29,7 +29,9 @@
 
 	function jump(brand) {
 		uni.setStorageSync('filterKey', 'brand')
+		uni.setStorageSync('filterKeyText', '品牌')
 		uni.setStorageSync('filterValue', brand.chinese)
+		uni.setStorageSync('filterValueText', brand.chinese)
 		uni.switchTab({
 			url: '/pages/product/product'
 		});
@@ -39,13 +41,13 @@
 </script>
 
 <style lang="scss" scoped>
-	.content{
+	.content {
 		padding: 0 0 0 20rpx;
 		// background: red;
 	}
-	.swiper{
-		
-	}
+
+	.swiper {}
+
 	.grid-content {
 		display: grid;
 		gap: 10rpx;

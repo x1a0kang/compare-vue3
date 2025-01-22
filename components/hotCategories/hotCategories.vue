@@ -24,7 +24,9 @@
 
 	function jump(item) {
 		uni.setStorageSync('filterKey', item.key)
+		uni.setStorageSync('filterKeyText', item.keyText)
 		uni.setStorageSync('filterValue', item.value)
+		uni.setStorageSync('filterValueText', item.valueText)
 		uni.switchTab({
 			url: '/pages/product/product'
 		});

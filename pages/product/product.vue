@@ -221,6 +221,8 @@
 	onShow(() => {
 		let filterKey = uni.getStorageSync('filterKey')
 		let filterValue = uni.getStorageSync('filterValue')
+		let filterKeyText = uni.getStorageSync('filterKeyText')
+		let filterValueText = uni.getStorageSync('filterValueText')
 
 		// 如果缓存中的key不为空就是跳转过来的
 		if (filterKey) {
@@ -228,21 +230,17 @@
 			// 重置跳转条件
 			uni.setStorageSync('filterKey', '')
 			uni.setStorageSync('filterValue', '')
-			// 在选项list加入value
-			change(filterKey)
+			uni.setStorageSync('filterKeyText', '')
+			uni.setStorageSync('filterValueText', '')
 
-			chosenKey.value = filterKey
-			chosenValue.value = filterValue
-			// 清空原条件列表
-			conditionList.key.length = 0
-			conditionList.keyText.length = 0
-			conditionList.value.length = 0
-			conditionList.valueText.length = 0
-
-			doSearch()
-		} else {
-			searchByFilter()
+			// 清空原条件列表后加入
+			conditionList.key = [filterKey]
+			conditionList.keyText = [filterKeyText]
+			conditionList.value = [filterValue]
+			conditionList.valueText = [filterValueText]
 		}
+		initParams()
+		searchByFilter()
 	})
 </script>
 
