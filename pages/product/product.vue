@@ -4,13 +4,13 @@
 
 		<!-- 过滤器 -->
 		<view class="headBar">
-			<picker class="filterPicker" mode="multiSelector" :value="indexFilter" :range="specListForPicker"
-				range-key="text" @columnchange="filterPickerColumnChange" @change="filterPickerChange">
+			<picker class="filterPicker" mode="multiSelector" :range="specListForPicker" range-key="text"
+				@columnchange="filterPickerColumnChange" @change="filterPickerChange">
 				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				筛选
 			</picker>
 
-			<picker class="orderPicker" mode="selector" :value="indexOrder" :range="orderSpecList" range-key="text"
+			<picker class="orderPicker" mode="selector" :range="orderSpecList" range-key="text"
 				@change="orderPickerChange">
 				<view>排序：{{orderSpecList[indexOrder].text}}</view>
 			</picker>
@@ -86,17 +86,10 @@
 	const {
 		specList
 	} = useSpecListStore()
-	// 每个参数的可选值列表
-	const optionList = reactive([])
-
-	let chosenKey = ref("")
-	let chosenValue = ref("")
-
-	const pop = ref()
 
 	// picker的下标
 	let indexOrder = 0
-	let indexFilter = 0
+	let indexFilter = [2, 2]
 	// 所有可排序字段
 	let orderSpecList = [{
 		text: '默认',
@@ -162,6 +155,17 @@
 		conditionList.page = 1
 	}
 
+	function filterPickerColumnChange(e) {
+		let {
+			column,
+			value
+		} = e.detail
+		if (column == 0) {
+			specListForPicker[1] = specListForPicker[0][value].optionList
+		}
+		// console.log("detail", column, value)
+	}
+
 	function filterPickerChange(e) {
 		const indexList = e.detail.value
 		let key = specListForPicker[0][indexList[0]]
@@ -183,19 +187,6 @@
 
 		initParams()
 		searchByFilter()
-	}
-
-	function filterPickerColumnChange(e) {
-		let {
-			column,
-			value
-		} = e.detail
-		if (column == 0) {
-			specListForPicker[1].length = 0
-			specListForPicker[1].push(...specListForPicker[0][value].optionList)
-		}
-		indexFilter = 0
-		console.log("detail", column, value)
 	}
 
 	function orderPickerChange(e) {
