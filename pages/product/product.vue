@@ -4,12 +4,16 @@
 
 		<!-- 过滤器 -->
 		<view class="headBar">
-
 			<view class="addCondition" @click="openPop()">
 				<!-- <uni-icons custom-prefix="iconfont" type="icon-filter1" size="20"></uni-icons> -->
 				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
 				筛选
 			</view>
+
+			<picker class="orderPicker" mode="selector" :value="index" :range="orderSpecList" range-key="text"
+				@change="picker">
+				<view>排序：{{orderSpecList[index].text}}</view>
+			</picker>
 		</view>
 
 		<view class="conditionList">
@@ -78,14 +82,19 @@
 	// 每个参数的可选值列表
 	const optionList = reactive([])
 
-	let orderKey = ref("")
 	let chosenKey = ref("")
 	let chosenValue = ref("")
 
 	const pop = ref()
 
+	// picker的下标
+	let index = 0
 	// 所有可排序字段
-	const orderSpecList = ref([])
+	let orderSpecList = [{
+		text: '默认',
+		value: "",
+		order: ""
+	}]
 
 	// 选择的过滤条件
 	let conditionList = reactive({
@@ -94,14 +103,15 @@
 		key: [],
 		keyText: [],
 		value: [],
-		valueText: []
+		valueText: [],
+		orderKey: "",
+		order: ""
 	})
 
 	async function getOrderSpec() {
 		let res = await apiGetOrderSpec()
-		console.log(res.data)
-		orderSpecList.value = res.data
-		console.log("orderSpecList.value", orderSpecList.value)
+		orderSpecList.push(...res.data)
+		// console.log("orderSpecList", orderSpecList)
 	}
 
 	async function searchByFilter() {
@@ -118,7 +128,7 @@
 	// searchByFilter()
 
 	onReachBottom(() => {
-		console.log("触底了")
+		// console.log("触底了")
 		if (noData.value) {
 			return
 		}
@@ -130,6 +140,16 @@
 		arrs.value = [];
 		noData.value = false;
 		conditionList.page = 1
+	}
+
+	function picker(e) {
+		index = e.detail.value
+		let orderSpec = orderSpecList[index]
+		conditionList.orderKey = orderSpec.value
+		conditionList.order = orderSpec.order
+		initParams()
+		searchByFilter()
+		// console.log("picker", e)
 	}
 
 	function openPop() {
@@ -227,34 +247,25 @@
 		font-size: 18px;
 		position: relative;
 		margin: 10rpx 0;
-		padding: 0 15rpx;
+		padding: 0 20rpx;
 		border-bottom: 1px solid $theme-color;
+		align-items: center;
 		// background: #010101;
-
-		.order {
-			width: 50%;
-			background: red;
-			z-index: 10;
-
-			.orderSelect {
-				background-color: red;
-				z-index: 10;
-				// height: 80rpx;
-				// border: 0 solid #fff;
-			}
-		}
 
 		.addCondition {
 			display: flex;
-			// position: absolute;
+			width: 50%;
 			padding: 15rpx 10rpx;
 			text-align: center;
-			right: 15rpx;
 			border-radius: 15rpx;
 			align-items: center;
 			gap: 5rpx;
+		}
+
+		.orderPicker {
+			margin-left: 15rpx;
+			color: black;
 			// background: red;
-			// color: white;
 		}
 	}
 
@@ -262,7 +273,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		padding: 0 15rpx;
+		padding: 0 20rpx;
 		gap: 15rpx;
 		// background: red;
 	}
@@ -293,7 +304,6 @@
 		border-radius: 10rpx;
 
 		.select {}
-
 	}
 
 	.confirm {
