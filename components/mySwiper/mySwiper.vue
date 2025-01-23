@@ -1,8 +1,8 @@
 <template>
 	<view class="box">
-		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange">
+		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange" :autoplay="autoplay">
 			<swiper-item class="swiper-item" v-for="url in imageList">
-				<image class="image" :src="url" mode="aspectFit"></image>
+				<image class="image" :src="url" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
@@ -19,6 +19,10 @@
 		imageList: {
 			type: Array,
 			default: []
+		},
+		autoplay: {
+			type: Boolean,
+			default: false
 		}
 	})
 
@@ -34,8 +38,11 @@
 
 <style lang="scss" scoped>
 	.box {
+		padding-top: 10rpx;
 		height: 100%;
 		position: relative;
+		background: white;
+		border-radius: 0 0 20rpx 20rpx;
 	}
 
 	.swiper {

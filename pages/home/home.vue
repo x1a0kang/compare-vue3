@@ -1,69 +1,141 @@
 <template>
 	<view class="home pageBg">
 		<custom-nav-bar title="主页"></custom-nav-bar>
-		<view class="banner">
-			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay
-				circular>
-				<swiper-item>
-					<image
-						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
-						mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image
-						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png"
-						mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image
-						src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
-						mode="aspectFill"></image>
-				</swiper-item>
-			</swiper>
-		</view>
 
-		<view>品牌</view>
+		<!-- 滚动页面，广告位 -->
+		<view class="banner">
+			<mySwiper :imageList="imageList" :autoplay="true"></mySwiper>
+		</view>
 
 		<view class="brand">
 			<brand></brand>
 		</view>
-		
-		<view>热门分类</view>
 
-		<hotCategories></hotCategories>
+		<view class="product">
+			<view class="hotProduct shadow">
+				<view class="title">
+					<view class="text">热门单品</view>
+					<view class="more">更多</view>
+				</view>
+				<view class="line" v-for="item in hotProductList" :key="item.productId">
+					<productPreviewSmall :item="item"></productPreviewSmall>
+				</view>
+			</view>
+
+			<view class="newProduct shadow">
+				<view class="title">
+					<view class="text">新品上市</view>
+					<view class="more">更多</view>
+				</view>
+				<view class="line" v-for="item in newProductList" :key="item.productId">
+					<productPreviewSmall :item="item"></productPreviewSmall>
+				</view>
+			</view>
+		</view>
+
+		<view class="categories">
+			<!-- <view class="title">分类</view>
+			<categories></categories> -->
+		</view>
 
 	</view>
-
 </template>
 
 <script setup>
+	import {
+		reactive,
+		ref
+	} from "vue";
 	import {
 		apiGetSpecList,
 		apiSearchByFilter
 	} from "@/api/api.js"
 	apiGetSpecList()
-	
+
+	const imageList = reactive([
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
+	])
+
+	// 选择的过滤条件
+	let param = {
+		page: 1,
+		pageSize: 3,
+		key: ["brand"],
+		value: ["佳能"],
+	}
+
+	const hotProductList = ref([])
+	const newProductList = ref([])
+
+	async function searchByFilter() {
+		// console.log("调用接口参数", conditionList)
+		let res = await apiSearchByFilter(param)
+		hotProductList.value = res.data
+
+		param.value = ["索尼"]
+		res = await apiSearchByFilter(param)
+		newProductList.value = res.data
+	}
+
+	searchByFilter()
 </script>
 
 <style lang="scss" scoped>
-	.home {
-		.banner {
-			width: 750rpx;
+	.banner {
+		height: 400rpx;
+		// background-color: red;
+	}
 
-			swiper {
-				height: 450rpx;
+	.brand {
+		border-radius: 20rpx;
+		// background: $theme-color;
+		// color: white;
+	}
 
-				swiper-item {
-					width: 100%;
-					height: 100%;
-					padding: 0 30rpx;
+	.product {
+		margin-top: 15rpx;
+		padding: 0 15rpx;
+		display: flex;
+		gap: 16rpx;
+	}
 
-					image {
-						width: 100%;
-						height: 100%;
-					}
-				}
-			}
-		}
+	.hotProduct {
+		border-radius: 20rpx;
+		width: calc(50% - 8rpx);
+		background: white;
+	}
+
+	.newProduct {
+		border-radius: 20rpx;
+		width: calc(50% - 8rpx);
+		background: white;
+	}
+
+	.line {
+		display: flex;
+		height: 100rpx;
+		margin: 5rpx 0;
+		// background-color: red;
+	}
+
+	.title {
+		background-color: $theme-color;
+		color: white;
+		padding: 10rpx 10rpx 10rpx 20rpx;
+		// font-size: 20px;
+		border-radius: 20rpx 20rpx 0 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.text {
+		font-size: 20px;
+		width: 80%;
+	}
+
+	.more {
+		font-size: 14px;
 	}
 </style>

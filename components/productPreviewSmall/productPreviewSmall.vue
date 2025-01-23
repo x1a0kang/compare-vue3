@@ -9,7 +9,6 @@
 		<view class="col">
 			<view class="text">{{item.brand}}</view>
 			<view class="text">{{item.name}}</view>
-			<view class="text">{{item.publishDate}}</view>
 		</view>
 	</view>
 </template>
@@ -34,23 +33,24 @@
 	.content {
 		display: flex;
 		height: 100%;
+		width: 100%;
 		align-items: center;
-		// background-color: red;
+		// background: red;
 
 		.box {
 			display: flex;
 			height: 100%;
-			width: 25%;
+			width: 30%;
 			margin-left: 10rpx;
 			// background-color: red;
 		}
-		
+
 		.image {
 			height: 100%;
 		}
 
 		.text {
-			margin: 10rpx 0 10rpx 40rpx;
+			margin: 5rpx 0 5rpx 40rpx;
 		}
 	}
 </style>

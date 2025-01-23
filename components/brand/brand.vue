@@ -1,15 +1,27 @@
 <template>
 	<view class="content">
-		<swiper class="swiper" indicator-dots indicator-color="#007aff" indicator-active-color="#000" circular>
+		
+		<swiper class="swiper" circular indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
+			indicator-active-color="#000">
+			
 			<swiper-item class="grid-content" v-for="list in arrs">
+				
 				<view class="box" @click="jump(brand)" v-for="brand in list">
-					<image class="image" src="../../static/pikachu.jpg"></image>
-					<br />
+					
+					<image class="image" mode="aspectFit"
+						src="https://www.sonystyle.com.cn/content/dam/sonystyle/images/bottom_share2.png">
+					</image>
+					
 					<view class="text">{{brand.chinese}}</view>
+					
 				</view>
+				
 			</swiper-item>
+			
 		</swiper>
+		
 	</view>
+	
 </template>
 
 <script setup>
@@ -19,7 +31,6 @@
 	import {
 		apiGetBrandSplit
 	} from "@/api/api.js"
-
 	let arrs = ref([])
 
 	async function getBrandSplit() {
@@ -42,24 +53,41 @@
 
 <style lang="scss" scoped>
 	.content {
-		padding: 0 0 0 20rpx;
-		// background: red;
+		margin-top: 20rpx;
+		padding: 0 15rpx;
 	}
 
-	.swiper {}
+	.swiper {
+		height: 190rpx;
+	}
 
 	.grid-content {
 		display: grid;
-		gap: 10rpx;
-		grid-template-columns: repeat(4, 1fr);
+		gap: 15rpx;
+		grid-template-columns: repeat(5, 1fr);
+		// padding: 0 10rpx;
+	}
+
+	.box {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		// justify-content: center;
+		background: white;
+		height: fit-content;
+		color: black;
+		padding: 10rpx 0;
+		border-radius: 20rpx;
 	}
 
 	.image {
-		width: 150rpx;
 		height: 80rpx;
+		width: 100%;
+		// background-color: blue;
 	}
 
 	.text {
+		margin-top: 5rpx;
 		text-align: center;
 	}
 </style>

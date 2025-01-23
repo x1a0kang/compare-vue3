@@ -60,7 +60,7 @@
 			overflow: hidden;
 			position: relative;
 			padding: 5rpx;
-			// background-color: yellow;
+			background-color: white;
 
 			.jump-button {
 				height: 100%;

@@ -4,7 +4,7 @@
 
 		<!-- 待对比内容列表 -->
 		<checkbox-group @change="change">
-			<view class="line shadow" v-for="item in compareList" :key="item.productId">
+			<view class="line" v-for="item in compareList" :key="item.productId">
 				<checkbox class="checkbox" :value="item.productId" iconColor="$theme-color" style="transform:scale(0.9)"
 					:checked="item.checked">
 				</checkbox>
@@ -152,6 +152,7 @@
 		background: white;
 		margin: 15rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
+		height: 200rpx;
 
 		.checkbox {
 			margin-left: 10rpx;
@@ -192,6 +193,7 @@
 			text-align: center;
 			align-items: center;
 			justify-content: center;
+			margin-bottom: 5rpx;
 		}
 
 		.selectAll {

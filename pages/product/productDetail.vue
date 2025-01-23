@@ -124,8 +124,8 @@
 	.image {
 		height: 350rpx;
 		background: white;
-		margin: 20rpx;
-		border-radius: 20rpx;
+		// margin: 20rpx;
+		border-radius: 0 0 20rpx 20rpx;
 	}
 
 	.tab {
@@ -135,6 +135,7 @@
 		display: flex;
 		color: black;
 		padding: 5rpx 0 0 5rpx;
+		margin-top: 20rpx;
 		// justify-content: center;
 
 		// width: 50vw;
@@ -150,10 +151,11 @@
 	}
 
 	.content {
-		margin: 20rpx;
+		// margin: 20rpx;
 		background: white;
 		border-radius: 20rpx;
 		// padding: 1rpx 0;
+		overflow: hidden;
 	}
 
 	.line {

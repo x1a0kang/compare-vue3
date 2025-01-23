@@ -128,7 +128,7 @@
 	}
 
 	async function searchByFilter() {
-		console.log("调用接口参数", conditionList)
+		// console.log("调用接口参数", conditionList)
 		let res = await apiSearchByFilter(conditionList)
 		arrs.value = [...arrs.value, ...res.data]
 		if (conditionList.pageSize > res.data.length) {
@@ -244,7 +244,7 @@
 		padding: 0 20rpx;
 		border-bottom: 1px solid $theme-color;
 		align-items: center;
-		// background: #010101;
+		background: white;
 
 		.filterPicker {
 			display: flex;
