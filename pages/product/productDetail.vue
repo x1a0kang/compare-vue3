@@ -119,41 +119,67 @@
 <style lang="scss" scoped>
 	.layout {
 		position: relative;
+		padding: 5rpx 15rpx 0 15rpx;
 	}
 
 	.image {
 		height: 350rpx;
 		background: white;
-		// margin: 20rpx;
-		border-radius: 0 0 20rpx 20rpx;
+		// padding-top: 5rpx;
+		border-radius: 20rpx;
 	}
 
 	.tab {
 		background: $theme-color;
 		font-size: 22px;
-		height: 100%;
 		display: flex;
 		color: black;
-		padding: 5rpx 0 0 5rpx;
 		margin-top: 20rpx;
-		// justify-content: center;
+		border-radius: 20rpx 20rpx 0 0;
+		overflow: hidden;
+		align-items: center;
+		// padding-left: 20rpx;
 
 		// width: 50vw;
 		.text {
 			background: white;
-			border-radius: 50rpx;
-			padding: 10rpx 50rpx;
+			border-radius: 20rpx 20rpx 0 0;
+			padding: 10rpx 20rpx;
+			box-shadow: 20rpx 20rpx 0 0 #fff, -20rpx 20rpx 0 0 #fff;
+			position: relative;
 			// border: 2px solid black;
 			text-decoration: underline;
 			text-decoration-color: $theme-color;
 			text-underline-offset: 15rpx;
+		}
+
+		.text::before {
+			content: '';
+			position: absolute;
+			left: -20rpx;
+			bottom: 0;
+			width: 20rpx;
+			height: 100rpx;
+			background: $theme-color; // 修改
+			border-radius: 0 0 20rpx 0;
+		}
+
+		.text::after {
+			content: '';
+			position: absolute;
+			right: -20rpx;
+			bottom: 0;
+			width: 20rpx;
+			height: 100%;
+			background: $theme-color; // 修改
+			border-radius: 0 0 0 20rpx;
 		}
 	}
 
 	.content {
 		// margin: 20rpx;
 		background: white;
-		border-radius: 20rpx;
+		border-radius: 0 0 20rpx 20rpx;
 		// padding: 1rpx 0;
 		overflow: hidden;
 	}

@@ -34,8 +34,7 @@
 		</view>
 
 		<view class="categories">
-			<!-- <view class="title">分类</view>
-			<categories></categories> -->
+			<tabList></tabList>
 		</view>
 
 	</view>

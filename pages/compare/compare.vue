@@ -1,5 +1,6 @@
 <template>
 	<view class="layout pageBg">
+		<!-- 头部标题 -->
 		<view class="head">
 			<view v-for="item in compareTempList" :key="item.productId">
 				<view class="title">
@@ -20,6 +21,10 @@
 		</view>
 
 		<view class="content">
+			<view class="tab">
+				<view class="text">详细参数</view>
+			</view>
+
 			<view class="row" v-for="spec in specList.value">
 				<view v-for="item in compareTempList" :key="item.productId">
 					<view class="pair">
@@ -93,7 +98,7 @@
 		display: flex;
 		flex-direction: column;
 		overflow-y: auto;
-		padding: 10rpx 0 10rpx 10rpx;
+		padding: 0 15rpx;
 		min-height: 100vh;
 	}
 
@@ -104,7 +109,7 @@
 
 	.title {
 		height: 100%;
-		width: 48vw;
+		width: 47vw;
 		text-align: center;
 		font-size: 22px;
 		font-weight: bold;
@@ -130,7 +135,7 @@
 	}
 
 	.swiper {
-		width: 48vw;
+		width: 47vw;
 		height: 200rpx;
 		background: #fff;
 		border-radius: 20rpx;
@@ -139,12 +144,13 @@
 	}
 
 	.content {
-		margin-top: 10rpx;
+		// margin-top: 20rpx;
+		width: 100%;
 	}
 
 	.row {
 		display: flex;
-		margin-top: 30rpx;
+		// margin-top: 30rpx;
 		// background-color: red;
 	}
 
@@ -153,13 +159,13 @@
 		flex-direction: column;
 		align-items: center;
 		margin-right: 10rpx;
-		width: 48vw;
+		width: 47vw;
 		height: 100%;
 		// background-color: blue;
 		text-align: center;
 		padding: 20rpx 10rpx;
 		background: #fff;
-		border-radius: 20rpx;
+		// border-radius: 20rpx;
 	}
 
 	.key {
@@ -168,5 +174,53 @@
 
 	.value {
 		font-weight: bold;
+	}
+
+	.tab {
+		background: $theme-color;
+		font-size: 22px;
+		display: flex;
+		color: black;
+		margin-top: 20rpx;
+		border-radius: 20rpx 20rpx 0 0;
+		overflow: hidden;
+		align-items: center;
+		width: 100%;
+		// padding-left: 20rpx;
+
+		// width: 50vw;
+		.text {
+			background: white;
+			border-radius: 20rpx 20rpx 0 0;
+			padding: 10rpx 20rpx;
+			box-shadow: 20rpx 20rpx 0 0 #fff, -20rpx 20rpx 0 0 #fff;
+			position: relative;
+			// border: 2px solid black;
+			text-decoration: underline;
+			text-decoration-color: $theme-color;
+			text-underline-offset: 15rpx;
+		}
+
+		.text::before {
+			content: '';
+			position: absolute;
+			left: -20rpx;
+			bottom: 0;
+			width: 20rpx;
+			height: 100rpx;
+			background: $theme-color; // 修改
+			border-radius: 0 0 20rpx 0;
+		}
+
+		.text::after {
+			content: '';
+			position: absolute;
+			right: -20rpx;
+			bottom: 0;
+			width: 20rpx;
+			height: 100%;
+			background: $theme-color; // 修改
+			border-radius: 0 0 0 20rpx;
+		}
 	}
 </style>
