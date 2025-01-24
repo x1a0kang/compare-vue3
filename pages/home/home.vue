@@ -33,10 +33,7 @@
 			</view>
 		</view>
 
-		<view class="categories">
-			<tabList :arrs="categories"></tabList>
-		</view>
-
+		<tabList :arrs="categories"></tabList>
 	</view>
 </template>
 
@@ -51,12 +48,19 @@
 		apiCategories
 	} from "@/api/api.js"
 
-	let categories = []
+	const categories = reactive([])
 
 	async function getCategories() {
-		let res = await apiCategories()
-		categories = res.data
-		console.log("categories", categories)
+		const data = {
+			"page": 1,
+			"pageSize": 5
+		}
+		let res = await apiCategories(data)
+		categories.push(...res.data)
+		categories.push({
+			"name": "全部分类"
+		})
+		// console.log("categories", categories)
 	}
 
 	const imageList = reactive([

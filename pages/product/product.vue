@@ -25,17 +25,6 @@
 			</view>
 		</view>
 
-		<!-- 过滤器弹窗 -->
-		<uni-popup ref="pop" class="pop">
-			<view class="popBox">
-				<uni-data-select class="select" placeholder="请选择条件" v-model="chosenKey" :localdata="specList.value"
-					@change="change"></uni-data-select>
-				<uni-data-select class="select" placeholder="请选择值" v-model="chosenValue"
-					:localdata="optionList"></uni-data-select>
-			</view>
-			<view class="confirm" @click="confirm()">确认</view>
-		</uni-popup>
-
 		<!-- 进入页面加载图标 -->
 		<view class="loadingLayout" v-show="!arrs.length && !noData">
 			<uni-load-more status="loading"></uni-load-more>

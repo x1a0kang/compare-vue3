@@ -27,6 +27,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.tabList::-webkit-scrollbar {
+		display: none;
+	}
+
 	.tabList {
 		display: flex;
 		margin-top: 30rpx;
@@ -35,6 +39,7 @@
 		border-radius: 20rpx 20rpx 0 0;
 		font-size: 20px;
 		overflow: hidden;
+		overflow-x: scroll;
 		// gap: 20rpx;
 
 		.tab {
@@ -44,6 +49,7 @@
 			display: flex;
 			align-items: center;
 			position: relative;
+			text-wrap: nowrap;
 			// background-color: blue;
 		}
 
