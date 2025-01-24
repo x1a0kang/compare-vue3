@@ -240,7 +240,6 @@
 		display: flex;
 		font-size: 18px;
 		position: relative;
-		margin: 10rpx 0;
 		padding: 0 20rpx;
 		border-bottom: 1px solid $theme-color;
 		align-items: center;

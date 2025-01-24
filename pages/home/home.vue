@@ -98,18 +98,18 @@
 		margin-top: 15rpx;
 		padding: 0 15rpx;
 		display: flex;
-		gap: 16rpx;
+		gap: 14rpx;
 	}
 
 	.hotProduct {
 		border-radius: 20rpx;
-		width: calc(50% - 8rpx);
+		width: calc(50% - 7rpx);
 		background: white;
 	}
 
 	.newProduct {
 		border-radius: 20rpx;
-		width: calc(50% - 8rpx);
+		width: calc(50% - 7rpx);
 		background: white;
 	}
 

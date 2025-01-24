@@ -53,30 +53,31 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
 	},
 	"tabBar": {
+		"color": "#707070",
+		"selectedColor": "#000",
+		"fontSize": "12px",
+		"backgroundColor": "#ffffff",
 		"list": [{
 				"pagePath": "pages/home/home",
 				"text": "主页",
-				"iconfont": {
-					"fontSize": "20"
-				}
+				"iconPath": "/static/home.png",
+				"selectedIconPath": "/static/s_home.png"
 			},
 			{
 				"pagePath": "pages/product/product",
 				"text": "产品",
-				"iconfont": {
-					"fontSize": "20"
-				}
+				"iconPath": "/static/commodity.png",
+				"selectedIconPath": "/static/s_commodity.png"
 			},
 			{
 				"pagePath": "pages/compare/compareList",
 				"text": "对比",
-				"iconfont": {
-					"fontSize": "20"
-				}
+				"iconPath": "/static/versus.png",
+				"selectedIconPath": "/static/s_versus.png"
 			}
 		]
 	},
