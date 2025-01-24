@@ -12,13 +12,13 @@
 		ref
 	} from "vue"
 	import {
-		apiHotCategories
+		apiCategories
 	} from "@/api/api.js"
 
 	const arrs = ref([])
 
-	async function getHotCategories() {
-		let res = await apiHotCategories()
+	async function getCategories() {
+		let res = await apiCategories()
 		arrs.value = res.data
 	}
 
@@ -32,7 +32,7 @@
 		});
 	}
 
-	getHotCategories()
+	getCategories()
 </script>
 
 <style lang="scss" scoped>

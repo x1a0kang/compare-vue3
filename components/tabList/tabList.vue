@@ -1,8 +1,8 @@
 <template>
 	<view class="tabList">
-		<view class="tab" v-for="(tab,index) in tabList" :class="activeTab === index ? 'tab-selected' : 'tab'"
+		<view class="tab" v-for="(item,index) in arrs" :class="activeTab === index ? 'tab-selected' : 'tab'"
 			@click="onTab(index)">
-			{{tab}}
+			{{item.name}}
 		</view>
 	</view>
 </template>
@@ -12,7 +12,12 @@
 		ref
 	} from 'vue';
 
-	const tabList = ["测试1", "测试2", "测试3"]
+	defineProps({
+		arrs: {
+			type: Array,
+			default: {}
+		}
+	})
 
 	let activeTab = ref(0)
 
@@ -35,7 +40,7 @@
 		.tab {
 			padding: 10rpx 30rpx;
 			// border-radius: 20rpx 20rpx 0 0;
-			height: 100rpx;
+			height: 80rpx;
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -48,6 +53,9 @@
 			display: flex;
 			border-radius: 20rpx 20rpx 0 0;
 			box-shadow: 20rpx 20rpx 0 0 #fff, -20rpx 20rpx 0 0 #fff;
+			text-decoration: underline;
+			text-decoration-color: $theme-color;
+			text-underline-offset: 15rpx;
 		}
 
 		.tab-selected::before {
@@ -56,7 +64,7 @@
 			left: -20rpx;
 			bottom: 0;
 			width: 20rpx;
-			height: 100rpx;
+			height: 100%;
 			background: $theme-color; // 修改
 			border-radius: 0 0 20rpx 0;
 		}
@@ -67,7 +75,7 @@
 			right: -20rpx;
 			bottom: 0;
 			width: 20rpx;
-			height: 100rpx;
+			height: 100%;
 			background: $theme-color; // 修改
 			border-radius: 0 0 0 20rpx;
 		}

@@ -34,7 +34,7 @@
 		</view>
 
 		<view class="categories">
-			<tabList></tabList>
+			<tabList :arrs="categories"></tabList>
 		</view>
 
 	</view>
@@ -47,9 +47,17 @@
 	} from "vue";
 	import {
 		apiGetSpecList,
-		apiSearchByFilter
+		apiSearchByFilter,
+		apiCategories
 	} from "@/api/api.js"
-	apiGetSpecList()
+
+	let categories = []
+
+	async function getCategories() {
+		let res = await apiCategories()
+		categories = res.data
+		console.log("categories", categories)
+	}
 
 	const imageList = reactive([
 		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
@@ -78,7 +86,9 @@
 		newProductList.value = res.data
 	}
 
+	apiGetSpecList()
 	searchByFilter()
+	getCategories()
 </script>
 
 <style lang="scss" scoped>

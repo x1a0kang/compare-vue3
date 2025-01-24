@@ -52,9 +52,9 @@ export function apiSearchByFilter(data = {}) {
 	})
 }
 
-export function apiHotCategories(data = {}) {
+export function apiCategories(data = {}) {
 	return request({
-		url: "/getHotCategories",
+		url: "/getCategories",
 		data
 	})
 }
