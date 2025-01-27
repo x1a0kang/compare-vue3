@@ -33,7 +33,12 @@
 			</view>
 		</view>
 
-		<tabList :arrs="categories"></tabList>
+		<tabList :arrs="categories" :change="change"></tabList>
+		<gridContent :arrs="categoryProductList"></gridContent>
+		<!-- 加载更多 -->
+		<view class="loadingLayout" v-show="categoryProductList.length || noData">
+			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
+		</view>
 	</view>
 </template>
 
@@ -47,8 +52,65 @@
 		apiSearchByFilter,
 		apiCategories
 	} from "@/api/api.js"
+	import {
+		onReachBottom
+	} from '@dcloudio/uni-app'
 
+	// 分类列表
 	const categories = reactive([])
+	// 分类下的产品列表
+	const categoryProductList = ref([])
+	// tab当前的下标
+	let tabIndex = 0
+	const noData = ref(false)
+
+	const hotProductList = ref([])
+	const newProductList = ref([])
+
+	const imageList = reactive([
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
+		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
+	])
+
+	// 选择的过滤条件
+	let param = {
+		page: 1,
+		pageSize: 10,
+		key: [],
+		value: [],
+	}
+
+	const initParams = (value = '') => {
+		categoryProductList.value = [];
+		noData.value = false;
+		param.page = 1
+		param.pageSize = 10
+	}
+
+	onReachBottom(() => {
+		// console.log("触底了")
+		if (noData.value) {
+			return
+		}
+		param.page++
+		getCategoryProductList()
+	})
+
+	async function initHotAndNew() {
+		param.key = ["brand"]
+		param.value = ["佳能"]
+		param.pageSize = 5
+		// console.log("调用接口参数", conditionList)
+		let res = await apiSearchByFilter(param)
+		hotProductList.value = res.data
+
+		param.value = ["索尼"]
+		res = await apiSearchByFilter(param)
+		newProductList.value = res.data
+		
+		param.pageSize = 10
+	}
 
 	async function getCategories() {
 		const data = {
@@ -60,38 +122,33 @@
 		categories.push({
 			"name": "全部分类"
 		})
+		
+		initParams()
+		getCategoryProductList(0)
 		// console.log("categories", categories)
 	}
 
-	const imageList = reactive([
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
-	])
-
-	// 选择的过滤条件
-	let param = {
-		page: 1,
-		pageSize: 3,
-		key: ["brand"],
-		value: ["佳能"],
+	async function getCategoryProductList() {
+		let category = categories[tabIndex]
+		param.key = [category.key]
+		param.value = [category.value]
+		let res = await apiSearchByFilter(param)
+		categoryProductList.value = [...categoryProductList.value, ...res.data]
+		if (param.pageSize > res.data.length) {
+			noData.value = true
+		}
 	}
 
-	const hotProductList = ref([])
-	const newProductList = ref([])
-
-	async function searchByFilter() {
-		// console.log("调用接口参数", conditionList)
-		let res = await apiSearchByFilter(param)
-		hotProductList.value = res.data
-
-		param.value = ["索尼"]
-		res = await apiSearchByFilter(param)
-		newProductList.value = res.data
+	// 切换tab时调用的函数
+	function change(index) {
+		tabIndex = index
+		initParams()
+		getCategoryProductList()
+		// console.log("调用了")
 	}
 
 	apiGetSpecList()
-	searchByFilter()
+	initHotAndNew()
 	getCategories()
 </script>
 

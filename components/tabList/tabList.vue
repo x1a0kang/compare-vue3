@@ -12,10 +12,13 @@
 		ref
 	} from 'vue';
 
-	defineProps({
+	const props = defineProps({
 		arrs: {
 			type: Array,
 			default: {}
+		},
+		change: {
+			type: Function
 		}
 	})
 
@@ -23,6 +26,7 @@
 
 	function onTab(index) {
 		activeTab.value = index
+		props.change(index)
 	}
 </script>
 
