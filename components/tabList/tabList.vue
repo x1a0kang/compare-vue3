@@ -4,6 +4,8 @@
 			@click="onTab(index)">
 			{{item.name}}
 		</view>
+
+		<view v-if="more" class="more" @click="more">更多</view>
 	</view>
 </template>
 
@@ -18,6 +20,9 @@
 			default: {}
 		},
 		change: {
+			type: Function
+		},
+		more: {
 			type: Function
 		}
 	})
@@ -88,6 +93,17 @@
 			height: 100%;
 			background: $theme-color; // 修改
 			border-radius: 0 0 0 20rpx;
+		}
+
+		.more {
+			height: 80rpx;
+			width: fit-content;
+			font-size: 16px;
+			text-align: center;
+			text-wrap: nowrap;
+			display: flex;
+			align-items: center;
+			padding: 0 20rpx;
 		}
 	}
 </style>

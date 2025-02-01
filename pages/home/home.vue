@@ -33,7 +33,8 @@
 			</view>
 		</view>
 
-		<tabList :arrs="categories" :change="change"></tabList>
+		<tabList class="tabList" :arrs="categories" :change="change" :more="moreCategories"></tabList>
+
 		<gridContent :arrs="categoryProductList"></gridContent>
 		<!-- 加载更多 -->
 		<view class="loadingLayout" v-show="categoryProductList.length || noData">
@@ -108,7 +109,7 @@
 		param.value = ["索尼"]
 		res = await apiSearchByFilter(param)
 		newProductList.value = res.data
-		
+
 		param.pageSize = 10
 	}
 
@@ -119,10 +120,10 @@
 		}
 		let res = await apiCategories(data)
 		categories.push(...res.data)
-		categories.push({
-			"name": "全部分类"
-		})
-		
+		// categories.push({
+		// 	"name": "全部分类"
+		// })
+
 		initParams()
 		getCategoryProductList(0)
 		// console.log("categories", categories)
@@ -145,6 +146,18 @@
 		initParams()
 		getCategoryProductList()
 		// console.log("调用了")
+	}
+	
+	function moreHotProduct() {
+		console.log("moreHotProduct")
+	}
+	
+	function moreNewProduct() {
+		console.log("moreNewProduct")
+	}
+	
+	function moreCategories() {
+		console.log("moreCategories")
 	}
 
 	apiGetSpecList()
@@ -203,6 +216,11 @@
 	.text {
 		font-size: 20px;
 		width: 80%;
+	}
+	
+	.tabbar {
+		display: flex;
+		overflow-x: scroll;
 	}
 
 	.more {
