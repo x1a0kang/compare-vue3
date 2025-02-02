@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
-		<view class="box" @click="jump(item)" v-for="item in arrs" :key="item.name">
-			<view class="mask">{{item.name}}</view>
+		<view class="box shadow" @click="jump(item)" v-for="item in arrs" :key="item.name">
 			<image class="image" :src="item.coverUrl" mode="aspectFill"></image>
+			<view class="text">{{item.name}}</view>
 		</view>
 	</view>
 </template>
@@ -40,22 +40,23 @@
 		display: grid;
 		gap: 15rpx;
 		grid-template-columns: repeat(2, 1fr);
-		margin: 0 15rpx;
+		margin: 5rpx 15rpx 0 15rpx;
 
 		.box {
 			// background-color: red;
 			border-radius: 20rpx;
+			padding-bottom: 10rpx;
 		}
 
-		.mask {
-			padding-left: 30rpx;
-			padding-top: 20rpx;
+		.text {
+			text-align: center;
 			font-weight: bold;
 		}
 
 		.image {
 			width: 100%;
 			height: 260rpx;
+			// background-color: red;
 		}
 	}
 </style>

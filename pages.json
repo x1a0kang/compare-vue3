@@ -45,6 +45,13 @@
 			"style": {
 				"navigationBarTitleText": "搜索"
 			}
+		},
+		{
+			"path" : "pages/categories/categories",
+			"style" : 
+			{
+				"navigationBarTitleText" : "分类"
+			}
 		}
 	],
 	"globalStyle": {

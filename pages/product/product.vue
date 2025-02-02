@@ -256,6 +256,7 @@
 		align-items: center;
 		padding: 0 20rpx;
 		gap: 15rpx;
+		margin-top: 5rpx;
 		// background: red;
 	}
 

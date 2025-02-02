@@ -4,7 +4,12 @@
 
 		<!-- 滚动页面，广告位 -->
 		<view class="banner">
-			<mySwiper :imageList="imageList" :autoplay="true"></mySwiper>
+			<swiper class="swiper" circular :autoplay="true" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
+				indicator-active-color="#000">
+				<swiper-item class="swiper-item" v-for="item in bannerList" @click="toProductDetail(item)">
+					<image class="image" :src="item.url" mode="aspectFit"></image>
+				</swiper-item>
+			</swiper>
 		</view>
 
 		<view class="brand">
@@ -15,7 +20,7 @@
 			<view class="hotProduct shadow">
 				<view class="title">
 					<view class="text">热门单品</view>
-					<view class="more">更多</view>
+					<view class="more" @click="moreHotProduct">更多</view>
 				</view>
 				<view class="line" v-for="item in hotProductList" :key="item.productId">
 					<productPreviewSmall :item="item"></productPreviewSmall>
@@ -25,7 +30,7 @@
 			<view class="newProduct shadow">
 				<view class="title">
 					<view class="text">新品上市</view>
-					<view class="more">更多</view>
+					<view class="more" @click="moreNewProduct">更多</view>
 				</view>
 				<view class="line" v-for="item in newProductList" :key="item.productId">
 					<productPreviewSmall :item="item"></productPreviewSmall>
@@ -68,10 +73,21 @@
 	const hotProductList = ref([])
 	const newProductList = ref([])
 
-	const imageList = reactive([
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
-		"https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png"
+	const bannerList = reactive([{
+			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
+			"id": "7ebaf5878fc8334a76f0551f6c5ca6c7",
+			"name": "EOS R10"
+		},
+		{
+			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
+			"id": "30fff83167e97b864bf9d4b82b0660dd",
+			"name": "Z fc"
+		},
+		{
+			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png",
+			"id": "b439c1f1341268b4e2b1c2ae7fbb19ac",
+			"name": "Z30"
+		}
 	])
 
 	// 选择的过滤条件
@@ -147,17 +163,39 @@
 		getCategoryProductList()
 		// console.log("调用了")
 	}
-	
+
 	function moreHotProduct() {
-		console.log("moreHotProduct")
+		uni.setStorageSync('filterKey', 'brand')
+		uni.setStorageSync('filterKeyText', '品牌')
+		uni.setStorageSync('filterValue', '佳能')
+		uni.setStorageSync('filterValueText', '佳能')
+		uni.switchTab({
+			url: '/pages/product/product'
+		});
 	}
-	
+
 	function moreNewProduct() {
-		console.log("moreNewProduct")
+		uni.setStorageSync('filterKey', 'brand')
+		uni.setStorageSync('filterKeyText', '品牌')
+		uni.setStorageSync('filterValue', '索尼')
+		uni.setStorageSync('filterValueText', '索尼')
+		uni.switchTab({
+			url: '/pages/product/product'
+		});
+	}
+
+	function moreCategories() {
+		uni.navigateTo({
+			url: "/pages/categories/categories"
+		})
+		console.log("moreCategories")
 	}
 	
-	function moreCategories() {
-		console.log("moreCategories")
+	function toProductDetail(item) {
+		uni.navigateTo({
+			url: '/pages/product/productDetail?id=' + item.id + '&name=' + item.name
+		});
+		console.log("跳转到详情页", item.name)
 	}
 
 	apiGetSpecList()
@@ -167,8 +205,24 @@
 
 <style lang="scss" scoped>
 	.banner {
-		height: 400rpx;
+		height: 360rpx;
+		background: white;
+		border-radius: 20rpx;
+	}
+
+	.swiper {
+		height: 100%;
 		// background-color: red;
+	}
+
+	.swiper-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.image {
+		height: 100%;
 	}
 
 	.brand {
@@ -217,7 +271,7 @@
 		font-size: 20px;
 		width: 80%;
 	}
-	
+
 	.tabbar {
 		display: flex;
 		overflow-x: scroll;
