@@ -79,3 +79,10 @@ export function apiGetOrderSpec(data = {}) {
 		data
 	})
 }
+
+export function apiGetBanner(data = {}) {
+	return request({
+		url: "/getBanner",
+		data
+	})
+}

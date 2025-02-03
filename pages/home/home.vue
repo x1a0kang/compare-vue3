@@ -56,7 +56,8 @@
 	import {
 		apiGetSpecList,
 		apiSearchByFilter,
-		apiCategories
+		apiCategories,
+		apiGetBanner
 	} from "@/api/api.js"
 	import {
 		onReachBottom
@@ -73,22 +74,7 @@
 	const hotProductList = ref([])
 	const newProductList = ref([])
 
-	const bannerList = reactive([{
-			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png",
-			"id": "7ebaf5878fc8334a76f0551f6c5ca6c7",
-			"name": "EOS R10"
-		},
-		{
-			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png",
-			"id": "30fff83167e97b864bf9d4b82b0660dd",
-			"name": "Z fc"
-		},
-		{
-			"url": "https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/602730056/2271516755/3477152822.png",
-			"id": "b439c1f1341268b4e2b1c2ae7fbb19ac",
-			"name": "Z30"
-		}
-	])
+	const bannerList = reactive([])
 
 	// 选择的过滤条件
 	let param = {
@@ -113,6 +99,11 @@
 		param.page++
 		getCategoryProductList()
 	})
+	
+	async function getBanner() {
+		let res = await apiGetBanner()
+		bannerList.push(...res.data)
+	}
 
 	async function initHotAndNew() {
 		param.key = ["brand"]
@@ -201,6 +192,7 @@
 	apiGetSpecList()
 	initHotAndNew()
 	getCategories()
+	getBanner()
 </script>
 
 <style lang="scss" scoped>
