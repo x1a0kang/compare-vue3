@@ -24,7 +24,7 @@ export function apiGetBrand() {
 export async function apiGetSpecList() {
 	if (undefined === specList.value) {
 		let res = await request({
-			url: "/getCameraSpec"
+			url: "/getSpec"
 		})
 		specList.value = res.data
 		console.log("缓存内specList为空，请求接口")
