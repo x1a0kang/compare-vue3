@@ -7,7 +7,7 @@
 			<swiper class="swiper" circular :autoplay="true" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
 				indicator-active-color="#000">
 				<swiper-item class="swiper-item" v-for="item in bannerList" @click="toProductDetail(item)">
-					<image class="image" :src="item.url" mode="aspectFit"></image>
+					<image class="image" :src="item.url" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -16,7 +16,7 @@
 			<brand></brand>
 		</view>
 
-		<view class="product">
+		<!-- <view class="product">
 			<view class="hotProduct shadow">
 				<view class="title">
 					<view class="text">热门单品</view>
@@ -36,7 +36,7 @@
 					<productPreviewSmall :item="item"></productPreviewSmall>
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 		<tabList class="tabList" :arrs="categories" :change="change" :more="moreCategories"></tabList>
 
@@ -184,7 +184,7 @@
 	
 	function toProductDetail(item) {
 		uni.navigateTo({
-			url: '/pages/product/productDetail?id=' + item.id + '&name=' + item.name
+			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
 		});
 		console.log("跳转到详情页", item.name)
 	}
@@ -197,7 +197,7 @@
 
 <style lang="scss" scoped>
 	.banner {
-		height: 360rpx;
+		height: 400rpx;
 		background: white;
 		border-radius: 20rpx;
 	}

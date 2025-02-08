@@ -40,7 +40,7 @@
 		display: grid;
 		gap: 15rpx;
 		grid-template-columns: repeat(2, 1fr);
-		margin: 5rpx 15rpx 0 15rpx;
+		margin: 10rpx 15rpx 0 15rpx;
 
 		.box {
 			// background-color: red;
@@ -55,7 +55,7 @@
 
 		.image {
 			width: 100%;
-			height: 260rpx;
+			height: 350rpx;
 			// background-color: red;
 		}
 	}

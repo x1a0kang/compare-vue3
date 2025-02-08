@@ -4,7 +4,7 @@
 		<view class="box shadow" v-for="item in arrs" :key="item.productId">
 			<view class="jump-button" @click="jump(item)">
 				<image class="image"
-					src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/1863000998/1666314630/3477152822.png"
+					:src="item.imageList[0]"
 					mode="aspectFill"></image>
 				<br />
 				<view class="mask">{{item.brand}} {{item.name}}</view>
@@ -38,7 +38,7 @@
 		uni.navigateTo({
 			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
 		});
-		console.log("跳转到详情页", item.name)
+		console.log("跳转到详情页", item.name, item.productId)
 	}
 
 	function add(item) {
@@ -68,8 +68,7 @@
 
 			.image {
 				width: 100%;
-				height: 300rpx;
-				// background-color: red;
+				height: 350rpx;
 			}
 
 			.mask {

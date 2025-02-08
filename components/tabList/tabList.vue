@@ -42,7 +42,7 @@
 
 	.tabList {
 		display: flex;
-		margin-top: 30rpx;
+		margin-top: 15rpx;
 		background: $theme-color;
 		color: white;
 		border-radius: 20rpx 20rpx 0 0;

@@ -13,7 +13,7 @@
 		</view>
 
 		<view class="image">
-			<view v-for="item in compareTempList" :key="item.productId">
+			<view class="imageBox" v-for="item in compareTempList" :key="item.productId">
 				<view class="swiper shadow">
 					<mySwiper :imageList="item.imageList"></mySwiper>
 				</view>
@@ -31,7 +31,9 @@
 					</view>
 				</view>
 			</view>
+			
 		</view>
+		
 	</view>
 </template>
 
@@ -99,7 +101,7 @@
 		display: flex;
 		flex-direction: column;
 		overflow-x: auto;
-		padding: 0 15rpx;
+		padding: 0 15rpx 15rpx 15rpx;
 		min-height: 100vh;
 	}
 
@@ -133,19 +135,18 @@
 
 	.image {
 		display: flex;
+		margin-top: 20rpx;
 	}
 
 	.swiper {
 		width: 47vw;
-		height: 200rpx;
+		height: 350rpx;
 		background: #fff;
 		border-radius: 20rpx;
-		margin-top: 20rpx;
 		margin-right: 10rpx;
 	}
 
 	.content {
-		// margin-top: 20rpx;
 		width: fit-content;
 		display: flex;
 		flex-direction: column;

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080/camera';
+const BASE_URL = 'http://localhost:80/shoe';
 
 export function request(config = {}) {
 	let {

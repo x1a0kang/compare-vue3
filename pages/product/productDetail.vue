@@ -121,18 +121,18 @@
 <style lang="scss" scoped>
 	.layout {
 		position: relative;
-		padding: 5rpx 15rpx 0 15rpx;
+		padding: 5rpx 15rpx 110rpx 15rpx;
 	}
 
 	.image {
-		height: 350rpx;
+		height: 400rpx;
 		background: white;
 		// padding-top: 5rpx;
 		border-radius: 20rpx;
 	}
 
 	.content {
-		// margin: 20rpx;
+		// margin-bottom: 120rpx;
 		background: white;
 		border-radius: 0 0 20rpx 20rpx;
 		// padding: 1rpx 0;

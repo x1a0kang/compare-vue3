@@ -1,27 +1,29 @@
 <template>
 	<view class="content">
-		
-		<swiper class="swiper" circular indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
-			indicator-active-color="#000">
-			
+
+		<!-- <swiper class="swiper" circular indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
+			indicator-active-color="#000"> -->
+
+		<swiper class="swiper">
+
 			<swiper-item class="grid-content" v-for="list in arrs">
-				
+
 				<view class="box" @click="jump(brand)" v-for="brand in list">
-					
+
 					<image class="image" mode="aspectFit"
-						src="https://www.sonystyle.com.cn/content/dam/sonystyle/images/bottom_share2.png">
+						:src="brand.icon">
 					</image>
-					
+
 					<view class="text">{{brand.chinese}}</view>
-					
+
 				</view>
-				
+
 			</swiper-item>
-			
+
 		</swiper>
-		
+
 	</view>
-	
+
 </template>
 
 <script setup>
@@ -58,12 +60,13 @@
 	}
 
 	.swiper {
-		height: 190rpx;
+		height: 300rpx;
+		// background-color: blue;
 	}
 
 	.grid-content {
 		display: grid;
-		gap: 15rpx;
+		gap: 10rpx;
 		grid-template-columns: repeat(5, 1fr);
 		// padding: 0 10rpx;
 	}

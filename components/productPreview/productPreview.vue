@@ -1,8 +1,7 @@
 <template>
 	<view class="content" @click="jump(item)">
 		<view class="box">
-			<image class="image" mode="aspectFit"
-				src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png">
+			<image class="image" mode="aspectFit" :src="item.imageList[0]">
 			</image>
 		</view>
 
@@ -44,7 +43,7 @@
 			margin-left: 10rpx;
 			// background-color: red;
 		}
-		
+
 		.image {
 			height: 100%;
 		}

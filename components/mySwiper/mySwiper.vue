@@ -2,7 +2,7 @@
 	<view class="box">
 		<swiper class="swiper" :current="currentIndex" circular @change="swiperChange" :autoplay="autoplay">
 			<swiper-item class="swiper-item" v-for="url in imageList">
-				<image class="image" :src="url" mode="aspectFit"></image>
+				<image class="image" :src="url" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 
@@ -53,6 +53,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		border-radius: 20rpx;
 	}
 
 	.image {
