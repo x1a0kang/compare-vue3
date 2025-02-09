@@ -3,12 +3,9 @@
 	<view class="content">
 		<view class="box shadow" v-for="item in arrs" :key="item.productId">
 			<view class="jump-button" @click="jump(item)">
-				<image class="image"
-					:src="item.imageList[0]"
-					mode="aspectFill"></image>
-				<br />
+				<image class="image" :src="item.imageList[0]" mode="aspectFill"></image>
 				<view class="mask">{{item.brand}} {{item.name}}</view>
-				<view class="mask">{{item.price}}元</view>
+				<!-- <view class="mask">{{item.price}}元</view> -->
 			</view>
 			<view class="add-button" @click="add(item)">
 				<add-one theme="outline" size="20" fill="#fff" :strokeWidth="4" />

@@ -12,7 +12,7 @@
 			<view class="line" v-for="spec in specList.value">
 				<view class="key"> {{spec.text}} ：</view>
 				<view class="value">
-					{{detail[spec.value]}}
+					{{detail[spec.value]}}{{spec.unit}}
 				</view>
 			</view>
 		</view>

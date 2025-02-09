@@ -27,7 +27,7 @@
 				<view v-for="item in compareTempList" :key="item.productId">
 					<view class="pair">
 						<view class="key">{{spec.text}}</view>
-						<view class="value">{{item[spec.value]}}</view>
+						<view class="value">{{item[spec.value]}}{{spec.unit}}</view>
 					</view>
 				</view>
 			</view>
