@@ -179,7 +179,7 @@
 		uni.navigateTo({
 			url: "/pages/categories/categories"
 		})
-		console.log("moreCategories")
+		// console.log("moreCategories")
 	}
 	
 	function toProductDetail(item) {
