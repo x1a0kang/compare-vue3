@@ -163,7 +163,7 @@
 		background: white;
 		margin: 15rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
-		height: 200rpx;
+		height: 150rpx;
 
 		.checkbox {
 			margin-left: 10rpx;

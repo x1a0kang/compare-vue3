@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<button class="add-button" @click="addToCompare(item)"></button>
+	<view class="add-button" @click="add(item)">
+		<add-one theme="outline" size="20" fill="#000" :strokeWidth="4" />
 	</view>
 </template>
 
@@ -8,8 +8,9 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-
-	const compareListStore = useCompareListStore()
+	import {
+		AddOne
+	} from '@icon-park/vue-next'
 
 	defineProps({
 		item: {
@@ -18,11 +19,21 @@
 		}
 	})
 
+	const compareListStore = useCompareListStore()
+
 	function addToCompare(item) {
 		compareListStore.add(item)
 	}
 </script>
 
 <style lang="scss" scoped>
-
+	.add-button {
+		width: 50rpx;
+		height: 50rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		// background: $theme-color;
+		// border-radius: 10rpx;
+	}
 </style>

@@ -6,9 +6,8 @@
 		</view>
 
 		<view class="col">
-			<view class="text">{{item.brand}}</view>
-			<view class="text">{{item.name}}</view>
-			<view class="text">{{item.publishDate}}</view>
+			<view class="text">{{item.brand}} {{item.name}}</view>
+			<view class="text">{{item.publishDateStr}}上市</view>
 		</view>
 	</view>
 </template>
@@ -48,8 +47,14 @@
 			height: 100%;
 		}
 
+		.col {
+			display: flex;
+			flex-direction: column;
+			gap: 10rpx
+		}
+
 		.text {
-			margin: 10rpx 0 10rpx 40rpx;
+			margin-left: 30rpx;
 		}
 	}
 </style>

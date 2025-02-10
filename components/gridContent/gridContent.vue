@@ -7,9 +7,8 @@
 				<view class="mask">{{item.brand}} {{item.name}}</view>
 				<!-- <view class="mask">{{item.price}}元</view> -->
 			</view>
-			<view class="add-button" @click="add(item)">
-				<add-one theme="outline" size="20" fill="#fff" :strokeWidth="4" />
-			</view>
+
+			<addToCompareButton :item="item"></addToCompareButton>
 		</view>
 	</view>
 </template>
@@ -71,22 +70,13 @@
 			.mask {
 				padding: 5rpx 5rpx 5rpx 20rpx;
 				width: 80%;
-				// text-align: center;
-				// background-color: blue;
 			}
-
-			.add-button {
-				width: 50rpx;
-				height: 50rpx;
-				position: absolute;
-				bottom: 5rpx;
-				right: 5rpx;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: $theme-color;
-				border-radius: 10rpx;
-			}
+		}
+		
+		.add-button {
+			position: absolute;
+			bottom: 5rpx;
+			right: 5rpx;
 		}
 	}
 </style>

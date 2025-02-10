@@ -52,6 +52,13 @@
 			{
 				"navigationBarTitleText" : "分类"
 			}
+		},
+		{
+			"path" : "pages/hotRankAll/hotRankAll",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {

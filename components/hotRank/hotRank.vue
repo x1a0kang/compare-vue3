@@ -1,7 +1,7 @@
 <template>
 	<view class="layout">
 		<view class="head">
-			<view class="title">热门单品</view>
+			<view class="title">热门跑鞋</view>
 			<view class="right">
 				<view class="update">{{updateTimeStr}}更新</view>
 				<view class="more" @click="moreHotRank">更多</view>
@@ -17,9 +17,7 @@
 
 				<view class="text">{{item.brand}} {{item.name}}</view>
 
-				<view class="add-button" @click.stop="add(item)">
-					<add-one theme="outline" size="20" fill="#fff" :strokeWidth="4" />
-				</view>
+				<addToCompareButton :item="item"></addToCompareButton>
 			</view>
 		</view>
 
@@ -45,7 +43,7 @@
 	const hotRankList = ref([])
 	const param = {
 		"page": 1,
-		"pageSize": 10
+		"pageSize": 5
 	}
 	let updateTimeStr = ref("")
 
@@ -64,7 +62,9 @@
 	}
 
 	function moreHotRank() {
-		console.log("点击更多")
+		uni.navigateTo({
+			url: "/pages/hotRankAll/hotRankAll"
+		})
 	}
 
 	function add(item) {
@@ -128,6 +128,7 @@
 		// background: red;
 		font-size: 20px;
 		font-weight: bold;
+		font-style: italic;
 		width: 50rpx;
 		text-align: center;
 	}
@@ -140,20 +141,13 @@
 
 	.text {
 		margin-left: 50rpx;
-		// width: 60%;
 		text-align: center;
+		font-weight: bold;
 		// background: blue;
 	}
 
 	.add-button {
 		position: absolute;
 		right: 30rpx;
-		width: 50rpx;
-		height: 50rpx;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: $theme-color;
-		border-radius: 10rpx;
 	}
 </style>

@@ -51,9 +51,6 @@
 	let tabIndex = 0
 	const noData = ref(false)
 
-	const hotProductList = ref([])
-	const newProductList = ref([])
-
 	const bannerList = reactive([])
 
 	// 选择的过滤条件
@@ -83,21 +80,6 @@
 	async function getBanner() {
 		let res = await apiGetBanner()
 		bannerList.push(...res.data)
-	}
-
-	async function initHotAndNew() {
-		param.key = ["brand"]
-		param.value = ["佳能"]
-		param.pageSize = 5
-		// console.log("调用接口参数", conditionList)
-		let res = await apiSearchByFilter(param)
-		hotProductList.value = res.data
-
-		param.value = ["索尼"]
-		res = await apiSearchByFilter(param)
-		newProductList.value = res.data
-
-		param.pageSize = 10
 	}
 
 	async function getCategories() {
@@ -170,7 +152,6 @@
 	}
 
 	apiGetSpecList()
-	initHotAndNew()
 	getCategories()
 	getBanner()
 </script>
