@@ -41,7 +41,8 @@
 	} from '@/store/specList'
 	import {
 		apiGetSpecList,
-		apiGetOne
+		apiGetOne,
+		apiViewCount
 	} from '@/api/api.js'
 	import {
 		goToHome
@@ -107,6 +108,8 @@
 		}
 		param.id = id
 		getOne()
+		// 记一次view
+		apiViewCount(param)
 		uni.setNavigationBarTitle({
 			title: name
 		})

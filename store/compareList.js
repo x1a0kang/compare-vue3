@@ -4,6 +4,9 @@ import {
 import {
 	reactive
 } from 'vue'
+import {
+	apiAddPkCount
+} from '@/api/api.js'
 
 export const useCompareListStore = defineStore('compareList', () => {
 	const compareList = reactive(uni.getStorageSync("compareList") || [])
@@ -27,6 +30,9 @@ export const useCompareListStore = defineStore('compareList', () => {
 			uni.showToast({
 				title: "加入成功"
 			})
+			let param = {}
+			param.id = item.productId
+			apiAddPkCount(param)
 		}
 	}
 

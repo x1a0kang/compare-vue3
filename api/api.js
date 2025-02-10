@@ -86,3 +86,31 @@ export function apiGetBanner(data = {}) {
 		data
 	})
 }
+
+export function apiViewCount(data = {}) {
+	return request({
+		url: "/viewCount",
+		data
+	})
+}
+
+export function apiAddPkCount(data = {}) {
+	return request({
+		url: "/addPkCount",
+		data
+	})
+}
+
+export function apiPkCount(data = {}) {
+	return request({
+		url: "/pkCount",
+		data
+	})
+}
+
+export function apiGetHotRank(data = {}) {
+	return request({
+		url: "/getHotRank",
+		data
+	})
+}

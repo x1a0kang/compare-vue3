@@ -55,6 +55,9 @@
 		Delete,
 		Clear
 	} from '@icon-park/vue-next'
+	import {
+		apiPkCount
+	} from '@/api/api.js'
 
 	const compareListStore = useCompareListStore()
 	// 对比列表
@@ -82,6 +85,14 @@
 
 	function compareAll() {
 		if (compareList.length > 1) {
+			// 对比计数
+			let param = {}
+			param.idList = []
+			compareList.forEach(item => {
+				param.idList.push(item.productId)
+			})
+			apiPkCount(param)
+
 			uni.navigateTo({
 				url: "/pages/compare/compare"
 			})
