@@ -17,7 +17,7 @@
 
 				<view class="text">{{item.brand}} {{item.name}}</view>
 
-				<view class="add-button" @click="add(item)">
+				<view class="add-button" @click.stop="add(item)">
 					<add-one theme="outline" size="20" fill="#fff" :strokeWidth="4" />
 				</view>
 			</view>

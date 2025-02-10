@@ -109,7 +109,7 @@
 		// 初始化多列picker的二维数组
 		specList.value.forEach((item) => {
 			// 有optionList的才加入picker
-			if (item.optionList) {
+			if (item.optionList && item.optionList.length > 0) {
 				specListForPicker[0].push(item)
 			}
 		})
