@@ -16,27 +16,7 @@
 			<brand></brand>
 		</view>
 
-		<!-- <view class="product">
-			<view class="hotProduct shadow">
-				<view class="title">
-					<view class="text">热门单品</view>
-					<view class="more" @click="moreHotProduct">更多</view>
-				</view>
-				<view class="line" v-for="item in hotProductList" :key="item.productId">
-					<productPreviewSmall :item="item"></productPreviewSmall>
-				</view>
-			</view>
-
-			<view class="newProduct shadow">
-				<view class="title">
-					<view class="text">新品上市</view>
-					<view class="more" @click="moreNewProduct">更多</view>
-				</view>
-				<view class="line" v-for="item in newProductList" :key="item.productId">
-					<productPreviewSmall :item="item"></productPreviewSmall>
-				</view>
-			</view>
-		</view> -->
+		<hotRank></hotRank>
 
 		<tabList class="tabList" :arrs="categories" :change="change" :more="moreCategories"></tabList>
 
@@ -99,7 +79,7 @@
 		param.page++
 		getCategoryProductList()
 	})
-	
+
 	async function getBanner() {
 		let res = await apiGetBanner()
 		bannerList.push(...res.data)
@@ -181,7 +161,7 @@
 		})
 		// console.log("moreCategories")
 	}
-	
+
 	function toProductDetail(item) {
 		uni.navigateTo({
 			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
@@ -221,42 +201,6 @@
 		border-radius: 20rpx;
 		// background: $theme-color;
 		// color: white;
-	}
-
-	.product {
-		margin-top: 15rpx;
-		padding: 0 15rpx;
-		display: flex;
-		gap: 14rpx;
-	}
-
-	.hotProduct {
-		border-radius: 20rpx;
-		width: calc(50% - 7rpx);
-		background: white;
-	}
-
-	.newProduct {
-		border-radius: 20rpx;
-		width: calc(50% - 7rpx);
-		background: white;
-	}
-
-	.line {
-		display: flex;
-		height: 100rpx;
-		margin: 5rpx 0;
-		// background-color: red;
-	}
-
-	.title {
-		background-color: $theme-color;
-		color: white;
-		padding: 10rpx 10rpx 10rpx 20rpx;
-		// font-size: 20px;
-		border-radius: 20rpx 20rpx 0 0;
-		display: flex;
-		align-items: center;
 	}
 
 	.text {

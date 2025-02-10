@@ -1,15 +1,9 @@
 <template>
 	<view class="content" @click="jump(item)">
-		<view class="box">
-			<image class="image" mode="aspectFit"
-				src="https://www.nikon.com.cn/tmp/CN/4016499630/3760176746/3015334490/1708048789/2040840204/1666314630/3477152822.png">
-			</image>
-		</view>
+		<image class="image" mode="aspectFill" :src="item.imageList[0]">
+		</image>
 
-		<view class="col">
-			<view class="text">{{item.brand}}</view>
-			<view class="text">{{item.name}}</view>
-		</view>
+		<view class="text">{{item.brand}} {{item.name}}</view>
 	</view>
 </template>
 
@@ -35,22 +29,17 @@
 		height: 100%;
 		width: 100%;
 		align-items: center;
-		// background: red;
-
-		.box {
-			display: flex;
-			height: 100%;
-			width: 30%;
-			margin-left: 10rpx;
-			// background-color: red;
-		}
+		background: red;
 
 		.image {
 			height: 100%;
+			width: 100rpx;
+			
 		}
 
 		.text {
 			margin: 5rpx 0 5rpx 40rpx;
+			background-color: blue;
 		}
 	}
 </style>

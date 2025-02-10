@@ -98,7 +98,7 @@
 		.more {
 			height: 80rpx;
 			width: fit-content;
-			font-size: 16px;
+			font-size: 14px;
 			text-align: center;
 			text-wrap: nowrap;
 			display: flex;

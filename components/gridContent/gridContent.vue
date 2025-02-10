@@ -26,7 +26,7 @@
 		useCompareListStore
 	} from '@/store/compareList'
 	import {
-		AddOne,
+		AddOne
 	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
