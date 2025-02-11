@@ -17,6 +17,8 @@
 		</view>
 
 		<hotRank></hotRank>
+		
+		<rowSlider></rowSlider>
 
 		<tabList class="tabList" :arrs="categories" :change="change" :more="moreCategories"></tabList>
 

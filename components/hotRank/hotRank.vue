@@ -140,9 +140,13 @@
 	}
 
 	.text {
-		margin-left: 50rpx;
+		margin-left: 30rpx;
 		text-align: center;
-		font-weight: bold;
+		// font-weight: bold;
+		max-width: 380rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-wrap: nowrap;
 		// background: blue;
 	}
 

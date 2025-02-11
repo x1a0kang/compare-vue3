@@ -5,6 +5,7 @@
 			<view class="jump-button" @click="jump(item)">
 				<image class="image" :src="item.imageList[0]" mode="aspectFill"></image>
 				<view class="mask">{{item.brand}} {{item.name}}</view>
+				<!-- <view class="mask">{{item.name}}</view> -->
 				<!-- <view class="mask">{{item.price}}元</view> -->
 			</view>
 
@@ -55,7 +56,7 @@
 			border-radius: 10rpx;
 			overflow: hidden;
 			position: relative;
-			padding: 5rpx;
+			padding-bottom: 10rpx;
 			background-color: white;
 
 			.jump-button {

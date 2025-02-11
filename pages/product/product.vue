@@ -12,7 +12,7 @@
 
 			<picker class="orderPicker" mode="selector" :range="orderSpecList" range-key="text"
 				@change="orderPickerChange">
-				<view>排序：{{orderSpecList[indexOrder].text}}</view>
+				<view>排序：{{orderText}}</view>
 			</picker>
 		</view>
 
@@ -85,6 +85,7 @@
 		value: "",
 		order: ""
 	}]
+	let orderText = ref(orderSpecList[indexOrder].text)
 
 	// 选择的过滤条件
 	let conditionList = reactive({
@@ -183,6 +184,7 @@
 		let orderSpec = orderSpecList[indexOrder]
 		conditionList.orderKey = orderSpec.value
 		conditionList.order = orderSpec.order
+		orderText.value = orderSpecList[indexOrder].text
 		initParams()
 		searchByFilter()
 		// console.log("picker", e)
@@ -219,6 +221,20 @@
 			conditionList.value = [filterValue]
 			conditionList.valueText = [filterValueText]
 		}
+
+		let orderKey = uni.getStorageSync('orderKey')
+		let order = uni.getStorageSync('order')
+		uni.setStorageSync('orderKey', '')
+		uni.setStorageSync('order', '')
+		// 如果缓存中的key不为空就是跳转过来的
+		if (orderKey) {
+			// 获取排序字段的下标
+			indexOrder = orderSpecList.findIndex(item => item.value == orderKey)
+			orderText.value = orderSpecList[indexOrder].text
+			conditionList.orderKey = orderKey
+			conditionList.order = order
+		}
+
 		initParams()
 		searchByFilter()
 	})
