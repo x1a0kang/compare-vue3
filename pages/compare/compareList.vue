@@ -1,10 +1,10 @@
 <template>
-	<view class="layout pageBg">
+	<view class="layout">
 		<custom-nav-bar title="对比"></custom-nav-bar>
 
 		<!-- 待对比内容列表 -->
 		<checkbox-group @change="change">
-			<view class="line" v-for="item in compareList" :key="item.productId">
+			<view class="line shadow" v-for="item in compareList" :key="item.productId">
 				<checkbox class="checkbox" :value="item.productId" iconColor="$theme-color" style="transform:scale(0.9)"
 					:checked="item.checked">
 				</checkbox>
@@ -16,6 +16,11 @@
 				</view>
 			</view>
 		</checkbox-group>
+
+		<!-- 加载更多 -->
+		<view class="loadingLayout" v-show="!compareList.length">
+			<uni-load-more status="noMore"></uni-load-more>
+		</view>
 
 		<!-- 作为底部填充，否则bottom的按钮会遮挡内容 -->
 		<view class="fill"></view>
@@ -58,6 +63,9 @@
 	import {
 		apiPkCount
 	} from '@/api/api.js'
+	import {
+		onShow
+	} from '@dcloudio/uni-app'
 
 	const compareListStore = useCompareListStore()
 	// 对比列表
@@ -66,9 +74,10 @@
 	} = compareListStore
 
 	// 被选中产品的ID列表
+	const selectedCompareListStore = useSelectedCompareListStore()
 	const {
 		selectedCompareList
-	} = useSelectedCompareListStore()
+	} = selectedCompareListStore
 
 	// 是否全选
 	const allSelected = reactive({
@@ -77,6 +86,7 @@
 
 	function deleteOne(item) {
 		compareListStore.remove(item)
+		selectedCompareListStore.remove(item.productId)
 	}
 
 	function deleteAll() {
@@ -84,11 +94,11 @@
 	}
 
 	function compareAll() {
-		if (compareList.length > 1) {
+		if (selectedCompareList.length > 1) {
 			// 对比计数
 			let param = {}
 			param.idList = []
-			compareList.forEach(item => {
+			selectedCompareList.forEach(item => {
 				param.idList.push(item.productId)
 			})
 			apiPkCount(param)
@@ -148,12 +158,14 @@
 		console.log("全选", allSelected.checked)
 	}
 
-	init()
+	onShow(() => {
+		init()
+	})
 </script>
 
 <style lang="scss" scoped>
 	.fill {
-		height: 120rpx;
+		height: 100rpx;
 	}
 
 	.line {

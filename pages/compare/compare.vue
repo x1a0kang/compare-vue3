@@ -31,9 +31,9 @@
 					</view>
 				</view>
 			</view>
-			
+
 		</view>
-		
+
 	</view>
 </template>
 
@@ -42,8 +42,8 @@
 		useSpecListStore
 	} from '@/store/specList'
 	import {
-		useCompareListStore
-	} from '@/store/compareList'
+		useSelectedCompareListStore
+	} from '@/store/selectedCompareList'
 	import {
 		apiGetSpecList,
 		apiGetDetailList
@@ -56,8 +56,8 @@
 		"name": "详细参数"
 	}]
 	const {
-		compareList
-	} = useCompareListStore()
+		selectedCompareList
+	} = useSelectedCompareListStore()
 	const {
 		specList
 	} = useSpecListStore()
@@ -65,12 +65,9 @@
 
 	async function getList() {
 		let idList = []
-		compareList.forEach((item) => {
-			idList.push(item.productId)
-		})
 
 		let data = {}
-		data.idList = idList
+		data.idList = selectedCompareList
 		let res = await apiGetDetailList(data)
 		compareTempList.push(...res.data)
 	}
