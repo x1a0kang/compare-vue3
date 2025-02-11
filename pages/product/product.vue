@@ -310,4 +310,9 @@
 		text-align: center;
 		padding: 10rpx;
 	}
+	
+	// gridContent里的content
+	.content {
+		padding: 0 15rpx;
+	}
 </style>

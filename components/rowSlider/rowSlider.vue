@@ -62,7 +62,7 @@
 
 <style lang="scss" scoped>
 	.layout {
-		margin: 15rpx 15rpx 0 15rpx;
+		margin-top: 15rpx;
 		border-radius: 20rpx;
 		overflow: hidden;
 		// background: red;

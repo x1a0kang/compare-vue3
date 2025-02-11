@@ -17,10 +17,10 @@
 		</view>
 
 		<hotRank></hotRank>
-		
+
 		<rowSlider></rowSlider>
 
-		<tabList class="tabList" :arrs="categories" :change="change" :more="moreCategories"></tabList>
+		<tabList :arrs="categories" :change="change" :more="moreCategories"></tabList>
 
 		<gridContent :arrs="categoryProductList"></gridContent>
 		<!-- 加载更多 -->
@@ -159,6 +159,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.home {
+		padding: 0 15rpx;
+	}
+
 	.banner {
 		height: 400rpx;
 		background: white;
