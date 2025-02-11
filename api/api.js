@@ -66,9 +66,23 @@ export function apiGetOne(data = {}) {
 	})
 }
 
+export function apiGetOneDetail(data = {}) {
+	return request({
+		url: "/getOneDetail",
+		data
+	})
+}
+
 export function apiGetList(data = {}) {
 	return request({
 		url: "/getListById",
+		data
+	})
+}
+
+export function apiGetDetailList(data = {}) {
+	return request({
+		url: "/getDetailListById",
 		data
 	})
 }

@@ -41,7 +41,7 @@
 	} from '@/store/specList'
 	import {
 		apiGetSpecList,
-		apiGetOne,
+		apiGetOneDetail,
 		apiViewCount
 	} from '@/api/api.js'
 	import {
@@ -116,7 +116,7 @@
 	})
 
 	async function getOne() {
-		let res = await apiGetOne(param)
+		let res = await apiGetOneDetail(param)
 		detail.value = res.data
 	}
 </script>

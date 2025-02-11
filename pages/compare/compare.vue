@@ -46,7 +46,7 @@
 	} from '@/store/compareList'
 	import {
 		apiGetSpecList,
-		apiGetList
+		apiGetDetailList
 	} from '@/api/api.js'
 	import {
 		reactive
@@ -71,7 +71,7 @@
 
 		let data = {}
 		data.idList = idList
-		let res = await apiGetList(data)
+		let res = await apiGetDetailList(data)
 		compareTempList.push(...res.data)
 	}
 

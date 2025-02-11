@@ -175,9 +175,9 @@
 			flex-direction: column;
 			align-items: center;
 			height: 50rpx;
-			width: 50rpx;
+			// width: 50rpx;
 			right: 20rpx;
-			bottom: 20rpx;
+			// bottom: 20rpx;
 			justify-content: center;
 		}
 	}
@@ -204,7 +204,7 @@
 			text-align: center;
 			align-items: center;
 			justify-content: center;
-			margin-bottom: 5rpx;
+			// margin-bottom: 5rpx;
 		}
 
 		.selectAll {
