@@ -104,7 +104,7 @@
 		align-items: center;
 		position: relative;
 		background: white;
-		margin: 15rpx 15rpx 0 15rpx;
+		margin: 10rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
 		height: 150rpx;
 		padding: 0 30rpx;

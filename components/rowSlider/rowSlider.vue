@@ -104,7 +104,7 @@
 	.box {
 		display: flex;
 		flex-direction: column;
-		margin-top: 10rpx;
+		// margin-top: 10rpx;
 		border-radius: 20rpx;
 		padding-bottom: 10rpx;
 	}

@@ -7,7 +7,7 @@
 
 		<view class="col">
 			<view class="text">{{item.brand}} {{item.name}}</view>
-			<view class="text">{{item.publishDateStr}}上市</view>
+			<!-- <view class="text">{{item.publishDateStr}}上市</view> -->
 		</view>
 	</view>
 </template>

@@ -161,9 +161,9 @@
 		align-items: center;
 		position: relative;
 		background: white;
-		margin: 15rpx 15rpx 0 15rpx;
+		margin: 10rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
-		height: 150rpx;
+		height: 180rpx;
 
 		.checkbox {
 			margin-left: 10rpx;
@@ -174,11 +174,10 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			height: 50rpx;
-			// width: 50rpx;
+			height: 100%;
 			right: 20rpx;
-			// bottom: 20rpx;
 			justify-content: center;
+			// background-color: red;
 		}
 	}
 

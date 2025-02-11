@@ -1,11 +1,8 @@
 <template>
-	<view class="searchLayout pageBg">
-		<!-- 搜索框 -->
-		<view class="search">
-			<uni-search-bar class="uni-search-bar" @confirm="onSearch" @cancel="onClear" @clear="onClear" focus
-				placeholder="搜索" v-model="queryParams.keyword">
-			</uni-search-bar>
-		</view>
+	<view class="searchLayout">
+		<uni-search-bar class="uni-search-bar" @confirm="onSearch" @cancel="onClear" @clear="onClear" focus
+			placeholder="搜索" v-model="queryParams.keyword">
+		</uni-search-bar>
 
 		<!-- 没有搜索结果时 -->
 		<view v-if="!dataList.length || noSearch">
@@ -67,7 +64,7 @@
 	} from "@dcloudio/uni-app";
 	import {
 		apiSearch,
-		apiHotCategories
+		apiCategories
 	} from "@/api/api.js"
 	//查询参数
 	const queryParams = ref({
@@ -91,7 +88,7 @@
 	const dataList = ref([]);
 
 	async function getHotCategories() {
-		let res = await apiHotCategories()
+		let res = await apiCategories()
 		console.log("res:", res)
 		recommendList.value = res.data
 	}
@@ -179,7 +176,7 @@
 
 <style lang="scss" scoped>
 	.searchLayout {
-		.search {}
+		.uni-search-bar {}
 
 		.topTitle {
 			display: flex;
@@ -213,5 +210,9 @@
 				margin-top: 20rpx;
 			}
 		}
+	}
+
+	.content {
+		padding: 0 15rpx;
 	}
 </style>

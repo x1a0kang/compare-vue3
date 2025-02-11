@@ -150,6 +150,8 @@
 		width: fit-content;
 		display: flex;
 		flex-direction: column;
+		border-radius: 20rpx;
+		overflow: hidden;
 		// background-color: red;
 	}
 

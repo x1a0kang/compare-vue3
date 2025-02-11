@@ -21,7 +21,7 @@
 
 	const compareListStore = useCompareListStore()
 
-	function addToCompare(item) {
+	function add(item) {
 		compareListStore.add(item)
 	}
 </script>
@@ -33,7 +33,5 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		// background: $theme-color;
-		// border-radius: 10rpx;
 	}
 </style>

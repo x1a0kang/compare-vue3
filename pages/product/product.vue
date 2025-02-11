@@ -314,5 +314,6 @@
 	// gridContent里的content
 	.content {
 		padding: 0 15rpx;
+		margin-top: 5rpx;
 	}
 </style>
