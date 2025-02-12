@@ -5,7 +5,7 @@
 			{{item.name}}
 		</view>
 
-		<view v-if="more" class="more" @click="more">更多</view>
+		<view v-show="more" class="more" @click="more">全部分类</view>
 	</view>
 </template>
 
@@ -56,6 +56,7 @@
 			// border-radius: 20rpx 20rpx 0 0;
 			height: 80rpx;
 			display: flex;
+			text-align: center;
 			align-items: center;
 			position: relative;
 			text-wrap: nowrap;
@@ -98,12 +99,12 @@
 		.more {
 			height: 80rpx;
 			width: fit-content;
-			font-size: 14px;
+			font-size: 20px;
 			text-align: center;
-			text-wrap: nowrap;
 			display: flex;
 			align-items: center;
 			padding: 0 20rpx;
+			// background-color: red;
 		}
 	}
 </style>
