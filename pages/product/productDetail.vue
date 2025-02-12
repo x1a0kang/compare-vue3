@@ -17,6 +17,8 @@
 			</view>
 		</view>
 
+		<view class="fill"></view>
+
 		<!-- 底部功能栏 -->
 		<view class="bottom-bar">
 			<view class="toFunction" @click="toProduct()">
@@ -30,8 +32,9 @@
 			<button class="addButton" @click="add()">
 				加入对比
 			</button>
-			<view class="safe-area-inset-bottom"></view>
 		</view>
+
+		<view class="fillSafeArea"></view>
 	</view>
 </template>
 
@@ -163,6 +166,12 @@
 		}
 	}
 
+	.fill {
+		height: env(safe-area-inset-bottom);
+		width: 100vw;
+		// background: white;
+	}
+
 	.bottom-bar {
 		position: fixed;
 		left: 0;
@@ -171,7 +180,7 @@
 		display: flex;
 		padding: 5rpx 20rpx;
 		align-items: center;
-		background: rgb(255, 255, 255);
+		background: white;
 
 		.toFunction {
 			width: 80rpx;
@@ -186,11 +195,20 @@
 
 		.addButton {
 			width: 460rpx;
-			// background: linear-gradient(90deg, #ebb8e9, #bbebea, #d1ebaa);
 			background: $theme-color;
 			color: $theme-font-color;
 			border-radius: 50rpx;
 			margin-right: 0;
 		}
+	}
+
+	.fillSafeArea {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: env(safe-area-inset-bottom);
+		width: 100vw;
+		background: white;
 	}
 </style>

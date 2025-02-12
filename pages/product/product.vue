@@ -25,18 +25,21 @@
 			</view>
 		</view>
 
-		<!-- 进入页面加载图标 -->
-		<view class="loadingLayout" v-show="!arrs.length && !noData">
-			<uni-load-more status="loading"></uni-load-more>
+		<view class="product">
+			<!-- 进入页面加载图标 -->
+			<view class="loadingLayout" v-show="!arrs.length && !noData">
+				<uni-load-more status="loading"></uni-load-more>
+			</view>
+
+			<!-- 产品内容 -->
+			<gridContent :arrs="arrs"></gridContent>
+
+			<!-- 加载更多 -->
+			<view class="loadingLayout" v-show="arrs.length || noData">
+				<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
+			</view>
 		</view>
 
-		<!-- 产品内容 -->
-		<gridContent :arrs="arrs"></gridContent>
-
-		<!-- 加载更多 -->
-		<view class="loadingLayout" v-show="arrs.length || noData">
-			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
-		</view>
 	</view>
 </template>
 
@@ -290,30 +293,8 @@
 		}
 	}
 
-	.pop {
-		display: flex;
-		flex-direction: column
-	}
-
-	.popBox {
-		background: #fcfcfc;
-		width: 60vw;
-		display: flex;
-		border-radius: 10rpx;
-
-		.select {}
-	}
-
-	.confirm {
-		background: #fcfcfc;
-		border-radius: 5rpx;
-		text-align: center;
-		padding: 10rpx;
-	}
-	
-	// gridContent里的content
-	.content {
+	.product {
 		padding: 0 15rpx;
-		margin-top: 5rpx;
+		// display: flex;
 	}
 </style>

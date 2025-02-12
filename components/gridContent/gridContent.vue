@@ -45,7 +45,8 @@
 
 <style lang="scss" scoped>
 	.content {
-		// padding: 0 15rpx;
+		// margin-top: 5rpx;
+		// padding: 0 10rpx;
 		display: grid;
 		gap: 10rpx;
 		grid-template-columns: repeat(2, 1fr);
