@@ -1,6 +1,6 @@
 <template>
 	<view class="tabList">
-		<view class="tab" v-for="(item,index) in arrs" :class="activeTab === index ? 'tab-selected' : 'tab'"
+		<view class="tab" v-for="(item,index) in arrs" :key="item.name" :class="activeTab === index ? 'tab-selected' : 'tab'"
 			@click="onTab(index)">
 			{{item.name}}
 		</view>
@@ -99,7 +99,7 @@
 		.more {
 			height: 80rpx;
 			width: fit-content;
-			font-size: 20px;
+			font-size: 16px;
 			text-align: center;
 			display: flex;
 			align-items: center;

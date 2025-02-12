@@ -6,7 +6,7 @@
 		</view>
 
 		<view class="content">
-			<view class="box shadow" v-for="item in arrs" @click="jump(item)">
+			<view class="box shadow" v-for="item in arrs" :key="item.productId" @click="jump(item)">
 				<image class="image" mode="aspectFit" :src="item.imageList[0]">
 				</image>
 

@@ -27,7 +27,7 @@ export async function apiGetSpecList() {
 			url: "/getSpec"
 		})
 		specList.value = res.data
-		console.log("缓存内specList为空，请求接口")
+		// console.log("缓存内specList为空，请求接口")
 	}
 }
 

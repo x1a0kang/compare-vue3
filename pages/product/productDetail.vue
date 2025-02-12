@@ -9,7 +9,7 @@
 
 		<!-- 参数内容区 -->
 		<view class="content">
-			<view class="line" v-for="spec in specList.value">
+			<view class="line" v-for="spec in specList.value" :key="spec.value">
 				<view class="key"> {{spec.text}} ：</view>
 				<view class="value">
 					{{detail[spec.value]}}{{spec.unit}}

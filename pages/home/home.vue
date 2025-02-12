@@ -6,7 +6,7 @@
 		<view class="banner">
 			<swiper class="swiper" circular :autoplay="true" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
 				indicator-active-color="#000">
-				<swiper-item class="swiper-item" v-for="item in bannerList" @click="toProductDetail(item)">
+				<swiper-item class="swiper-item" v-for="item in bannerList" :key="item.productId" @click="toProductDetail(item)">
 					<image class="image" :src="item.url" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
