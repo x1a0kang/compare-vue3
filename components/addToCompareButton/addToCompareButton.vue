@@ -1,6 +1,6 @@
 <template>
-	<view class="add-button" @click="add(item)">
-		<add-one theme="outline" size="20" fill="#000" :strokeWidth="4" />
+	<view class="icon" @click.stop="add(item)">
+		<uni-icons custom-prefix="iconfont" type="icon-roundaddfill" size="24"></uni-icons>
 	</view>
 </template>
 
@@ -8,9 +8,6 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-	import {
-		AddOne
-	} from '@icon-park/vue-next'
 
 	defineProps({
 		item: {
@@ -27,11 +24,11 @@
 </script>
 
 <style lang="scss" scoped>
-	.add-button {
-		width: 50rpx;
-		height: 50rpx;
+	.icon {
+		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		// background-color: red;
 	}
 </style>

@@ -6,7 +6,7 @@
 		<view class="headBar">
 			<picker class="filterPicker" mode="multiSelector" :range="specListForPicker" range-key="text"
 				@columnchange="filterPickerColumnChange" @change="filterPickerChange">
-				<Filter theme="outline" size="20" fill="#000" :strokeWidth="3" />
+				<uni-icons custom-prefix="iconfont" type="icon-filter1" size="22"></uni-icons>
 				筛选
 			</picker>
 
@@ -60,9 +60,6 @@
 		onReachBottom,
 		onShow
 	} from '@dcloudio/uni-app'
-	import {
-		Filter
-	} from '@icon-park/vue-next'
 
 	// 筛选器picker的二维数组
 	const specListForPicker = [
@@ -258,11 +255,9 @@
 			width: 50%;
 			padding: 15rpx 10rpx;
 			text-align: center;
-			border-radius: 15rpx;
 			align-items: center;
-			gap: 5rpx;
 		}
-
+		
 		.orderPicker {
 			color: black;
 			// background: red;
@@ -276,6 +271,7 @@
 		padding: 0 20rpx;
 		gap: 15rpx;
 		margin-top: 5rpx;
+		margin-bottom: 10rpx;
 		// background: red;
 	}
 

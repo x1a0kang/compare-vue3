@@ -17,7 +17,9 @@
 
 				<view class="text">{{item.brand}} {{item.name}}</view>
 
-				<addToCompareButton :item="item"></addToCompareButton>
+				<view class="add-button">
+					<addToCompareButton :item="item"></addToCompareButton>
+				</view>
 			</view>
 		</view>
 
@@ -34,9 +36,6 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-	import {
-		AddOne
-	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
 
@@ -153,5 +152,6 @@
 	.add-button {
 		position: absolute;
 		right: 30rpx;
+		height: 100%;
 	}
 </style>

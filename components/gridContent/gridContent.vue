@@ -9,7 +9,9 @@
 				<!-- <view class="mask">{{item.price}}元</view> -->
 			</view>
 
-			<addToCompareButton :item="item"></addToCompareButton>
+			<view class="add-button">
+				<addToCompareButton :item="item"></addToCompareButton>
+			</view>
 		</view>
 	</view>
 </template>
@@ -25,9 +27,6 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-	import {
-		AddOne
-	} from '@icon-park/vue-next'
 
 	const compareListStore = useCompareListStore()
 

@@ -11,11 +11,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-shop:before {
+  content: "\e676";
+}
+
+.icon-shopfill:before {
+  content: "\e697";
+}
+
+.icon-deletefill:before {
+  content: "\e6a6";
+}
+
+.icon-delete:before {
+  content: "\e6b4";
+}
+
+.icon-roundaddfill:before {
+  content: "\e6d8";
+}
+
+.icon-roundadd:before {
+  content: "\e6d9";
+}
+
 .icon-versus:before {
   content: "\e606";
 }
 
-.icon-icon_pk:before {
-  content: "\e632";
+.icon-filter1:before {
+  content: "\e69c";
 }
 

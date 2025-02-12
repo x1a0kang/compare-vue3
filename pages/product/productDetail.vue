@@ -22,7 +22,7 @@
 		<!-- 底部功能栏 -->
 		<view class="bottom-bar">
 			<view class="toFunction" @click="toProduct()">
-				<Commodity theme="outline" size="20" fill="#000" :strokeWidth="3" />
+				<uni-icons custom-prefix="iconfont" type="icon-shopfill" size="22"></uni-icons>
 				产品库
 			</view>
 			<view class="toFunction" @click="toCompare()">
@@ -59,9 +59,6 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-	import {
-		Commodity
-	} from '@icon-park/vue-next'
 
 	const tabs = [{
 		"name": "详细参数"

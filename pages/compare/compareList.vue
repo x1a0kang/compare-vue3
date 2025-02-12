@@ -15,7 +15,7 @@
 				<view class="text">{{item.brand}} {{item.name}}</view>
 
 				<view class="delete" @click="deleteOne(item)">
-					<Delete theme="outline" size="20" fill="#000" :strokeWidth="3" />
+					<uni-icons custom-prefix="iconfont" type="icon-delete" size="22"></uni-icons>
 				</view>
 			</view>
 		</checkbox-group>
@@ -42,7 +42,7 @@
 			<button class="compareAll" @click="compareAll()">开始对比</button>
 
 			<view class="deleteAll" @click="deleteAll()">
-				<clear theme="outline" size="20" fill="#000" :strokeWidth="3" />
+				<uni-icons custom-prefix="iconfont" type="icon-deletefill" size="20"></uni-icons>
 				清空
 			</view>
 		</view>
@@ -59,10 +59,6 @@
 	import {
 		useSelectedCompareListStore
 	} from '@/store/selectedCompareList'
-	import {
-		Delete,
-		Clear
-	} from '@icon-park/vue-next'
 	import {
 		apiPkCount
 	} from '@/api/api.js'

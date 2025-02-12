@@ -13,7 +13,9 @@
 
 			<view class="text">{{item.brand}} {{item.name}}</view>
 
-			<addToCompareButton :item="item"></addToCompareButton>
+			<view class="add-button">
+				<addToCompareButton :item="item"></addToCompareButton>
+			</view>
 		</view>
 
 		<!-- 加载更多 -->
@@ -33,9 +35,6 @@
 	import {
 		useCompareListStore
 	} from '@/store/compareList'
-	import {
-		AddOne
-	} from '@icon-park/vue-next'
 	import {
 		onReachBottom
 	} from '@dcloudio/uni-app'
@@ -142,5 +141,6 @@
 	.add-button {
 		position: absolute;
 		right: 20rpx;
+		height: 100%;
 	}
 </style>
