@@ -137,8 +137,7 @@
 	.text {
 		margin-left: 30rpx;
 		text-align: center;
-		// font-weight: bold;
-		max-width: 380rpx;
+		min-width: 40%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		text-wrap: nowrap;
