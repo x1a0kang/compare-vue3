@@ -9,12 +9,12 @@
 					:checked="item.checked">
 				</checkbox>
 
-				<image class="image" mode="aspectFill" :src="item.imageList[0]">
+				<image class="image" mode="aspectFill" :src="item.imageList[0]" @click="jump(item)">
 				</image>
 
-				<view class="text">{{item.brand}} {{item.name}}</view>
+				<view class="text" @click="jump(item)">{{item.brand}} {{item.name}}</view>
 
-				<view class="delete" @click="deleteOne(item)">
+				<view class="delete" @click.stop="deleteOne(item)">
 					<uni-icons custom-prefix="iconfont" type="icon-delete" size="22"></uni-icons>
 				</view>
 			</view>
@@ -82,6 +82,13 @@
 	const allSelected = reactive({
 		checked: true
 	})
+
+	function jump(item) {
+		uni.navigateTo({
+			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
+		});
+		console.log("跳转到详情页", item.name)
+	}
 
 	function deleteOne(item) {
 		compareListStore.remove(item)
@@ -186,7 +193,7 @@
 			margin-left: 30rpx;
 			text-align: center;
 			// font-weight: bold;
-			max-width: 380rpx;
+			min-width: 40%;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-wrap: nowrap;
@@ -194,7 +201,7 @@
 		}
 
 		.checkbox {
-			margin-left: 10rpx;
+			margin-left: 20rpx;
 		}
 
 		.delete {

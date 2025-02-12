@@ -5,7 +5,7 @@
 			<view class="update">{{updateTimeStr}}更新</view>
 		</view>
 
-		<view class="box shadow" v-for="(item,index) in hotRankList">
+		<view class="box shadow" v-for="(item,index) in hotRankList" @click="jump(item)">
 			<view class="num">{{index+ 1}} </view>
 
 			<image class="image" mode="aspectFill" :src="item.imageList[0]">
@@ -57,6 +57,13 @@
 		if (param.pageSize > res.data.length) {
 			noData.value = true
 		}
+	}
+	
+	function jump(item) {
+		uni.navigateTo({
+			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
+		});
+		console.log("跳转到详情页", item.name)
 	}
 
 	function add(item) {
