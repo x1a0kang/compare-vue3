@@ -8,7 +8,10 @@
 		<view class="box shadow" v-for="(item,index) in hotRankList">
 			<view class="num">{{index+ 1}} </view>
 
-			<productPreview :item="item"></productPreview>
+			<image class="image" mode="aspectFill" :src="item.imageList[0]">
+			</image>
+
+			<view class="text">{{item.brand}} {{item.name}}</view>
 
 			<addToCompareButton :item="item"></addToCompareButton>
 		</view>
@@ -67,7 +70,7 @@
 			return
 		}
 		// 最多展示30个
-		if(param.page == 3) {
+		if (param.page == 3) {
 			noData.value = true
 			return
 		}
@@ -117,7 +120,23 @@
 		font-style: italic;
 		width: 50rpx;
 		text-align: center;
-		margin-right: 30rpx;
+	}
+
+	.image {
+		margin-left: 30rpx;
+		height: 100%;
+		width: 180rpx;
+	}
+
+	.text {
+		margin-left: 30rpx;
+		text-align: center;
+		// font-weight: bold;
+		max-width: 380rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-wrap: nowrap;
+		// background: blue;
 	}
 
 	.add-button {

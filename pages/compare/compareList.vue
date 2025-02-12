@@ -9,7 +9,10 @@
 					:checked="item.checked">
 				</checkbox>
 
-				<productPreview :item="item"></productPreview>
+				<image class="image" mode="aspectFill" :src="item.imageList[0]">
+				</image>
+
+				<view class="text">{{item.brand}} {{item.name}}</view>
 
 				<view class="delete" @click="deleteOne(item)">
 					<Delete theme="outline" size="20" fill="#000" :strokeWidth="3" />
@@ -176,6 +179,23 @@
 		margin: 10rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
 		height: 180rpx;
+
+		.image {
+			margin-left: 30rpx;
+			height: 100%;
+			width: 180rpx;
+		}
+
+		.text {
+			margin-left: 30rpx;
+			text-align: center;
+			// font-weight: bold;
+			max-width: 380rpx;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-wrap: nowrap;
+			// background: blue;
+		}
 
 		.checkbox {
 			margin-left: 10rpx;
