@@ -38,7 +38,7 @@
 		</view>
 
 		<!-- 有搜索结果时 -->
-		<view v-else>
+		<view class="content" v-else>
 			<gridContent :arrs="dataList"></gridContent>
 
 			<!-- 触底加载 -->
