@@ -5,7 +5,7 @@
 			<mySwiper :imageList="detail.imageList"></mySwiper>
 		</view>
 
-		<tabList :arrs="tabs"></tabList>
+		<tabList :arrs="tabs" :showMore="false"></tabList>
 
 		<!-- 参数内容区 -->
 		<view class="content">
@@ -23,7 +23,7 @@
 		<view class="bottom-bar">
 			<view class="toFunction" @click="toProduct()">
 				<uni-icons custom-prefix="iconfont" type="icon-shopfill" size="22"></uni-icons>
-				产品库
+				鞋库
 			</view>
 			<view class="toFunction" @click="toCompare()">
 				<uni-icons custom-prefix="iconfont" type="icon-versus" size="20"></uni-icons>

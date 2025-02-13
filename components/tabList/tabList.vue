@@ -1,11 +1,11 @@
 <template>
 	<view class="tabList">
-		<view class="tab" v-for="(item,index) in arrs" :key="item.name" :class="activeTab === index ? 'tab-selected' : 'tab'"
-			@click="onTab(index)">
+		<view class="tab" v-for="(item,index) in arrs" :key="item.name"
+			:class="activeTab === index ? 'tab-selected' : 'tab'" @click="onTab(index)">
 			{{item.name}}
 		</view>
 
-		<view v-show="more" class="more" @click="more">全部分类</view>
+		<view v-if="showMore" class="more" @click="more">全部分类</view>
 	</view>
 </template>
 
@@ -24,6 +24,10 @@
 		},
 		more: {
 			type: Function
+		},
+		showMore: {
+			type: Boolean,
+			default: false
 		}
 	})
 

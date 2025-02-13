@@ -20,7 +20,7 @@
 
 		<rowSlider></rowSlider>
 
-		<tabList :arrs="categories" :change="change" :more="moreCategories"></tabList>
+		<tabList :arrs="categories" :change="change" :more="moreCategories" :showMore="true"></tabList>
 
 		<gridContent :arrs="categoryProductList"></gridContent>
 		<!-- 加载更多 -->

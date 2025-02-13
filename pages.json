@@ -80,7 +80,7 @@
 			},
 			{
 				"pagePath": "pages/product/product",
-				"text": "产品",
+				"text": "鞋库",
 				"iconPath": "/static/commodity.png",
 				"selectedIconPath": "/static/s_commodity.png"
 			},
