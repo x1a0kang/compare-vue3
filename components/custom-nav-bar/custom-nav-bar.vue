@@ -36,16 +36,17 @@
 	}
 
 	.navbar {
-		background: $theme-color;
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		z-index: 10;
+		background: white;
 
 		.statusBar {}
 
 		.title-bar {
+			background: $theme-color;
 			display: flex;
 			align-items: center;
 			padding: 0 30rpx;

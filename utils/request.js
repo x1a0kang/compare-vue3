@@ -1,4 +1,5 @@
 let BASE_URL = 'http://124.222.168.94:8000/shoe'
+// let BASE_URL = 'https://shoes-relativity.online/shoe'
 
 if (process.env.NODE_ENV === 'production') {
 	BASE_URL = 'https://shoes-relativity.online/shoe'
