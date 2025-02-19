@@ -35,6 +35,9 @@
 
 	function onTab(index) {
 		activeTab.value = index
+		if(props.change === undefined) {
+			return
+		}
 		props.change(index)
 	}
 </script>
