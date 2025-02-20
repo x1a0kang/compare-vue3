@@ -57,6 +57,7 @@
 		.image {
 			width: 100%;
 			height: 350rpx;
+			border-radius: 20rpx;
 			// background-color: red;
 		}
 	}
