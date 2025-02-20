@@ -78,7 +78,7 @@
 			box-shadow: 20rpx 20rpx 0 0 #fff, -20rpx 20rpx 0 0 #fff;
 			text-decoration: underline;
 			text-decoration-color: $theme-color;
-			text-underline-offset: 15rpx;
+			text-underline-offset: 20rpx;
 		}
 
 		.tab-selected::before {

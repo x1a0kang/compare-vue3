@@ -6,7 +6,8 @@
 		<view class="banner">
 			<swiper class="swiper" circular :autoplay="true" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
 				indicator-active-color="#000">
-				<swiper-item class="swiper-item" v-for="item in bannerList" :key="item.productId" @click="toProductDetail(item)">
+				<swiper-item class="swiper-item" v-for="item in bannerList" :key="item.productId"
+					@click="toProductDetail(item)">
 					<image class="image" :src="item.url" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
@@ -22,7 +23,10 @@
 
 		<tabList :arrs="categories" :change="change" :more="moreCategories" :showMore="true"></tabList>
 
-		<gridContent :arrs="categoryProductList"></gridContent>
+		<view class="content">
+			<gridContent :arrs="categoryProductList"></gridContent>
+		</view>
+
 		<!-- 加载更多 -->
 		<view class="loadingLayout" v-show="categoryProductList.length || noData">
 			<uni-load-more :status="noData?'noMore':'loading'"></uni-load-more>
@@ -202,5 +206,9 @@
 
 	.more {
 		font-size: 14px;
+	}
+	
+	.content {
+		margin-top: 10rpx;
 	}
 </style>
