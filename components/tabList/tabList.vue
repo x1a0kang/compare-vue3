@@ -111,6 +111,7 @@
 			display: flex;
 			align-items: center;
 			padding: 0 20rpx;
+			text-wrap: nowrap;
 			// background-color: red;
 		}
 	}

@@ -38,12 +38,13 @@
 <style lang="scss" scoped>
 	.content {
 		display: grid;
-		gap: 15rpx;
+		gap: 10rpx;
 		grid-template-columns: repeat(2, 1fr);
-		margin: 10rpx 15rpx 0 15rpx;
+		// margin: 10rpx 15rpx 10rpx 15rpx;
+		padding: 10rpx 15rpx 10rpx 15rpx;
 
 		.box {
-			// background-color: red;
+			background-color: white;
 			border-radius: 20rpx;
 			padding-bottom: 10rpx;
 		}

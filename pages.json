@@ -50,7 +50,7 @@
 			"path" : "pages/categories/categories",
 			"style" : 
 			{
-				"navigationBarTitleText" : "分类"
+				"navigationBarTitleText" : "全部分类"
 			}
 		},
 		{
