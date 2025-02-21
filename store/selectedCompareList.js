@@ -19,9 +19,15 @@ export const useSelectedCompareListStore = defineStore('selectedCompareList', ()
 			uni.setStorageSync("selectedCompareList", selectedCompareList)
 		}
 	}
+	
+	function removeAll() {
+		selectedCompareList.length = 0
+		uni.setStorageSync("selectedCompareList", selectedCompareList)
+	}
 
 	return {
 		selectedCompareList,
-		remove
+		remove,
+		removeAll
 	}
 })

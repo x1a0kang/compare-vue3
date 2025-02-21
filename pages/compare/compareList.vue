@@ -93,10 +93,14 @@
 	function deleteOne(item) {
 		compareListStore.remove(item)
 		selectedCompareListStore.remove(item.productId)
+		console.log("compareList数量", compareList.length)
+		console.log("selectedCompareList数量", selectedCompareList.length)
 	}
 
 	function deleteAll() {
 		compareListStore.removeAll()
+		selectedCompareListStore.removeAll()
+		console.log("selectedCompareList数量", selectedCompareList.length)
 	}
 
 	function compareAll() {
@@ -117,15 +121,19 @@
 				title: "小于两件产品"
 			})
 		}
+		console.log("selectedCompareList数量", selectedCompareList.length)
 	}
 
 	// 进入对比页面默认全选
 	function init() {
+		// 每次都要把已选列表清空，否则每次加载会double
+		selectedCompareListStore.removeAll()
 		compareList.forEach((item) => {
 			item.checked = true
 			selectedCompareList.push(item.productId)
 		})
 		allSelected.checked = true
+		console.log("selectedCompareList数量", selectedCompareList.length)
 	}
 
 	function change(e) {
