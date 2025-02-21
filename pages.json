@@ -11,6 +11,9 @@
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#010101",
+				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},
@@ -18,6 +21,9 @@
 			"path": "pages/product/product",
 			"style": {
 				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#010101",
+				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},
@@ -31,6 +37,9 @@
 			"path": "pages/compare/compareList",
 			"style": {
 				"navigationBarTitleText": "",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#010101",
+				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},
@@ -47,25 +56,22 @@
 			}
 		},
 		{
-			"path" : "pages/categories/categories",
-			"style" : 
-			{
-				"navigationBarTitleText" : "全部分类"
+			"path": "pages/categories/categories",
+			"style": {
+				"navigationBarTitleText": "全部分类"
 			}
 		},
 		{
-			"path" : "pages/hotRankAll/hotRankAll",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/hotRankAll/hotRankAll",
+			"style": {
+				"navigationBarTitleText": "热门跑鞋"
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#010101",
-		"backgroundColor": "#010101"
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
 	},
 	"tabBar": {
 		"color": "#707070",

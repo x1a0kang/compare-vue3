@@ -22,7 +22,7 @@
 			<!-- 热门搜索 -->
 			<view class="recommend">
 				<view class="topTitle">
-					<view class="text">热门搜索</view>
+					<view class="text">热门分类</view>
 				</view>
 				<view class="tabs">
 					<view class="tab" v-for="tab in recommendList" :key="tab.name" @click="clickTab(tab.name)">
@@ -192,6 +192,10 @@
 
 		.recommend {
 			padding: 30rpx;
+		}
+		
+		.text{
+			color: black;
 		}
 
 		.tabs {
