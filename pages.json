@@ -62,10 +62,10 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#ffffff",
-		"backgroundColor": "#ffffff"
+		"navigationBarBackgroundColor": "#010101",
+		"backgroundColor": "#010101"
 	},
 	"tabBar": {
 		"color": "#707070",
@@ -92,5 +92,6 @@
 			}
 		]
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"lazyCodeLoading": "requiredComponents"
 }

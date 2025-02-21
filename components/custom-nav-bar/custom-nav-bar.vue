@@ -32,7 +32,7 @@
 
 <style lang="scss" scoped>
 	.fill {
-		background-color: white;
+		background-color: $theme-color;
 	}
 
 	.navbar {
@@ -41,7 +41,8 @@
 		left: 0;
 		width: 100%;
 		z-index: 10;
-		background: white;
+		background: $theme-color;
+		color: white;
 
 		.statusBar {}
 
