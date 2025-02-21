@@ -235,6 +235,7 @@
 			position: absolute;
 			right: 0;
 			left: 0;
+			bottom: 2rpx;
 			text-align: center;
 			align-items: center;
 			justify-content: center;
