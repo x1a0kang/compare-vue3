@@ -128,7 +128,7 @@
 	}
 
 	.image {
-		height: 400rpx;
+		height: 580rpx;
 		background: white;
 		// padding-top: 5rpx;
 		border-radius: 20rpx;

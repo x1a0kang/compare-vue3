@@ -12,8 +12,6 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor": "#010101",
-				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},
@@ -22,8 +20,6 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor": "#010101",
-				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},
@@ -38,8 +34,6 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationBarTextStyle": "white",
-				"navigationBarBackgroundColor": "#010101",
-				"backgroundColor": "#010101",
 				"navigationStyle": "custom"
 			}
 		},

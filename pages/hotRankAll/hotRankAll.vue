@@ -116,7 +116,7 @@
 		background: white;
 		margin: 10rpx 15rpx 0 15rpx;
 		border-radius: 20rpx;
-		height: 150rpx;
+		height: 180rpx;
 		padding: 0 30rpx;
 	}
 
