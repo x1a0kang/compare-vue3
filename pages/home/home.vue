@@ -168,14 +168,13 @@
 	}
 
 	.banner {
-		height: 400rpx;
+		height: 500rpx;
 		background: white;
 		border-radius: 20rpx;
 	}
 
 	.swiper {
 		height: 100%;
-		// background-color: red;
 	}
 
 	.swiper-item {
@@ -186,6 +185,7 @@
 
 	.image {
 		height: 100%;
+		width: 100%;
 	}
 
 	.brand {
@@ -207,7 +207,7 @@
 	.more {
 		font-size: 14px;
 	}
-	
+
 	.content {
 		margin-top: 10rpx;
 	}

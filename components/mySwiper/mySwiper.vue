@@ -38,8 +38,8 @@
 
 <style lang="scss" scoped>
 	.box {
-		padding-top: 10rpx;
 		height: 100%;
+		width: 100%;
 		position: relative;
 		background: white;
 		border-radius: 20rpx;
@@ -47,6 +47,7 @@
 
 	.swiper {
 		height: 100%;
+		width: 100%;
 	}
 
 	.swiper-item {
@@ -54,10 +55,13 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 20rpx;
+		height: 100%;
+		width: 100%;
 	}
 
 	.image {
 		height: 100%;
+		width: 100%;
 	}
 
 	.count {

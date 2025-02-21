@@ -56,7 +56,7 @@
             "minified" : true
         },
         "usingComponents" : true,
-		"lazyCodeLoading": "requiredComponents"
+        "lazyCodeLoading" : "requiredComponents"
     },
     "mp-alipay" : {
         "usingComponents" : true
