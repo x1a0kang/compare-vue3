@@ -4,7 +4,7 @@
 		<view class="head">
 			<view v-for="item in compareTempList" :key="item.productId">
 				<view class="title">
-					<view>{{item.brand}} {{item.name}}</view>
+					<view>{{item.name}}</view>
 					<view class="icon" @click="deleteTemp(item.productId)">
 						<uni-icons type="closeempty" color="#fff"></uni-icons>
 					</view>
@@ -98,7 +98,7 @@
 		display: flex;
 		flex-direction: column;
 		overflow-x: auto;
-		padding: 0 15rpx 15rpx 15rpx;
+		padding: 0 10rpx 15rpx 10rpx;
 		min-height: 100vh;
 	}
 
@@ -109,7 +109,7 @@
 
 	.title {
 		height: 100%;
-		width: 47vw;
+		width: 48vw;
 		text-align: center;
 		font-size: 22px;
 		font-weight: bold;
@@ -118,6 +118,7 @@
 		background: $theme-color;
 		padding: 20rpx 30rpx;
 		position: relative;
+		margin-top: 1rpx;
 		margin-right: 10rpx;
 		display: flex;
 		align-items: center;
@@ -132,11 +133,11 @@
 
 	.image {
 		display: flex;
-		margin-top: 20rpx;
+		margin-top: 15rpx;
 	}
 
 	.swiper {
-		width: 47vw;
+		width: 48vw;
 		height: 350rpx;
 		background: #fff;
 		border-radius: 20rpx;
@@ -163,7 +164,7 @@
 		flex-direction: column;
 		align-items: center;
 		// margin-right: 10rpx;
-		width: 47vw;
+		width: 48vw;
 		height: 100%;
 		// background-color: blue;
 		text-align: center;

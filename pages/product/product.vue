@@ -201,6 +201,24 @@
 	}
 
 	onShow(() => {
+		let orderKey = uni.getStorageSync('orderKey')
+		let order = uni.getStorageSync('order')
+		uni.setStorageSync('orderKey', '')
+		uni.setStorageSync('order', '')
+		// 如果缓存中的key不为空就是跳转过来的
+		if (orderKey) {
+			// 先清空所有筛选字段
+			conditionList.key.length = 0
+			conditionList.keyText.length = 0
+			conditionList.value.length = 0
+			conditionList.valueText.length = 0
+			// 获取排序字段的下标
+			indexOrder = orderSpecList.findIndex(item => item.value == orderKey)
+			orderText.value = orderSpecList[indexOrder].text
+			conditionList.orderKey = orderKey
+			conditionList.order = order
+		}
+
 		let filterKey = uni.getStorageSync('filterKey')
 		let filterValue = uni.getStorageSync('filterValue')
 		let filterKeyText = uni.getStorageSync('filterKeyText')
@@ -220,19 +238,6 @@
 			conditionList.keyText = [filterKeyText]
 			conditionList.value = [filterValue]
 			conditionList.valueText = [filterValueText]
-		}
-
-		let orderKey = uni.getStorageSync('orderKey')
-		let order = uni.getStorageSync('order')
-		uni.setStorageSync('orderKey', '')
-		uni.setStorageSync('order', '')
-		// 如果缓存中的key不为空就是跳转过来的
-		if (orderKey) {
-			// 获取排序字段的下标
-			indexOrder = orderSpecList.findIndex(item => item.value == orderKey)
-			orderText.value = orderSpecList[indexOrder].text
-			conditionList.orderKey = orderKey
-			conditionList.order = order
 		}
 
 		initParams()
@@ -257,7 +262,7 @@
 			text-align: center;
 			align-items: center;
 		}
-		
+
 		.orderPicker {
 			color: black;
 			// background: red;

@@ -58,7 +58,7 @@
 			noData.value = true
 		}
 	}
-	
+
 	function jump(item) {
 		uni.navigateTo({
 			url: '/pages/product/productDetail?id=' + item.productId + '&name=' + item.name
@@ -96,6 +96,7 @@
 		color: white;
 		padding: 10rpx 0;
 		border-radius: 20rpx 20rpx 0 0;
+		margin-top: 1rpx;
 	}
 
 	.title {
