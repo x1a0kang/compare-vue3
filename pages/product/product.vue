@@ -58,7 +58,8 @@
 	} from "@/api/api.js"
 	import {
 		onReachBottom,
-		onShow
+		onShow,
+		onLoad
 	} from '@dcloudio/uni-app'
 
 	// 筛选器picker的二维数组
@@ -125,10 +126,6 @@
 			noData.value = true
 		}
 	}
-
-	getSpecList()
-	getOrderSpec()
-	// searchByFilter()
 
 	onReachBottom(() => {
 		// console.log("触底了")
@@ -203,48 +200,55 @@
 		searchByFilter()
 	}
 
+	onLoad(() => {
+		getSpecList()
+		getOrderSpec()
+	})
+
 	onShow(() => {
-		let orderKey = uni.getStorageSync('orderKey')
-		let order = uni.getStorageSync('order')
-		uni.setStorageSync('orderKey', '')
-		uni.setStorageSync('order', '')
-		// 如果缓存中的key不为空就是跳转过来的
-		if (orderKey) {
-			// 先清空所有筛选字段
-			conditionList.key.length = 0
-			conditionList.keyText.length = 0
-			conditionList.value.length = 0
-			conditionList.valueText.length = 0
-			// 获取排序字段的下标
-			indexOrder = orderSpecList.findIndex(item => item.value == orderKey)
-			orderText.value = orderSpecList[indexOrder].text
-			conditionList.orderKey = orderKey
-			conditionList.order = order
-		}
+		setTimeout(() => {
+			let orderKey = uni.getStorageSync('orderKey')
+			let order = uni.getStorageSync('order')
+			uni.setStorageSync('orderKey', '')
+			uni.setStorageSync('order', '')
+			// 如果缓存中的key不为空就是跳转过来的
+			if (orderKey) {
+				// 先清空所有筛选字段
+				conditionList.key.length = 0
+				conditionList.keyText.length = 0
+				conditionList.value.length = 0
+				conditionList.valueText.length = 0
+				// 获取排序字段的下标
+				indexOrder = orderSpecList.findIndex(item => item.value == orderKey && item.order === order)
+				orderText.value = orderSpecList[indexOrder].text
+				conditionList.orderKey = orderKey
+				conditionList.order = order
+			}
 
-		let filterKey = uni.getStorageSync('filterKey')
-		let filterValue = uni.getStorageSync('filterValue')
-		let filterKeyText = uni.getStorageSync('filterKeyText')
-		let filterValueText = uni.getStorageSync('filterValueText')
+			let filterKey = uni.getStorageSync('filterKey')
+			let filterValue = uni.getStorageSync('filterValue')
+			let filterKeyText = uni.getStorageSync('filterKeyText')
+			let filterValueText = uni.getStorageSync('filterValueText')
 
-		// 如果缓存中的key不为空就是跳转过来的
-		if (filterKey) {
-			console.log("filterKey + filterValue", filterKey, filterValue)
-			// 重置跳转条件
-			uni.setStorageSync('filterKey', '')
-			uni.setStorageSync('filterValue', '')
-			uni.setStorageSync('filterKeyText', '')
-			uni.setStorageSync('filterValueText', '')
+			// 如果缓存中的key不为空就是跳转过来的
+			if (filterKey) {
+				console.log("filterKey + filterValue", filterKey, filterValue)
+				// 重置跳转条件
+				uni.setStorageSync('filterKey', '')
+				uni.setStorageSync('filterValue', '')
+				uni.setStorageSync('filterKeyText', '')
+				uni.setStorageSync('filterValueText', '')
 
-			// 清空原条件列表后加入
-			conditionList.key = [filterKey]
-			conditionList.keyText = [filterKeyText]
-			conditionList.value = [filterValue]
-			conditionList.valueText = [filterValueText]
-		}
+				// 清空原条件列表后加入
+				conditionList.key = [filterKey]
+				conditionList.keyText = [filterKeyText]
+				conditionList.value = [filterValue]
+				conditionList.valueText = [filterValueText]
+			}
 
-		initParams()
-		searchByFilter()
+			initParams()
+			searchByFilter()
+		}, 35)
 	})
 </script>
 

@@ -123,26 +123,6 @@
 		// console.log("调用了")
 	}
 
-	function moreHotProduct() {
-		uni.setStorageSync('filterKey', 'brand')
-		uni.setStorageSync('filterKeyText', '品牌')
-		uni.setStorageSync('filterValue', '佳能')
-		uni.setStorageSync('filterValueText', '佳能')
-		uni.switchTab({
-			url: '/pages/product/product'
-		});
-	}
-
-	function moreNewProduct() {
-		uni.setStorageSync('filterKey', 'brand')
-		uni.setStorageSync('filterKeyText', '品牌')
-		uni.setStorageSync('filterValue', '索尼')
-		uni.setStorageSync('filterValueText', '索尼')
-		uni.switchTab({
-			url: '/pages/product/product'
-		});
-	}
-
 	function moreCategories() {
 		uni.navigateTo({
 			url: "/pages/categories/categories"
