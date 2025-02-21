@@ -62,10 +62,10 @@
 	} from '@dcloudio/uni-app'
 
 	// 筛选器picker的二维数组
-	const specListForPicker = [
+	const specListForPicker = reactive([
 		[],
 		[]
-	]
+	])
 
 	// 产品列表
 	const arrs = ref([])
@@ -150,10 +150,13 @@
 			column,
 			value
 		} = e.detail
+		// 第一页变化，改变第二列
 		if (column == 0) {
 			specListForPicker[1] = specListForPicker[0][value].optionList
 		}
-		// console.log("detail", column, value)
+		// this.$forceUpdate()
+		console.log("detail", column, value)
+		console.log("specListForPicker", specListForPicker[1])
 	}
 
 	function filterPickerChange(e) {
