@@ -50,24 +50,23 @@
 	.tabList {
 		display: flex;
 		margin-top: 15rpx;
+		height: 80rpx;
 		background: $theme-color;
 		color: white;
 		border-radius: 20rpx 20rpx 0 0;
 		font-size: 20px;
 		overflow: hidden;
 		overflow-x: scroll;
-		// gap: 20rpx;
 
 		.tab {
 			padding: 10rpx 30rpx;
-			// border-radius: 20rpx 20rpx 0 0;
-			height: 80rpx;
+			height: 100%;
 			display: flex;
 			text-align: center;
 			align-items: center;
 			position: relative;
 			text-wrap: nowrap;
-			// background-color: blue;
+			min-width: fit-content;
 		}
 
 		.tab-selected {
@@ -84,9 +83,9 @@
 		.tab-selected::before {
 			content: '';
 			position: absolute;
-			left: -20rpx;
+			left: -21rpx;
 			bottom: 0;
-			width: 20rpx;
+			width: 21rpx;
 			height: 100%;
 			background: $theme-color; // 修改
 			border-radius: 0 0 20rpx 0;
@@ -95,9 +94,9 @@
 		.tab-selected::after {
 			content: '';
 			position: absolute;
-			right: -20rpx;
+			right: -21rpx;
 			bottom: 0;
-			width: 20rpx;
+			width: 21rpx;
 			height: 100%;
 			background: $theme-color; // 修改
 			border-radius: 0 0 0 20rpx;
@@ -105,7 +104,7 @@
 
 		.more {
 			height: 80rpx;
-			width: fit-content;
+			min-width: fit-content;
 			font-size: 16px;
 			text-align: center;
 			display: flex;
