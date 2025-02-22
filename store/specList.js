@@ -8,7 +8,7 @@ import {
 export const useSpecListStore = defineStore('specList', () => {
 	const specList = reactive([])
 
-	const headSpecName = ["brand", "position", "price", "publishDateStr"]
+	const headSpecName = ["brand", "position", "price"]
 	const contentSpecList = reactive([])
 	const headSpecList = reactive([])
 

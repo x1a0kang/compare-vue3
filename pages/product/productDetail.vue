@@ -177,8 +177,6 @@
 
 	.title {
 		margin-bottom: 5rpx;
-		// color: #555555;
-		font-size: 14px;
 	}
 
 	.text {
