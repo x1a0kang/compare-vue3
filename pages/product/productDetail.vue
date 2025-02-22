@@ -10,7 +10,8 @@
 		<!-- 参数内容区 -->
 		<view class="content">
 			<view class="line" v-for="spec in specList.value" :key="spec.value">
-				<view class="key"> {{spec.text}} ：</view>
+				<view class="key"> {{spec.text}} :</view>
+				
 				<view class="value">
 					{{detail[spec.value]}}{{spec.unit}}
 				</view>
@@ -145,7 +146,7 @@
 
 	.line {
 		margin: 30rpx 0;
-		padding: 10rpx 0;
+		padding: 10rpx 20rpx;
 		display: flex;
 
 		.key {
@@ -158,7 +159,6 @@
 		.value {
 			width: 60%;
 			height: 100%;
-			margin: 0 20rpx;
 			word-wrap: break-word;
 			text-align: center;
 		}
