@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-paixu:before {
+  content: "\e7e9";
+}
+
 .icon-shop:before {
   content: "\e676";
 }

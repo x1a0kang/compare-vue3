@@ -4,15 +4,16 @@
 
 		<!-- 过滤器 -->
 		<view class="headBar">
+			<picker class="orderPicker" mode="selector" :range="orderSpecList" range-key="text"
+				@change="orderPickerChange">
+				<uni-icons custom-prefix="iconfont" type="icon-paixu" size="20"></uni-icons>
+				排序：{{orderText}}
+			</picker>
+			
 			<picker class="filterPicker" mode="multiSelector" :range="specListForPicker" range-key="text"
 				@columnchange="filterPickerColumnChange" @change="filterPickerChange">
 				<uni-icons custom-prefix="iconfont" type="icon-filter1" size="22"></uni-icons>
 				筛选
-			</picker>
-
-			<picker class="orderPicker" mode="selector" :range="orderSpecList" range-key="text"
-				@change="orderPickerChange">
-				<view>排序：{{orderText}}</view>
 			</picker>
 		</view>
 
@@ -259,15 +260,19 @@
 
 		.filterPicker {
 			display: flex;
-			width: 50%;
+			width: 24%;
 			padding: 15rpx 10rpx;
 			text-align: center;
 			align-items: center;
 		}
 
 		.orderPicker {
+			display: flex;
 			color: black;
-			// background: red;
+			text-align: center;
+			align-items: center;
+			width: 100%;
+			padding: 15rpx 10rpx;
 		}
 	}
 
