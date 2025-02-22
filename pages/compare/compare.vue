@@ -23,7 +23,7 @@
 		<view class="content">
 			<tabList :arrs="tabs"></tabList>
 
-			<view class="row" v-for="spec in specList.value">
+			<view class="row" v-for="spec in specList">
 				<view v-for="item in compareTempList" :key="item.productId">
 					<view class="pair">
 						<view class="key">{{spec.text}}</view>
@@ -61,6 +61,9 @@
 	const {
 		specList
 	} = useSpecListStore()
+
+	console.log("specList", specList)
+
 	const compareTempList = reactive([])
 
 	async function getList() {

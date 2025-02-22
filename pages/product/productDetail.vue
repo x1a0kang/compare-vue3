@@ -78,7 +78,6 @@
 	const compareListStore = useCompareListStore()
 
 	const {
-		specList,
 		contentSpecList,
 		headSpecList
 	} = useSpecListStore()
@@ -151,6 +150,7 @@
 
 	.mySwiper {
 		width: 60%;
+		border-radius: 20rpx;
 	}
 
 	.head {

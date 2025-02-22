@@ -30,7 +30,7 @@ export function apiGetBrand() {
 }
 
 export async function apiGetSpecList() {
-	if (undefined === specList.value) {
+	if (0 === specList.length) {
 		let res = await request({
 			url: "/getSpec"
 		})
