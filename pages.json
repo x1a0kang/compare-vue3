@@ -58,7 +58,7 @@
 		{
 			"path": "pages/hotRankAll/hotRankAll",
 			"style": {
-				"navigationBarTitleText": "热门跑鞋"
+				"navigationBarTitleText": "排行榜"
 			}
 		}
 	],

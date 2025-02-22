@@ -8,9 +8,11 @@ import {
 	useOrderSpecListStore
 } from '@/store/orderSpecList'
 
+const specListStore = useSpecListStore()
+
 const {
 	specList
-} = useSpecListStore()
+} = specListStore
 const {
 	orderSpecList
 } = useOrderSpecListStore()
@@ -32,8 +34,8 @@ export async function apiGetSpecList() {
 		let res = await request({
 			url: "/getSpec"
 		})
-		specList.value = res.data
-		// console.log("缓存内specList为空，请求接口")
+		specListStore.init(res.data)
+		console.log("缓存内specList为空，请求接口")
 	}
 }
 

@@ -43,6 +43,7 @@
 		position: relative;
 		background: white;
 		border-radius: 20rpx;
+		overflow: hidden;
 	}
 
 	.swiper {
@@ -62,6 +63,7 @@
 	.image {
 		height: 100%;
 		width: 100%;
+		border-radius: 20rpx;
 	}
 
 	.count {

@@ -1,17 +1,25 @@
 <template>
 	<view class="layout pageBg">
 		<!-- 图片 -->
-		<view class="image shadow">
-			<mySwiper :imageList="detail.imageList"></mySwiper>
+		<view class="top">
+			<mySwiper class="mySwiper shadow" :imageList="detail.imageList"></mySwiper>
+			<view class="head">
+				<view class="box" v-for="spec in headSpecList" :key="spec.value">
+					<view class="title"> {{spec.text}}</view>
+					<view class="text">
+						{{detail[spec.value]}}{{spec.unit}}
+					</view>
+				</view>
+			</view>
 		</view>
 
 		<tabList :arrs="tabs" :showMore="false"></tabList>
 
 		<!-- 参数内容区 -->
 		<view class="content">
-			<view class="line" v-for="spec in specList.value" :key="spec.value">
+			<view class="line" v-for="spec in contentSpecList" :key="spec.value">
 				<view class="key"> {{spec.text}} :</view>
-				
+
 				<view class="value">
 					{{detail[spec.value]}}{{spec.unit}}
 				</view>
@@ -52,6 +60,7 @@
 		goToHome
 	} from '@/utils/function.js'
 	import {
+		reactive,
 		ref
 	} from 'vue'
 	import {
@@ -64,12 +73,16 @@
 	const tabs = [{
 		"name": "详细参数"
 	}]
+	const headSpecName = ["brand", "position", "price", "publishDateStr"]
 
 	const compareListStore = useCompareListStore()
 
 	const {
-		specList
+		specList,
+		contentSpecList,
+		headSpecList
 	} = useSpecListStore()
+
 	const detail = ref({})
 
 	const currentIndex = ref(0)
@@ -128,12 +141,48 @@
 		padding: 5rpx 15rpx 110rpx 15rpx;
 	}
 
-	.image {
+	.top {
 		width: 100%;
-		height: 700rpx;
+		height: 420rpx;
 		background: white;
-		// padding-top: 5rpx;
+		display: flex;
 		border-radius: 20rpx;
+	}
+
+	.mySwiper {
+		width: 60%;
+	}
+
+	.head {
+		margin-left: 15rpx;
+		background: white;
+		display: flex;
+		flex-direction: column;
+		width: 40%;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 10rpx 0;
+		gap: 20rpx;
+		border-radius: 20rpx;
+	}
+
+	.box {
+		// background: red;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.title {
+		margin-bottom: 5rpx;
+		// color: #555555;
+		font-size: 14px;
+	}
+
+	.text {
+		font-weight: bold;
 	}
 
 	.content {
