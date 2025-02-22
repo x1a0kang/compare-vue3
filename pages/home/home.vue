@@ -41,6 +41,7 @@
 	} from "vue";
 	import {
 		apiGetSpecList,
+		apiGetOrderSpec,
 		apiSearchByFilter,
 		apiCategories,
 		apiGetBanner
@@ -138,6 +139,7 @@
 	}
 
 	apiGetSpecList()
+	apiGetOrderSpec()
 	getCategories()
 	getBanner()
 </script>

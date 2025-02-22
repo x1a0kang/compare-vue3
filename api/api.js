@@ -4,10 +4,16 @@ import {
 import {
 	useSpecListStore
 } from '@/store/specList'
+import {
+	useOrderSpecListStore
+} from '@/store/orderSpecList'
 
 const {
 	specList
 } = useSpecListStore()
+const {
+	orderSpecList
+} = useOrderSpecListStore()
 
 export function apiGetBrandSplit() {
 	return request({
@@ -28,6 +34,16 @@ export async function apiGetSpecList() {
 		})
 		specList.value = res.data
 		// console.log("缓存内specList为空，请求接口")
+	}
+}
+
+export async function apiGetOrderSpec() {
+	if (orderSpecList.length === 1) {
+		let res = await request({
+			url: "/getOrderSpec"
+		})
+		orderSpecList.push(...res.data)
+		console.log("缓存内orderSpecList为空，请求接口", orderSpecList)
 	}
 }
 
@@ -83,13 +99,6 @@ export function apiGetList(data = {}) {
 export function apiGetDetailList(data = {}) {
 	return request({
 		url: "/getDetailListById",
-		data
-	})
-}
-
-export function apiGetOrderSpec(data = {}) {
-	return request({
-		url: "/getOrderSpec",
 		data
 	})
 }

@@ -52,6 +52,9 @@
 		useSpecListStore
 	} from '@/store/specList'
 	import {
+		useOrderSpecListStore
+	} from '@/store/orderSpecList'
+	import {
 		apiGetSpecList,
 		apiSearchByFilter,
 		apiGetOrderSpec
@@ -76,16 +79,15 @@
 	const {
 		specList
 	} = useSpecListStore()
+	// 所有可排序字段
+	const {
+		orderSpecList
+	} = useOrderSpecListStore()
 
 	// picker的下标
 	let indexOrder = 0
 	let indexFilter = [2, 2]
-	// 所有可排序字段
-	let orderSpecList = [{
-		text: '默认',
-		value: "",
-		order: ""
-	}]
+
 	let orderText = ref(orderSpecList[indexOrder].text)
 
 	// 选择的过滤条件
@@ -99,12 +101,6 @@
 		orderKey: "",
 		order: ""
 	})
-
-	async function getOrderSpec() {
-		let res = await apiGetOrderSpec()
-		orderSpecList.push(...res.data)
-		// console.log("orderSpecList", orderSpecList)
-	}
 
 	async function getSpecList() {
 		await apiGetSpecList()
@@ -202,53 +198,52 @@
 
 	onLoad(() => {
 		getSpecList()
-		getOrderSpec()
+		apiGetOrderSpec()
 	})
 
 	onShow(() => {
-		setTimeout(() => {
-			let orderKey = uni.getStorageSync('orderKey')
-			let order = uni.getStorageSync('order')
-			uni.setStorageSync('orderKey', '')
-			uni.setStorageSync('order', '')
-			// 如果缓存中的key不为空就是跳转过来的
-			if (orderKey) {
-				// 先清空所有筛选字段
-				conditionList.key.length = 0
-				conditionList.keyText.length = 0
-				conditionList.value.length = 0
-				conditionList.valueText.length = 0
-				// 获取排序字段的下标
-				indexOrder = orderSpecList.findIndex(item => item.value == orderKey && item.order === order)
-				orderText.value = orderSpecList[indexOrder].text
-				conditionList.orderKey = orderKey
-				conditionList.order = order
-			}
+		let orderKey = uni.getStorageSync('orderKey')
+		let order = uni.getStorageSync('order')
+		uni.setStorageSync('orderKey', '')
+		uni.setStorageSync('order', '')
+		// 如果缓存中的key不为空就是跳转过来的
+		if (orderKey) {
+			// 先清空所有筛选字段
+			conditionList.key.length = 0
+			conditionList.keyText.length = 0
+			conditionList.value.length = 0
+			conditionList.valueText.length = 0
+			// 获取排序字段的下标
+			indexOrder = orderSpecList.findIndex(item => item.value == orderKey && item.order ===
+				order)
+			orderText.value = orderSpecList[indexOrder].text
+			conditionList.orderKey = orderKey
+			conditionList.order = order
+		}
 
-			let filterKey = uni.getStorageSync('filterKey')
-			let filterValue = uni.getStorageSync('filterValue')
-			let filterKeyText = uni.getStorageSync('filterKeyText')
-			let filterValueText = uni.getStorageSync('filterValueText')
+		let filterKey = uni.getStorageSync('filterKey')
+		let filterValue = uni.getStorageSync('filterValue')
+		let filterKeyText = uni.getStorageSync('filterKeyText')
+		let filterValueText = uni.getStorageSync('filterValueText')
 
-			// 如果缓存中的key不为空就是跳转过来的
-			if (filterKey) {
-				console.log("filterKey + filterValue", filterKey, filterValue)
-				// 重置跳转条件
-				uni.setStorageSync('filterKey', '')
-				uni.setStorageSync('filterValue', '')
-				uni.setStorageSync('filterKeyText', '')
-				uni.setStorageSync('filterValueText', '')
+		// 如果缓存中的key不为空就是跳转过来的
+		if (filterKey) {
+			console.log("filterKey + filterValue", filterKey, filterValue)
+			// 重置跳转条件
+			uni.setStorageSync('filterKey', '')
+			uni.setStorageSync('filterValue', '')
+			uni.setStorageSync('filterKeyText', '')
+			uni.setStorageSync('filterValueText', '')
 
-				// 清空原条件列表后加入
-				conditionList.key = [filterKey]
-				conditionList.keyText = [filterKeyText]
-				conditionList.value = [filterValue]
-				conditionList.valueText = [filterValueText]
-			}
+			// 清空原条件列表后加入
+			conditionList.key = [filterKey]
+			conditionList.keyText = [filterKeyText]
+			conditionList.value = [filterValue]
+			conditionList.valueText = [filterValueText]
+		}
 
-			initParams()
-			searchByFilter()
-		}, 35)
+		initParams()
+		searchByFilter()
 	})
 </script>
 
