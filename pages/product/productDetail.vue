@@ -60,7 +60,7 @@
 
 		<view class="fillSafeArea"></view>
 
-		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="30px 30px 0 0">
+		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="20px 20px 0 0">
 			<view class="pop-title">参数解析</view>
 			<view class="content-text">{{ popupContent }}</view>
 		</uni-popup>
@@ -293,7 +293,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 30rpx 30rpx 0 0;
+		border-radius: 20rpx 20rpx 0 0;
 	}
 	
 	.content-text {
