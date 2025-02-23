@@ -18,7 +18,11 @@
 	const arrs = ref([])
 
 	async function getCategories() {
-		let res = await apiCategories()
+		const data = {
+			"page": 1,
+			"pageSize": 50
+		}
+		let res = await apiCategories(data)
 		arrs.value = res.data
 	}
 
