@@ -60,7 +60,8 @@
 
 		<view class="fillSafeArea"></view>
 
-		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="10px 10px 0 0">
+		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="30px 30px 0 0">
+			<view class="pop-title">参数解析</view>
 			<view class="content-text">{{ popupContent }}</view>
 		</uni-popup>
 	</view>
@@ -283,9 +284,22 @@
 		background: white;
 	}
 	
+	.pop-title {
+		background: $theme-color;
+		color: $theme-font-color;
+		height: 80rpx;
+		text-align: center;
+		font-size: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 30rpx 30rpx 0 0;
+	}
+	
 	.content-text {
 		padding: 10rpx 30rpx;
 		text-indent: 2em;
 		line-height: 2;
+		min-height: 500rpx;
 	}
 </style>
