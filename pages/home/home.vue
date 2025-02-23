@@ -69,7 +69,6 @@
 	}
 
 	const initParams = (value = '') => {
-		categoryProductList.value = [];
 		noData.value = false;
 		param.page = 1
 		param.pageSize = 10
@@ -101,16 +100,21 @@
 		// })
 
 		initParams()
+		categoryProductList.value = [];
 		getCategoryProductList(0)
 		// console.log("categories", categories)
 	}
 
-	async function getCategoryProductList() {
+	async function getCategoryProductList(isInit) {
 		let category = categories[tabIndex]
 		param.key = [category.key]
 		param.value = [category.value]
 		let res = await apiSearchByFilter(param)
-		categoryProductList.value = [...categoryProductList.value, ...res.data]
+		if (isInit) {
+			categoryProductList.value = res.data
+		} else {
+			categoryProductList.value = [...categoryProductList.value, ...res.data]
+		}
 		if (param.pageSize > res.data.length) {
 			noData.value = true
 		}
@@ -120,7 +124,7 @@
 	function change(index) {
 		tabIndex = index
 		initParams()
-		getCategoryProductList()
+		getCategoryProductList(true)
 		// console.log("调用了")
 	}
 
