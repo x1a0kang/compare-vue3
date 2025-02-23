@@ -26,7 +26,12 @@
 			<view class="row" v-for="spec in specList">
 				<view v-for="item in compareTempList" :key="item.productId">
 					<view class="pair">
-						<view class="key">{{spec.text}}</view>
+						<view class="key">
+							{{spec.text}}
+							<uni-icons v-if="spec.description" custom-prefix="iconfont" type="icon-question-circle"
+								size="16" @click="openPop(spec.description)">
+							</uni-icons>
+						</view>
 						<view class="value">{{item[spec.value]}}{{spec.unit}}</view>
 					</view>
 				</view>
@@ -34,6 +39,10 @@
 
 		</view>
 
+
+<uni-popup ref="pop" type="bottom" background-color="white" border-radius="10px 10px 0 0">
+			<view class="content-text">{{ popupContent }}</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -49,6 +58,7 @@
 		apiGetDetailList
 	} from '@/api/api.js'
 	import {
+		ref,
 		reactive
 	} from 'vue'
 
@@ -90,6 +100,14 @@
 				url: "/pages/compare/compareList"
 			})
 		}
+	}
+	
+	const pop = ref()
+	const popupContent = ref('')
+	
+	function openPop(text) {
+		popupContent.value = text
+		pop.value.open()
 	}
 
 	apiGetSpecList()
@@ -182,5 +200,11 @@
 
 	.value {
 		font-weight: bold;
+	}
+	
+	.content-text {
+		padding: 10rpx 30rpx;
+		text-indent: 2em;
+		line-height: 2;
 	}
 </style>

@@ -5,10 +5,19 @@
 			<mySwiper class="mySwiper shadow" :imageList="detail.imageList"></mySwiper>
 			<view class="head">
 				<view class="box" v-for="spec in headSpecList" :key="spec.value">
-					<view class="title"> {{spec.text}}</view>
+
+					<view class="title">
+						{{spec.text}}
+
+						<uni-icons v-if="spec.description" custom-prefix="iconfont" type="icon-question-circle"
+							size="16" @click="openPop(spec.description)">
+						</uni-icons>
+					</view>
+
 					<view class="text">
 						{{detail[spec.value]}}{{spec.unit}}
 					</view>
+
 				</view>
 			</view>
 		</view>
@@ -18,11 +27,17 @@
 		<!-- 参数内容区 -->
 		<view class="content">
 			<view class="line" v-for="spec in contentSpecList" :key="spec.value">
-				<view class="key"> {{spec.text}} :</view>
+				<view class="key">
+					{{spec.text}}
+					<uni-icons v-if="spec.description" custom-prefix="iconfont" type="icon-question-circle" size="16"
+						@click="openPop(spec.description)"></uni-icons>
+					:
+				</view>
 
 				<view class="value">
 					{{detail[spec.value]}}{{spec.unit}}
 				</view>
+
 			</view>
 		</view>
 
@@ -44,6 +59,10 @@
 		</view>
 
 		<view class="fillSafeArea"></view>
+
+		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="10px 10px 0 0">
+			<view class="content-text">{{ popupContent }}</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -73,7 +92,6 @@
 	const tabs = [{
 		"name": "详细参数"
 	}]
-	const headSpecName = ["brand", "position", "price", "publishDateStr"]
 
 	const compareListStore = useCompareListStore()
 
@@ -106,6 +124,14 @@
 
 	function swiperChange(e) {
 		currentIndex.value = e.detail.current;
+	}
+
+	const pop = ref()
+	const popupContent = ref('')
+
+	function openPop(text) {
+		popupContent.value = text
+		pop.value.open()
 	}
 
 	apiGetSpecList()
@@ -255,5 +281,11 @@
 		height: env(safe-area-inset-bottom);
 		width: 100vw;
 		background: white;
+	}
+	
+	.content-text {
+		padding: 10rpx 30rpx;
+		text-indent: 2em;
+		line-height: 2;
 	}
 </style>

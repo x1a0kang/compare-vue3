@@ -148,9 +148,8 @@
 		if (column == 0) {
 			specListForPicker[1] = specListForPicker[0][value].optionList
 		}
-		// this.$forceUpdate()
-		console.log("detail", column, value)
-		console.log("specListForPicker", specListForPicker[1])
+		// console.log("detail", column, value)
+		// console.log("specListForPicker", specListForPicker[1])
 	}
 
 	function filterPickerChange(e) {
