@@ -60,7 +60,8 @@
 		apiPkCount
 	} from '@/api/api.js'
 	import {
-		onShow
+		onShow,
+		onLoad
 	} from '@dcloudio/uni-app'
 	import {
 		deleteOneFromArray
@@ -171,8 +172,13 @@
 		console.log("全选", allSelected.checked)
 	}
 
-	onShow(() => {
+	onLoad(() => {
 		init()
+	})
+
+	onShow(() => {
+		// 如果compareListList和selected长度相同,就是全选了
+		allSelected.checked = selectedList.length === compareList.length
 	})
 </script>
 
