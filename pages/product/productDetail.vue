@@ -45,13 +45,18 @@
 
 		<!-- 底部功能栏 -->
 		<view class="bottom-bar">
+			<button class="share" open-type="share">
+				<uni-icons custom-prefix="iconfont" type="icon-share" size="20" color="black"></uni-icons>
+				<view class="share-text">分享</view>
+			</button>
+
 			<view class="toFunction" @click="toProduct()">
 				<uni-icons custom-prefix="iconfont" type="icon-shopfill" size="22"></uni-icons>
 				鞋库
 			</view>
 			<view class="toFunction" @click="toCompare()">
 				<uni-icons custom-prefix="iconfont" type="icon-versus" size="20"></uni-icons>
-				对比列表
+				去对比
 			</view>
 			<button class="addButton" @click="add()">
 				加入对比
@@ -84,7 +89,8 @@
 		ref
 	} from 'vue'
 	import {
-		onLoad
+		onLoad,
+		onShareAppMessage,
 	} from "@dcloudio/uni-app"
 	import {
 		useCompareListStore
@@ -136,6 +142,14 @@
 	}
 
 	apiGetSpecList()
+
+	// // 分享给好友
+	// onShareAppMessage(() => {
+	// 	return {
+	// 		title: "跑鞋相对论",
+	// 		path: "/pages/home/home"
+	// 	}
+	// })
 
 	onLoad((e) => {
 		let {
@@ -253,25 +267,46 @@
 		padding: 5rpx 20rpx;
 		align-items: center;
 		background: white;
+	}
 
-		.toFunction {
-			width: 80rpx;
-			height: 80rpx;
-			display: flex;
-			flex-direction: column;
-			font-size: 20rpx;
-			align-items: center;
-			justify-content: center;
-			margin: 0 15rpx;
-		}
+	.toFunction {
+		width: 80rpx;
+		height: 80rpx;
+		display: flex;
+		flex-direction: column;
+		font-size: 12px;
+		align-items: center;
+		justify-content: center;
+		margin: 0 10rpx;
+		background: white;
+	}
 
-		.addButton {
-			width: 460rpx;
-			background: $theme-color;
-			color: $theme-font-color;
-			border-radius: 50rpx;
-			margin-right: 0;
-		}
+	.share {
+		font-size: 10px;
+		width: 80rpx;
+		height: 80rpx;
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		text-align: center;
+		line-height: 1;
+		background: white;
+		padding: 6rpx 0 0 0;
+		margin: 0 10rpx 0 0;
+		border-radius: 0;
+	}
+
+	.share-text {
+		margin-top: 5rpx;
+		font-size: 12px;
+	}
+
+	.addButton {
+		width: 400rpx;
+		background: $theme-color;
+		color: $theme-font-color;
+		border-radius: 50rpx;
+		margin-right: 0;
 	}
 
 	.fillSafeArea {
@@ -283,7 +318,7 @@
 		width: 100vw;
 		background: white;
 	}
-	
+
 	.pop-title {
 		background: $theme-color;
 		color: $theme-font-color;
@@ -295,11 +330,15 @@
 		justify-content: center;
 		border-radius: 20rpx 20rpx 0 0;
 	}
-	
+
 	.content-text {
 		padding: 10rpx 30rpx;
 		text-indent: 2em;
 		line-height: 2;
 		min-height: 500rpx;
+	}
+
+	button::after {
+		border: none;
 	}
 </style>

@@ -47,7 +47,9 @@
 		apiGetBanner
 	} from "@/api/api.js"
 	import {
-		onReachBottom
+		onReachBottom,
+		onShareAppMessage,
+		onShareTimeline
 	} from '@dcloudio/uni-app'
 
 	// 分类列表
@@ -141,6 +143,21 @@
 		});
 		console.log("跳转到详情页", item.name)
 	}
+
+	// 分享给好友
+	onShareAppMessage(() => {
+		return {
+			title: "相对论跑鞋参数对比",
+			path: "/pages/home/home"
+		}
+	})
+
+	// 分享到朋友圈
+	onShareAppMessage(() => {
+		return {
+			title: "相对论跑鞋参数对比"
+		}
+	})
 
 	apiGetSpecList()
 	apiGetOrderSpec()
