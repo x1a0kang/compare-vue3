@@ -57,14 +57,14 @@
 		useCompareListStore
 	} from '@/store/compareList'
 	import {
-		useSelectedCompareListStore
-	} from '@/store/selectedCompareList'
-	import {
 		apiPkCount
 	} from '@/api/api.js'
 	import {
 		onShow
 	} from '@dcloudio/uni-app'
+	import {
+		deleteOneFromArray
+	} from '@/utils/function.js'
 
 	const compareListStore = useCompareListStore()
 	// 对比列表
@@ -72,16 +72,12 @@
 		compareList
 	} = compareListStore
 
-	// 被选中产品的ID列表
-	const selectedCompareListStore = useSelectedCompareListStore()
-	const {
-		selectedCompareList
-	} = selectedCompareListStore
-
 	// 是否全选
 	const allSelected = reactive({
 		checked: true
 	})
+	// 被选中产品的ID列表
+	const selectedList = []
 
 	function jump(item) {
 		uni.navigateTo({
@@ -92,57 +88,60 @@
 
 	function deleteOne(item) {
 		compareListStore.remove(item)
-		selectedCompareListStore.remove(item.productId)
+		deleteOneFromArray(selectedList, item.productId)
 		console.log("compareList数量", compareList.length)
-		console.log("selectedCompareList数量", selectedCompareList.length)
+		console.log("selectedList数量", selectedList.length)
 	}
 
 	function deleteAll() {
 		compareListStore.removeAll()
-		selectedCompareListStore.removeAll()
-		console.log("selectedCompareList数量", selectedCompareList.length)
+		selectedList.length = 0
 	}
 
 	function compareAll() {
-		if (selectedCompareList.length > 1) {
+		console.log("selectedList", selectedList)
+		if (selectedList.length < 2) {
+			uni.showToast({
+				title: "对比小于两件",
+				icon: "error"
+
+			})
+		} else if (selectedList.length > 5) {
+			uni.showToast({
+				title: "对比大于五件",
+				icon: "error"
+			})
+		} else {
 			// 对比计数
 			let param = {}
-			param.idList = []
-			selectedCompareList.forEach(item => {
-				param.idList.push(item.productId)
-			})
+			param.idList = selectedList
 			apiPkCount(param)
 
 			uni.navigateTo({
-				url: "/pages/compare/compare"
-			})
-		} else {
-			uni.showToast({
-				title: "小于两件产品"
+				url: "/pages/compare/compare?idListStr=" + selectedList.toString()
 			})
 		}
-		console.log("selectedCompareList数量", selectedCompareList.length)
 	}
 
 	// 进入对比页面默认全选
 	function init() {
 		// 每次都要把已选列表清空，否则每次加载会double
-		selectedCompareListStore.removeAll()
+		selectedList.length = 0;
 		compareList.forEach((item) => {
 			item.checked = true
-			selectedCompareList.push(item.productId)
+			selectedList.push(item.productId)
 		})
 		allSelected.checked = true
-		console.log("selectedCompareList数量", selectedCompareList.length)
+		console.log("selectedList数量", selectedList.length)
 	}
 
 	function change(e) {
 		const values = e.detail.value
-		selectedCompareList.length = 0
-		selectedCompareList.push(...e.detail.value)
+		selectedList.length = 0
+		selectedList.push(...e.detail.value)
 
-		// 如果selectedCompareList和selected长度相同,就是全选了
-		allSelected.checked = selectedCompareList.length === compareList.length
+		// 如果compareListList和selected长度相同,就是全选了
+		allSelected.checked = selectedList.length === compareList.length
 
 		// 从数组中查找选中的id，选中的checked设成true，没有的设成false
 		compareList.forEach((item) => {
@@ -156,11 +155,11 @@
 
 	function changeAll(e) {
 		const values = e.detail.value
-		selectedCompareList.length = 0
+		selectedList.length = 0
 		if (values.length > 0) {
 			compareList.forEach((item) => {
 				item.checked = true
-				selectedCompareList.push(item.productId)
+				selectedList.push(item.productId)
 			})
 			allSelected.checked = true
 		} else {

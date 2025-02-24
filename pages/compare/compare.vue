@@ -40,7 +40,7 @@
 		</view>
 
 
-<uni-popup ref="pop" type="bottom" background-color="white" border-radius="10px 10px 0 0">
+		<uni-popup ref="pop" type="bottom" background-color="white" border-radius="10px 10px 0 0">
 			<view class="content-text">{{ popupContent }}</view>
 		</uni-popup>
 	</view>
@@ -51,9 +51,6 @@
 		useSpecListStore
 	} from '@/store/specList'
 	import {
-		useSelectedCompareListStore
-	} from '@/store/selectedCompareList'
-	import {
 		apiGetSpecList,
 		apiGetDetailList
 	} from '@/api/api.js'
@@ -61,26 +58,23 @@
 		ref,
 		reactive
 	} from 'vue'
+	import {
+		onLoad
+	} from '@dcloudio/uni-app'
 
 	const tabs = [{
 		"name": "详细参数"
 	}]
 	const {
-		selectedCompareList
-	} = useSelectedCompareListStore()
-	const {
 		specList
 	} = useSpecListStore()
 
-	console.log("specList", specList)
-
+	let idList = []
 	const compareTempList = reactive([])
 
 	async function getList() {
-		let idList = []
-
 		let data = {}
-		data.idList = selectedCompareList
+		data.idList = idList
 		let res = await apiGetDetailList(data)
 		compareTempList.push(...res.data)
 	}
@@ -95,23 +89,35 @@
 			compareTempList.splice(index, 1)
 		}
 		console.log("compareTempList.length", compareTempList.length)
-		if (compareTempList.length < 1) {
+		if (compareTempList.length < 2) {
 			uni.switchTab({
 				url: "/pages/compare/compareList"
 			})
 		}
 	}
-	
+
 	const pop = ref()
 	const popupContent = ref('')
-	
+
 	function openPop(text) {
 		popupContent.value = text
 		pop.value.open()
 	}
 
+	onLoad((e) => {
+		let {
+			idListStr = null
+		} = e
+		// id不存在时返回首页
+		if (!idListStr) {
+			goToHome()
+			return
+		}
+		idList = idListStr.split(',')
+		getList()
+	})
+
 	apiGetSpecList()
-	getList()
 </script>
 
 <style lang="scss" scoped>
@@ -201,7 +207,7 @@
 	.value {
 		font-weight: bold;
 	}
-	
+
 	.content-text {
 		padding: 10rpx 30rpx;
 		text-indent: 2em;

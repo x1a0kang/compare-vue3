@@ -12,3 +12,14 @@ export function goToHome() {
 		}
 	})
 }
+
+export function deleteOneFromArray(arr, id) {
+	const index = arr.findIndex(
+		function(temp) {
+			return temp === id
+		}
+	)
+	if (index != -1) {
+		arr.splice(index, 1)
+	}
+}
