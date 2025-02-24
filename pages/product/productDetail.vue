@@ -147,7 +147,7 @@
 	// 分享给好友
 	onShareAppMessage(() => {
 		return {
-			title: param.name + "详细参数",
+			title: param.name + "详情，快来看看吧",
 			path: '/pages/product/productDetail?id=' + param.id + '&name=' + param.name
 		}
 	})
@@ -155,7 +155,7 @@
 	// 分享到朋友圈
 	onShareTimeline(() => {
 		return {
-			title: param.name + "详细参数",
+			title: param.name + "详情，快来看看吧",
 			query: "id=" + param.id + '&name=' + param.name
 		}
 	})

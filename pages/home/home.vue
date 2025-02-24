@@ -147,7 +147,7 @@
 	// 分享给好友
 	onShareAppMessage(() => {
 		return {
-			title: "相对论跑鞋参数对比",
+			title: "跑鞋搜索、参数查询及对比",
 			path: "/pages/home/home"
 		}
 	})
@@ -155,7 +155,7 @@
 	// 分享到朋友圈
 	onShareTimeline(() => {
 		return {
-			title: "相对论跑鞋参数对比"
+			title: "跑鞋搜索、参数查询及对比"
 		}
 	})
 

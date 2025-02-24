@@ -59,7 +59,9 @@
 		reactive
 	} from 'vue'
 	import {
-		onLoad
+		onLoad,
+		onShareAppMessage,
+		onShareTimeline
 	} from '@dcloudio/uni-app'
 
 	const tabs = [{
@@ -71,6 +73,8 @@
 
 	let idList = []
 	const compareTempList = reactive([])
+
+	apiGetSpecList()
 
 	async function getList() {
 		let data = {}
@@ -117,7 +121,21 @@
 		getList()
 	})
 
-	apiGetSpecList()
+	// 分享给好友
+	onShareAppMessage(() => {
+		return {
+			title: "我正在对比跑鞋，快来看看吧",
+			path: "/pages/compare/compare?idListStr=" + idList.toString()
+		}
+	})
+
+	// 分享到朋友圈
+	onShareTimeline(() => {
+		return {
+			title: "我正在对比跑鞋，快来看看吧",
+			query: "idListStr=" + idList.toString()
+		}
+	})
 </script>
 
 <style lang="scss" scoped>

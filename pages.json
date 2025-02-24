@@ -26,7 +26,7 @@
 		{
 			"path": "pages/compare/compare",
 			"style": {
-				"navigationBarTitleText": "详细参数对比"
+				"navigationBarTitleText": "对比详情"
 			}
 		},
 		{
