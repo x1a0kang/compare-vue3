@@ -91,6 +91,7 @@
 	import {
 		onLoad,
 		onShareAppMessage,
+		onShareTimeline
 	} from "@dcloudio/uni-app"
 	import {
 		useCompareListStore
@@ -143,13 +144,21 @@
 
 	apiGetSpecList()
 
-	// // 分享给好友
-	// onShareAppMessage(() => {
-	// 	return {
-	// 		title: "跑鞋相对论",
-	// 		path: "/pages/home/home"
-	// 	}
-	// })
+	// 分享给好友
+	onShareAppMessage(() => {
+		return {
+			title: param.name + "详细参数",
+			path: '/pages/product/productDetail?id=' + param.id + '&name=' + param.name
+		}
+	})
+
+	// 分享到朋友圈
+	onShareTimeline(() => {
+		return {
+			title: param.name + "详细参数",
+			query: "id=" + param.id + '&name=' + param.name
+		}
+	})
 
 	onLoad((e) => {
 		let {
@@ -161,6 +170,7 @@
 			return
 		}
 		param.id = id
+		param.name = name
 		getOne()
 		// 记一次view
 		apiViewCount(param)

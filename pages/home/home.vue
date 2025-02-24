@@ -153,7 +153,7 @@
 	})
 
 	// 分享到朋友圈
-	onShareAppMessage(() => {
+	onShareTimeline(() => {
 		return {
 			title: "相对论跑鞋参数对比"
 		}
