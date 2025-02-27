@@ -139,6 +139,7 @@
 		margin-left: 30rpx;
 		text-align: center;
 		min-width: 40%;
+		max-width: 48%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		text-wrap: nowrap;

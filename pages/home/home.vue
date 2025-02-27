@@ -3,7 +3,7 @@
 		<custom-nav-bar title="主页"></custom-nav-bar>
 
 		<!-- 滚动页面，广告位 -->
-		<view class="banner">
+		<!-- <view class="banner">
 			<swiper class="swiper" circular :autoplay="true" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
 				indicator-active-color="#000">
 				<swiper-item class="swiper-item" v-for="item in bannerList" :key="item.productId"
@@ -11,7 +11,7 @@
 					<image class="image" :src="item.url" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
-		</view>
+		</view> -->
 
 		<view class="brand">
 			<brand></brand>

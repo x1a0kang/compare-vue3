@@ -207,6 +207,7 @@
 			text-align: center;
 			// font-weight: bold;
 			min-width: 40%;
+			max-width: 48%;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-wrap: nowrap;
