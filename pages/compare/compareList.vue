@@ -12,7 +12,15 @@
 				<image class="image" mode="aspectFill" :src="item.imageList[0]" @click="jump(item)">
 				</image>
 
-				<view class="text" @click="jump(item)">{{item.brand}} {{item.name}}</view>
+				<view class="box">
+					<view class="text" @click="jump(item)">{{item.brand}} {{item.name}}</view>
+
+					<view class="scenarioList">
+						<view class="scenario" v-for="scenario in item.scenarioList" :key="scenario">
+							{{scenario}}
+						</view>
+					</view>
+				</view>
 
 				<view class="delete" @click.stop="deleteOne(item)">
 					<uni-icons custom-prefix="iconfont" type="icon-delete" size="22"></uni-icons>
@@ -72,6 +80,8 @@
 	const {
 		compareList
 	} = compareListStore
+
+	console.log("compareList", compareList)
 
 	// 是否全选
 	const allSelected = reactive({
@@ -202,16 +212,39 @@
 			width: 180rpx;
 		}
 
-		.text {
-			margin-left: 30rpx;
-			text-align: center;
-			// font-weight: bold;
+		.box {
+			margin-left: 20rpx;
+			display: flex;
+			flex-direction: column;
 			min-width: 40%;
 			max-width: 48%;
+		}
+
+		.text {
+			// text-align: center;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			text-wrap: nowrap;
 			// background: blue;
+		}
+
+		.scenarioList {
+			margin-top: 5rpx;
+			padding: 5rpx 0;
+			// width: 90%;
+			display: flex;
+			gap: 5rpx;
+			flex-wrap: wrap;
+			// background: red;
+		}
+
+		.scenario {
+			width: fit-content;
+			background: $theme-color;
+			color: white;
+			border-radius: 50rpx;
+			font-size: 14px;
+			padding: 5rpx 15rpx;
 		}
 
 		.checkbox {

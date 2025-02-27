@@ -8,11 +8,7 @@
 				<view class="text">{{item.brand}} {{item.name}}</view>
 				<view class="position">{{item.position}}</view>
 
-				<view class="scenarioList">
-					<view class="scenario" v-for="scenario in item.scenarioList" :key="scenario">
-						{{scenario}}
-					</view>
-				</view>
+				
 			</view>
 
 			<view class="add-button">
@@ -80,23 +76,7 @@
 			text-wrap: nowrap;
 		}
 
-		.scenarioList {
-			padding: 5rpx 10rpx 5rpx 10rpx;
-			width: 90%;
-			display: flex;
-			gap: 5rpx;
-			flex-wrap: wrap;
-			// background: red;
-		}
-
-		.scenario {
-			width: fit-content;
-			background: $theme-color;
-			color: white;
-			border-radius: 50rpx;
-			font-size: 14px;
-			padding: 5rpx 15rpx;
-		}
+		
 
 		.position {
 			position: absolute;
