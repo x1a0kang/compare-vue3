@@ -153,7 +153,7 @@
 	}
 
 	.title {
-		height: 100%;
+		height: 80rpx;
 		width: 48vw;
 		text-align: center;
 		font-size: 22px;

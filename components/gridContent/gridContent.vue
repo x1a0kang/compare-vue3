@@ -5,7 +5,10 @@
 			<view class="jump-button" @click="jump(item)">
 				<image class="image" :src="item.imageList[0]" mode="aspectFill"></image>
 
-				<brand-name class="brand-name" :item="item"></brand-name>
+				<view class="brand-name">
+					<brand-name :item="item"></brand-name>
+				</view>
+
 			</view>
 
 			<view class="add-button">

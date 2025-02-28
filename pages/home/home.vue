@@ -191,13 +191,6 @@
 		width: 100%;
 	}
 
-	.brand {
-		margin-top: 12rpx;
-		border-radius: 20rpx;
-		// background: $theme-color;
-		// color: white;
-	}
-
 	.text {
 		font-size: 20px;
 		width: 80%;

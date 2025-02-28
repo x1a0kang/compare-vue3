@@ -14,7 +14,9 @@
 
 				<view class="box" @click="jump(item)">
 
-					<brand-name class="brand-name" :item="item"></brand-name>
+					<view class="brand-name">
+						<brand-name :item="item"></brand-name>
+					</view>
 
 				</view>
 

@@ -54,7 +54,7 @@
 
 <style lang="scss" scoped>
 	.content {
-		margin-top: 20rpx;
+		margin-top: 15rpx;
 	}
 
 	.swiper {

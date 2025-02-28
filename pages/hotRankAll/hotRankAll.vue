@@ -11,7 +11,9 @@
 			<image class="image" mode="aspectFill" :src="item.imageList[0]">
 			</image>
 
-			<brand-name class="brand-name" :item="item"></brand-name>
+			<view class="brand-name">
+				<brand-name :item="item"></brand-name>
+			</view>
 
 			<view class="add-button">
 				<addToCompareButton :item="item"></addToCompareButton>
