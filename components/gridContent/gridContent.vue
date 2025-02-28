@@ -8,12 +8,12 @@
 				<view class="brand-name">
 					<brand-name :item="item"></brand-name>
 				</view>
-
+				<view class="text">{{item.price}}元</view>
 			</view>
 
-			<!-- <view class="add-button">
+			<view class="add-button">
 				<addToCompareButton :item="item"></addToCompareButton>
-			</view> -->
+			</view>
 		</view>
 	</view>
 </template>
@@ -75,10 +75,14 @@
 		.scenarioList {
 			padding: 5rpx 15rpx;
 		}
+		
+		.text {
+			padding: 0 20rpx;
+		}
 
 		.add-button {
 			position: absolute;
-			bottom: 55rpx;
+			bottom: 5rpx;
 			right: 5rpx;
 		}
 	}
