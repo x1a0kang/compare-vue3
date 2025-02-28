@@ -12,8 +12,9 @@
 				<image class="image" mode="aspectFill" :src="item.imageList[0]" @click="jump(item)">
 				</image>
 
-				<view class="box">
-					<view class="text" @click="jump(item)">{{item.brand}} {{item.name}}</view>
+				<view class="box" @click="jump(item)">
+
+					<brand-name class="brand-name" :item="item"></brand-name>
 
 					<view class="scenarioList">
 						<view class="scenario" v-for="scenario in item.scenarioList" :key="scenario">
@@ -213,38 +214,40 @@
 		}
 
 		.box {
-			margin-left: 20rpx;
+			// margin-left: 20rpx;
 			display: flex;
 			flex-direction: column;
-			min-width: 40%;
-			max-width: 48%;
+			width: 420rpx;
 		}
 
-		.text {
-			// text-align: center;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			text-wrap: nowrap;
-			// background: blue;
+		.brand-name {
+			padding: 0 20rpx;
+			width: 380rpx;
+			// background: red;
 		}
 
 		.scenarioList {
-			margin-top: 5rpx;
-			padding: 5rpx 0;
+			padding: 5rpx 15rpx;
 			// width: 90%;
 			display: flex;
 			gap: 5rpx;
-			flex-wrap: wrap;
+			height: 50rpx;
+			align-items: center;
+			overflow: hidden;
+			flex-wrap: nowrap;
+			white-space: nowrap;
+			overflow-x: scroll;
 			// background: red;
 		}
 
 		.scenario {
 			width: fit-content;
+			height: fit-content;
 			background: $theme-color;
 			color: white;
-			border-radius: 50rpx;
-			font-size: 14px;
-			padding: 5rpx 15rpx;
+			border-radius: 10rpx;
+			font-size: 10px;
+			padding: 5rpx 10rpx;
 		}
 
 		.checkbox {

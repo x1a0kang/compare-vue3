@@ -11,7 +11,7 @@
 			<image class="image" mode="aspectFill" :src="item.imageList[0]">
 			</image>
 
-			<view class="text">{{item.brand}} {{item.name}}</view>
+			<brand-name class="brand-name" :item="item"></brand-name>
 
 			<view class="add-button">
 				<addToCompareButton :item="item"></addToCompareButton>
@@ -130,20 +130,15 @@
 	}
 
 	.image {
-		margin-left: 30rpx;
+		margin-left: 20rpx;
 		height: 100%;
 		width: 180rpx;
 	}
 
-	.text {
-		margin-left: 30rpx;
-		text-align: center;
-		min-width: 40%;
-		max-width: 48%;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		text-wrap: nowrap;
-		// background: blue;
+	.brand-name {
+		padding: 0 20rpx;
+		width: 380rpx;
+		// background: red;
 	}
 
 	.add-button {

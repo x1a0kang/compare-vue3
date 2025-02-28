@@ -5,10 +5,7 @@
 			<view class="jump-button" @click="jump(item)">
 				<image class="image" :src="item.imageList[0]" mode="aspectFill"></image>
 
-				<view class="text">{{item.brand}} {{item.name}}</view>
-				<view class="position">{{item.position}}</view>
-
-				
+				<brand-name class="brand-name" :item="item"></brand-name>
 			</view>
 
 			<view class="add-button">
@@ -67,26 +64,9 @@
 			width: 100%;
 			height: 350rpx;
 		}
-
-		.text {
-			padding: 5rpx 10rpx 5rpx 20rpx;
-			width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			text-wrap: nowrap;
-		}
-
 		
-
-		.position {
-			position: absolute;
-			top: 8rpx;
-			right: 10rpx;
-			background: $theme-color;
-			color: white;
-			border-radius: 50rpx;
-			padding: 5rpx 20rpx;
-			text-align: center;
+		.brand-name {
+			padding: 0 20rpx;
 		}
 
 		.add-button {
