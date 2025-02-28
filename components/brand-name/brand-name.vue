@@ -28,6 +28,7 @@
 	.line {
 		display: flex;
 		width: 100%;
+		position: relative;
 		// background: red;
 	}
 
@@ -42,11 +43,14 @@
 
 	.text-right {
 		padding: 5rpx 0; 
-		margin-left: 1em;
+		// margin-left: 1em;
 		width: fit-content;
 		text-align: end;
 		text-wrap: nowrap;
 		font-weight: bold;
+		position: absolute;
+		right: 0;
+		// background: red;
 	}
 	
 	.scenarioList::-webkit-scrollbar {
@@ -72,6 +76,6 @@
 		color: white;
 		border-radius: 10rpx;
 		font-size: 10px;
-		padding: 3rpx 6rpx;
+		padding: 3rpx 8rpx;
 	}
 </style>

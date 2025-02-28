@@ -69,15 +69,15 @@
 		}
 
 		.brand-name {
-			padding: 0 20rpx;
+			padding: 0 10rpx;
 		}
 
 		.scenarioList {
-			padding: 5rpx 15rpx;
+			padding: 5rpx 5rpx;
 		}
 		
 		.text {
-			padding: 0 20rpx;
+			padding: 0 10rpx;
 		}
 
 		.add-button {
