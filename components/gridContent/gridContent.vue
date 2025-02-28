@@ -11,9 +11,9 @@
 
 			</view>
 
-			<view class="add-button">
+			<!-- <view class="add-button">
 				<addToCompareButton :item="item"></addToCompareButton>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
