@@ -192,6 +192,7 @@
 	}
 
 	.brand {
+		margin-top: 12rpx;
 		border-radius: 20rpx;
 		// background: $theme-color;
 		// color: white;

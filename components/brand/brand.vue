@@ -8,7 +8,7 @@
 
 			<swiper-item class="grid-content" v-for="(list,index) in arrs" :key="index">
 
-				<view class="box" @click="jump(brand)" v-for="brand in list" :key="brand.chinese">
+				<view class="box shadow" @click="jump(brand)" v-for="brand in list" :key="brand.chinese">
 
 					<image class="image" mode="aspectFit" :src="brand.icon">
 					</image>
