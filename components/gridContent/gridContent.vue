@@ -78,11 +78,12 @@
 		
 		.text {
 			padding: 0 10rpx;
+			// background-color: red;
 		}
 
 		.add-button {
 			position: absolute;
-			bottom: 5rpx;
+			bottom: 3rpx;
 			right: 5rpx;
 		}
 	}

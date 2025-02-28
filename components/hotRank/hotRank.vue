@@ -133,7 +133,7 @@
 	}
 
 	.image {
-		margin-left: 50rpx;
+		margin-left: 30rpx;
 		height: 100%;
 		width: 100rpx;
 	}
