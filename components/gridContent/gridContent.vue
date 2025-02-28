@@ -64,14 +64,18 @@
 			width: 100%;
 			height: 350rpx;
 		}
-		
+
 		.brand-name {
 			padding: 0 20rpx;
 		}
 
+		.scenarioList {
+			padding: 5rpx 15rpx;
+		}
+
 		.add-button {
 			position: absolute;
-			bottom: 5rpx;
+			bottom: 55rpx;
 			right: 5rpx;
 		}
 	}

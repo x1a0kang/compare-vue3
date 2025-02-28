@@ -16,11 +16,6 @@
 
 					<brand-name class="brand-name" :item="item"></brand-name>
 
-					<view class="scenarioList">
-						<view class="scenario" v-for="scenario in item.scenarioList" :key="scenario">
-							{{scenario}}
-						</view>
-					</view>
 				</view>
 
 				<view class="delete" @click.stop="deleteOne(item)">
@@ -228,16 +223,6 @@
 
 		.scenarioList {
 			padding: 5rpx 15rpx;
-			// width: 90%;
-			display: flex;
-			gap: 5rpx;
-			height: 50rpx;
-			align-items: center;
-			overflow: hidden;
-			flex-wrap: nowrap;
-			white-space: nowrap;
-			overflow-x: scroll;
-			// background: red;
 		}
 
 		.scenario {
