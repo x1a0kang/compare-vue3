@@ -4,7 +4,7 @@
 		<view class="head">
 			<view v-for="item in compareTempList" :key="item.productId">
 				<view class="title">
-					<view>{{item.name}}</view>
+					<view class="name">{{item.name}}</view>
 					<view class="icon" @click="deleteTemp(item.productId)">
 						<uni-icons type="closeempty" color="#fff"></uni-icons>
 					</view>
@@ -153,7 +153,7 @@
 	}
 
 	.title {
-		height: 80rpx;
+		height: 100%;
 		width: 48vw;
 		text-align: center;
 		font-size: 22px;
@@ -166,8 +166,13 @@
 		margin-top: 1rpx;
 		margin-right: 10rpx;
 		display: flex;
-		align-items: center;
 		justify-content: center;
+
+		.name {
+			display: flex;
+			height: 100%;
+			align-items: center;
+		}
 
 		.icon {
 			position: absolute;
