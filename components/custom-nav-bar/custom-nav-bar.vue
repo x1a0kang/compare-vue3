@@ -42,7 +42,6 @@
 		width: 100%;
 		z-index: 10;
 		background: $theme-color;
-		color: white;
 
 		.statusBar {}
 
@@ -63,9 +62,9 @@
 				height: 50rpx;
 				border-radius: 60rpx;
 				background: rgba(255, 255, 255, 0.9);
-				border: 1px solid #fff;
+				border: 1px solid #000;
 				margin-left: 50rpx;
-				color: #999;
+				color: #888;
 				font-size: 28rpx;
 				display: flex;
 				align-items: center;

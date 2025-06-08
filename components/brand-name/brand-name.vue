@@ -1,8 +1,8 @@
 <template>
 	<view class="layout">
 		<view class="line">
-			<view class="text">{{item.brand}}</view>
-			<view class="text-right">{{item.position}}</view>
+			<view class="text">{{item.brand}}——{{item.position}}</view>
+			<!-- <view class="text-right">{{item.position}}</view> -->
 		</view>
 
 		<view class="text">{{item.name}}</view>
@@ -41,17 +41,17 @@
 		// background: red;
 	}
 
-	.text-right {
-		padding: 5rpx 0; 
-		// margin-left: 1em;
-		width: fit-content;
-		text-align: end;
-		text-wrap: nowrap;
-		font-weight: bold;
-		position: absolute;
-		right: 0;
-		// background: red;
-	}
+	// .text-right {
+	// 	padding: 5rpx 0; 
+	// 	// margin-left: 1em;
+	// 	width: fit-content;
+	// 	text-align: end;
+	// 	text-wrap: nowrap;
+	// 	font-weight: bold;
+	// 	position: absolute;
+	// 	right: 0;
+	// 	// background: red;
+	// }
 	
 	.scenarioList::-webkit-scrollbar {
 		display: none;
@@ -73,9 +73,9 @@
 		width: fit-content;
 		height: fit-content;
 		background: $theme-color;
-		color: white;
+		color: $theme-font-color;
 		border-radius: 10rpx;
-		font-size: 10px;
+		font-size: 12px;
 		padding: 3rpx 8rpx;
 	}
 </style>

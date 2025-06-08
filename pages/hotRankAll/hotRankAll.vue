@@ -95,7 +95,7 @@
 		flex-direction: column;
 		align-items: center;
 		background: $theme-color;
-		color: white;
+		color: $theme-font-color;
 		padding: 10rpx 0;
 		border-radius: 20rpx 20rpx 0 0;
 		margin-top: 1rpx;

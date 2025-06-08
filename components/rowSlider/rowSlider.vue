@@ -70,7 +70,7 @@
 
 	.head {
 		background-color: $theme-color;
-		color: white;
+		color: $theme-font-color;
 		padding: 15rpx 10rpx 15rpx 30rpx;
 		// font-size: 20px;
 		border-radius: 20rpx 20rpx 0 0;
