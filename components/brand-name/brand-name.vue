@@ -1,7 +1,7 @@
 <template>
 	<view class="layout">
 		<view class="line">
-			<view class="text">{{item.brand}}——{{item.position}}</view>
+			<view class="text">{{item.brand}}—{{item.position}}</view>
 			<!-- <view class="text-right">{{item.position}}</view> -->
 		</view>
 
