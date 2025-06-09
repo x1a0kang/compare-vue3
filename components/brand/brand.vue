@@ -4,7 +4,7 @@
 		<!-- <swiper class="swiper" circular indicator-dots indicator-color="rgba(0, 0, 0, 0.3)"
 			indicator-active-color="#000"> -->
 
-		<swiper class="swiper">
+		<swiper class="swiper" indicator-dots indicator-color="rgba(0, 0, 0, 0.3)" indicator-active-color="#99DE9F">
 
 			<swiper-item class="grid-content" v-for="(list,index) in arrs" :key="index">
 
@@ -58,14 +58,16 @@
 	}
 
 	.swiper {
-		height: 300rpx;
+		height: 340rpx;
 		// background-color: blue;
 	}
 
 	.grid-content {
 		display: grid;
 		gap: 10rpx;
+		row-gap: 10rpx;
 		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: 145rpx;
 		// padding: 0 10rpx;
 	}
 

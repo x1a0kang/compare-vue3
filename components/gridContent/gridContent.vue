@@ -8,7 +8,7 @@
 				<view class="brand-name">
 					<brand-name :item="item"></brand-name>
 				</view>
-				<view class="text">{{item.price}}元</view>
+				<view class="text">参考价格：{{item.price}}元</view>
 			</view>
 
 			<view class="add-button">
@@ -75,7 +75,7 @@
 		.scenarioList {
 			padding: 5rpx 5rpx;
 		}
-		
+
 		.text {
 			padding: 0 10rpx;
 			// background-color: red;

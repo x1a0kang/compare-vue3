@@ -1,6 +1,6 @@
 <template>
 	<view class="icon" @click.stop="add(item)">
-		<uni-icons custom-prefix="iconfont" type="icon-roundaddfill" size="24"></uni-icons>
+		<uni-icons custom-prefix="iconfont" type="icon-roundadd" size="24"></uni-icons>
 	</view>
 </template>
 
