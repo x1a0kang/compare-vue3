@@ -63,7 +63,7 @@
 				border-radius: 60rpx;
 				background: rgba(255, 255, 255, 0.9);
 				border: 1px solid #000;
-				margin-left: 50rpx;
+				margin-left: 40rpx;
 				color: #888;
 				font-size: 28rpx;
 				display: flex;
